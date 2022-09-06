@@ -125,7 +125,7 @@ Un praticien pourra:
 Notre groupe est déjà formé pour ce projet.
 
 ## \***\*Un mentor pour ce projet ?\*\***
-
+Jonas Audia
 
 ## Lien du repository:
 https://github.com/MatthiasBlc/Epidaure_Api
