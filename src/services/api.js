@@ -64,4 +64,9 @@ export default class APIManager {
     });
     return response.data;
   }
+
+  static async memberData() {
+    const response = await API.get("/member-data");
+    return response.data;
+  }
 }
