@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import Navigation from "./components/Navigation/Index";
 import Home from "./pages/Home";
-import Signup from "./components/Signup/index";
+import Signup from "./components/Signup/signup";
 import Login from "./components/Login";
 import ForgotPassword from "./components/ForgotPassword/ForgotPassword";
 import ResetPassword from "./components/ResetPassword/ResetPassword";
@@ -15,7 +15,6 @@ const App = () => {
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
-
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
           <Route path="/users/password" element={<ForgotPassword />} />

@@ -1,7 +1,7 @@
 import axios from "axios";
 import Cookies from "js-cookie";
 
-const apiUrl = "http://localhost:3000";
+const apiUrl = "https://epidaure-api-preprod.herokuapp.com";
 const API = axios.create({ baseURL: apiUrl });
 const API2 = axios.create({ baseURL: apiUrl });
 
