@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import useScrollPosition from "../../hooks/useScrollPosition";
 import logoGreen from "../../assets/images/logoEpiGreenFondNone.png";
 import logoWhite from "../../assets/images/logoEpiWhiteBgNone.png";
@@ -66,6 +66,7 @@ const Footer = () => {
 
   return (
     <div>
+      <div className='gradient h-24'></div>
       <nav
         id="header"
         className={classNames(
@@ -133,6 +134,7 @@ const Footer = () => {
               </button>
             ) : (
               <>
+              <Link to="/login">
                 <button
                   id="navAction"
                   className={classNames(
@@ -144,6 +146,7 @@ const Footer = () => {
                 >
                   Connexion
                 </button>
+                </Link>
               </>
             )}
           </div>
