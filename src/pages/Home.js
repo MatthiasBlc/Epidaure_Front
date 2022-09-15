@@ -11,6 +11,7 @@ const Home = () => {
         est connectée, le lien pour se logout doit être affiché à la place.
       </p>
       <Calendar></Calendar>
+      <button class="btn">Button</button>
     </>
   );
 };
