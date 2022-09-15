@@ -2,13 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-footer{
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-  }
+.wrapper {
+    min-height: 100vh;
+}
 
+footer {
+    bottom: 0;
+}
 
 .gradient {
     background: linear-gradient(90deg, #30aa6d 30%, #bdeedd 100%);
-  }
+}

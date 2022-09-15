@@ -2,9 +2,9 @@ import React from 'react';
 
 const Profile = () => {
     return (
-        <div>
+        <div className='wrapper'>
             <h1 className='prof'>Profile</h1>
-        </div>
+        </div> 
     );
 };
 
