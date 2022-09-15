@@ -12,7 +12,6 @@ const Index = () => {
 
   // var navMenuDiv = document.getElementById("nav-content");
   // var navMenu = document.getElementById("nav-toggle");
-  // var scrollpos = window.scrollY;
   // var header = document.getElementById("header");
   // var navcontent = document.getElementById("nav-content");
   // var navaction = document.getElementById("navAction");
@@ -57,7 +56,7 @@ const Index = () => {
           <div className="pl-4 flex items-center">
             <Link
               to="/"
-              className="toggleColour text-white no-underline hover:no-underline font-bold text-2xl lg:text-4xl"
+              className="text-white no-underline hover:no-underline font-bold text-2xl lg:text-4xl"
             >
               <svg
                 className="h-8 fill-current inline"
