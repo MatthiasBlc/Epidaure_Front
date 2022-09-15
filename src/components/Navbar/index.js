@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import useScrollPosition from "../../hooks/useScrollPosition";
 import logoGreen from "../../assets/images/logoEpiGreenFondNone.png";
 import logoWhite from "../../assets/images/logoEpiWhiteBgNone.png";
