@@ -1,28 +1,35 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import APIManager from '../services/api';
 
-
 const Profile = () => {
-    const [userData,setUserData] = useState();
+    const [userData, setUserData] = useState({});
+    const [practiceData, setPracticeData] = useState();
 
-    async function asyncCall() {
-        const response = await APIManager.memberData()
-        .catch(
-            (error) => {
-                alert("erreur");
-                console.log(error.message);
-            }
-            );
-        setUserData(response.user);
-        console.log(userData);
+    const getUserData = async () => {
+        const { data } = await APIManager.memberData()
+        setUserData(data.user);
+        return data;
+    };
+
+    const getPracticeData = async (practice_id) => {
+        const data = await APIManager.practiceData(practice_id)
+        setPracticeData(data);
+        console.log(data);
+        return data;
+    };
+
+    const getData = async() => {
+        const michel = await getUserData();
+        console.log(michel);
+        getPracticeData(michel.user.practice_id);
     }
-    // asyncCall();
 
-    return (      
-        <div>
-            {/* <p>{userData}</p> */}
-            <button class="btn">Profile</button>
-        </div>
+    useEffect(() => {
+        getData();
+    }, []);
+
+    return (
+        <div>{practiceData.name}</div>
     );
 };
 

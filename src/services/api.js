@@ -67,6 +67,12 @@ export default class APIManager {
 
   static async memberData() {
     const response = await API.get("/member-data");
+    return response;
+  }
+
+  static async practiceData(id) {
+    const response = await API.get("/practices/" + id);
+    // console.log("hello",response.data);
     return response.data;
   }
 }
