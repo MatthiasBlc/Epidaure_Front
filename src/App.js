@@ -1,7 +1,8 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-import Navigation from "./components/Navigation/Index";
+import Navbar from "./components/Navbar/Navbar";
+import Footer from "./components/Footer/Footer";
 import Home from "./pages/Home";
 import Signup from "./components/Signup/signup";
 import Login from "./components/Login";
@@ -12,7 +13,7 @@ import Profile from "./pages/Profile";
 const App = () => {
   return (
     <BrowserRouter>
-      <Navigation />
+      <Navbar />
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -23,6 +24,7 @@ const App = () => {
           <Route path="/users/:token" element={<ResetPassword />} />
         </Routes>
       </main>
+      <Footer />
     </BrowserRouter>
   );
 };
