@@ -23,9 +23,9 @@ API2.interceptors.request.use(({ headers, ...config }) => ({
 }));
 
 export default class APIManager {
-  static async registerUser(email, password) {
+  static async registerUser(email, password,practice_id) {
     const response = await API.post("/users", {
-      user: { email: email, password: password },
+      user: { email: email, password: password, practice_id: practice_id },
     });
     const jwt = response.headers.authorization.slice(7);
     Cookies.set("token", jwt);
@@ -38,6 +38,7 @@ export default class APIManager {
     });
     const jwt = response.headers.authorization.slice(7);
     Cookies.set("token", jwt);
+    console.log("Je suis log",response);
     return response.data;
   }
 
@@ -62,6 +63,19 @@ export default class APIManager {
         password_confirmation: passwordConfirmation,
       },
     });
+    return response.data;
+  }
+
+  static async memberData() {
+    console.log(Cookies.get("token"));
+    const response = await API.get("/member-data");
+    console.log("tag",response);
+    return response;
+  }
+
+  static async practiceData(id) {
+    const response = await API.get("/practices/" + id);
+    // console.log("hello",response.data);
     return response.data;
   }
 }
