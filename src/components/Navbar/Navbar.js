@@ -4,7 +4,7 @@ import useScrollPosition from "../../hooks/useScrollPosition";
 import logoGreen from "../../assets/images/logoEpiGreenFondNone.png";
 import logoWhite from "../../assets/images/logoEpiWhiteBgNone.png";
 
-const Index = () => {
+const Footer = () => {
   function classNames(...classes) {
     return classes.filter(Boolean).join(" ");
   }
@@ -135,4 +135,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default Footer;
