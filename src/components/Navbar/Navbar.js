@@ -66,7 +66,11 @@ const Footer = () => {
 
   return (
     <div>
+<<<<<<< HEAD
+      <div className='gradient h-24'/>
+=======
       <div className='gradient h-24'></div>
+>>>>>>> master
       <nav
         id="header"
         className={classNames(
