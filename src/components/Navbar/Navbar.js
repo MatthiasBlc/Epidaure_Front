@@ -109,22 +109,14 @@ const Footer = () => {
                   Accueil
                 </NavLink>
               </li>
-              <li className="mr-10">
-                <NavLink
+              {logged ? ( <li className="mr-10">
+                  <NavLink
                   style={({ isActive }) => (isActive ? activeStyle : undefined)}
                   to="/profile"
                 >
                   Profil
                 </NavLink>
-              </li>
-              <li className="mr-10">
-                <NavLink
-                  style={({ isActive }) => (isActive ? activeStyle : undefined)}
-                  to="/Link"
-                >
-                  Lien
-                </NavLink>
-              </li>
+              </li> ) : ( "" )}
             </ul>
             {logged ? (
               <button
