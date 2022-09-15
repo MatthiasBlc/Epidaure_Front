@@ -1,10 +1,14 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import useScrollPosition from "../../hooks/useScrollPosition";
 import logoGreen from "../../assets/images/logoEpiGreenFondNone.png";
 import logoWhite from "../../assets/images/logoEpiWhiteBgNone.png";
+import { loggedAtom } from "../../services/Atoms/user";
+import { useAtom } from "jotai";
+import APIManager from "../../services/api";
 
 const Footer = () => {
+  const [logged, setLogged] = useAtom(loggedAtom);
   function classNames(...classes) {
     return classes.filter(Boolean).join(" ");
   }
@@ -14,6 +18,12 @@ const Footer = () => {
   let activeStyle = {
     textDecoration: "underline",
     fontWeight: "bold",
+  };
+
+  const logout = async (e) => {
+    e.preventDefault();
+    await APIManager.logoutUser();
+    setLogged(false);
   };
 
   // var navMenuDiv = document.getElementById("nav-content");
@@ -56,7 +66,11 @@ const Footer = () => {
 
   return (
     <div>
+<<<<<<< HEAD
       <div className='gradient h-24'/>
+=======
+      <div className='gradient h-24'></div>
+>>>>>>> master
       <nav
         id="header"
         className={classNames(
@@ -100,34 +114,45 @@ const Footer = () => {
                   Accueil
                 </NavLink>
               </li>
-              <li className="mr-10">
-                <NavLink
+              {logged ? ( <li className="mr-10">
+                  <NavLink
                   style={({ isActive }) => (isActive ? activeStyle : undefined)}
                   to="/profile"
                 >
                   Profil
                 </NavLink>
-              </li>
-              <li className="mr-10">
-                <NavLink
-                  style={({ isActive }) => (isActive ? activeStyle : undefined)}
-                  to="/Link"
-                >
-                  Lien
-                </NavLink>
-              </li>
+              </li> ) : ( "" )}
             </ul>
-            <button
-              id="navAction"
-              className={classNames(
-                scrollPosition > 0
-                  ? "gradient text-white"
-                  : "bg-white text-grey",
-                "mx-auto lg:mx-0 hover:underline font-bold rounded-full mt-4 lg:mt-0 py-4 px-8 shadow opacity-75 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out"
-              )}
-            >
-              Connexion
-            </button>
+            {logged ? (
+              <button
+                onClick={logout}
+                id="navAction"
+                className={classNames(
+                  scrollPosition > 0
+                    ? "gradient text-white"
+                    : "bg-white text-grey",
+                  "mx-auto lg:mx-0 hover:underline font-bold rounded-full mt-4 lg:mt-0 py-4 px-8 shadow opacity-75 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out"
+                )}
+              >
+                Se déconnecter
+              </button>
+            ) : (
+              <>
+              <Link to="/login">
+                <button
+                  id="navAction"
+                  className={classNames(
+                    scrollPosition > 0
+                      ? "gradient text-white"
+                      : "bg-white text-grey",
+                    "mx-auto lg:mx-0 hover:underline font-bold rounded-full mt-4 lg:mt-0 py-4 px-8 shadow opacity-75 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out"
+                  )}
+                >
+                  Connexion
+                </button>
+                </Link>
+              </>
+            )}
           </div>
         </div>
         <hr className="border-b border-gray-100 opacity-25 my-0 py-0" />
