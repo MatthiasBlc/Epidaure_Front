@@ -9,6 +9,7 @@ import Login from "./components/Login";
 import ForgotPassword from "./components/ForgotPassword/ForgotPassword";
 import ResetPassword from "./components/ResetPassword/ResetPassword";
 import Profile from "./pages/Profile";
+import Dashboard from "./pages/Dashboard";
 
 const App = () => {
   return (
@@ -22,6 +23,7 @@ const App = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/users/password" element={<ForgotPassword />} />
           <Route path="/users/:token" element={<ResetPassword />} />
+          <Route path="/dashboard" element={<Dashboard />} />
         </Routes>
       </main>
       <Footer />
