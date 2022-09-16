@@ -3,7 +3,7 @@ import React from 'react';
 const GestionPraticienTitulaire = () => {
     return (
         <div>
-            <div className='gradient h-24'></div>
+            <h1>PAGE GESTION PRATICIEN TUTULAIRE</h1>
         </div>
     );
 };
