@@ -25,7 +25,7 @@ const Login = () => {
       }
     );
     logged(true);
-    navigate("/")
+    navigate("/dashboard")
     userID(JSON.stringify(response.user));
   };
 
