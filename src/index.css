@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .wrapper {
-    min-height: 100vh;
+    min-height: 70vh;
 }
 
 footer {
@@ -13,5 +13,10 @@ footer {
 
 .gradient {
     background: linear-gradient(90deg, #30aa6d 30%, #bdeedd 100%);
+}
+
+.focusForm:focus {
+    background-color: #e1703834;
+    outline-color: #e17038;
 }
 
