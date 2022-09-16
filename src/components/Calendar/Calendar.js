@@ -19,50 +19,53 @@ class Calendar extends Component {
 
   loadCalendarData() {
 
-    const startDate = "2022-11-07";
+    const startDate = "2022-09-16";
   
     const columns = [
-      {name: "Room 1", id: "R1"},
-      {name: "Room 2", id: "R2"},
-      {name: "Room 3", id: "R3"},
-      {name: "Room 4", id: "R4"},
-      {name: "Room 5", id: "R5"},
-      {name: "Room 6", id: "R6"},
-      {name: "Room 7", id: "R7"},
+      {name: "Lundi (M)", id: "M"},
+      {name: "Mardi (T)", id: "T"},
+      {name: "Mercredi (W)", id: "W"},
+      {name: "Jeudi (Th)", id: "Th"},
+      {name: "Vendredi (F)", id: "F"},
+      {name: "Samedi (S)", id: "S"},
+      {name: "Dimanche (Su)", id: "Su"},
     ];
   
     const events = [
       {
         id: 1,
-        text: "Event 1",
-        start: "2022-11-07T10:30:00",
-        end: "2022-11-07T13:00:00",
+        text: "Event 15",
+        start: "2022-09-16T10:30:00",
+        end: "2022-09-16T13:00:00",
         barColor: "#fcb711",
-        resource: "R1"
+        resource: "M",
+        user_id: "10",
+        room_id: "10",
+        patient_id: "10"
       },
       {
         id: 2,
         text: "Event 2",
-        start: "2022-11-07T09:30:00",
-        end: "2022-11-07T11:30:00",
+        start: "2022-09-16T09:30:00",
+        end: "2022-09-16T11:30:00",
         barColor: "#f37021",
-        resource: "R2"
+        resource: "T"
       },
       {
         id: 3,
         text: "Event 3",
-        start: "2022-11-07T12:00:00",
-        end: "2022-11-07T15:00:00",
+        start: "2022-09-16T12:00:00",
+        end: "2022-09-16T15:00:00",
         barColor: "#cc004c",
-        resource: "R2"
+        resource: "T"
       },
       {
         id: 4,
         text: "Event 4",
-        start: "2022-11-07T11:30:00",
-        end: "2022-11-07T14:30:00",
+        start: "2022-09-16T11:30:00",
+        end: "2022-09-16T14:30:00",
         barColor: "#6460aa",
-        resource: "R3"
+        resource: "W"
       },
   
     ];
