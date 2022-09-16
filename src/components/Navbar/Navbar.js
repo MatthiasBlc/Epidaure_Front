@@ -7,13 +7,8 @@ import { loggedAtom } from "../../services/Atoms/user";
 import { useAtom } from "jotai";
 import APIManager from "../../services/api";
 
-const Footer = () => {
+const Navbar = ({ location }) => {
   const [logged, setLogged] = useAtom(loggedAtom);
-  function classNames(...classes) {
-    return classes.filter(Boolean).join(" ");
-  }
-
-  const scrollPosition = useScrollPosition();
 
   let activeStyle = {
     textDecoration: "underline",
@@ -25,6 +20,8 @@ const Footer = () => {
     await APIManager.logoutUser();
     setLogged(false);
   };
+
+  const removeFixed = ({ location }) => {};
 
   // var navMenuDiv = document.getElementById("nav-content");
   // var navMenu = document.getElementById("nav-toggle");
@@ -66,21 +63,10 @@ const Footer = () => {
 
   return (
     <div>
-      <div className='gradient h-24'/>
-      <nav
-        id="header"
-        className={classNames(
-          scrollPosition > 0 ? "bg-white" : "bg-transparent",
-          "fixed w-full z-30 top-0 text-white"
-        )}
-      >
+      <nav id="header" className="w-full z-30 top-0 text-white gradient">
         <div className="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 py-2">
           <div className="pl-4 flex items-center">
-            <img
-              className="h-20"
-              src={classNames(scrollPosition > 0 ? logoGreen : logoWhite)}
-              alt="logo"
-            />
+            <img className="h-20" src={logoWhite} alt="logo" />
           </div>
           <div className="block lg:hidden pr-4">
             <button
@@ -110,42 +96,38 @@ const Footer = () => {
                   Accueil
                 </NavLink>
               </li>
-              {logged ? ( <li className="mr-10">
+              {logged ? (
+                <li className="mr-10">
                   <NavLink
-                  style={({ isActive }) => (isActive ? activeStyle : undefined)}
-                  to="/profile"
-                >
-                  Profil
-                </NavLink>
-              </li> ) : ( "" )}
+                    style={({ isActive }) =>
+                      isActive ? activeStyle : undefined
+                    }
+                    to="/profile"
+                  >
+                    Profil
+                  </NavLink>
+                </li>
+              ) : (
+                ""
+              )}
             </ul>
             {logged ? (
               <button
                 onClick={logout}
                 id="navAction"
-                className={classNames(
-                  scrollPosition > 0
-                    ? "gradient text-white"
-                    : "bg-white text-grey",
-                  "mx-auto lg:mx-0 hover:underline font-bold rounded-full mt-4 lg:mt-0 py-4 px-8 shadow opacity-75 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out"
-                )}
+                className="mx-auto lg:mx-0 hover:underline font-bold rounded-full mt-4 lg:mt-0 py-4 px-8 shadow opacity-100 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out bg-white text-grey"
               >
                 Se déconnecter
               </button>
             ) : (
               <>
-              <Link to="/login">
-                <button
-                  id="navAction"
-                  className={classNames(
-                    scrollPosition > 0
-                      ? "gradient text-white"
-                      : "bg-white text-grey",
-                    "mx-auto lg:mx-0 hover:underline font-bold rounded-full mt-4 lg:mt-0 py-4 px-8 shadow opacity-75 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out"
-                  )}
-                >
-                  Connexion
-                </button>
+                <Link to="/login">
+                  <button
+                    id="navAction"
+                    className="mx-auto lg:mx-0 hover:underline font-bold rounded-full mt-4 lg:mt-0 py-4 px-8 shadow opacity-100 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out bg-white text-grey"
+                  >
+                    Connexion
+                  </button>
                 </Link>
               </>
             )}
@@ -157,4 +139,4 @@ const Footer = () => {
   );
 };
 
-export default Footer;
+export default Navbar;
