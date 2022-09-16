@@ -98,7 +98,7 @@ const Navbar = ({ location }) => {
                   </NavLink>
                 </li>
               ) : (
-                ""
+                " "
               )}
             </ul>
             {logged ? (
