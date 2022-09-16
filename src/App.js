@@ -28,7 +28,6 @@ const App = () => {
           <Route path="/gestionPT" element={<GestionPraticienTitulaire />} />
         </Routes>
       </main>
-      <Footer />
     </BrowserRouter>
   );
 };
