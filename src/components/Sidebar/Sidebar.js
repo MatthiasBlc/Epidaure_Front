@@ -1,11 +1,10 @@
 import React, { useState } from "react";
-import { HiMenuAlt3, HiMenuAlt4, HiOutlineMenuAlt3 } from "react-icons/hi";
 import { GoDashboard } from "react-icons/go";
 import { BiMenuAltLeft } from "react-icons/bi";
 
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-const SideBar = ({ children }) => {
+const SideBar = () => {
   const menus = [
     { name: "Menu 1", link: "/", icon: GoDashboard },
     { name: "Menu 2", link: "/", icon: GoDashboard },
@@ -56,18 +55,6 @@ const SideBar = ({ children }) => {
             </h2>
           </Link>
         ))}
-        {/* <Link to={"/"}>
-                    <h2>Partie 2</h2>
-                </Link>
-                <Link to={"/"}>
-                    <h2>Partie 3</h2>
-                </Link>
-                <Link to={"/"}>
-                    <h2>Partie 4</h2>
-                </Link>
-                <Link to={"/"}>
-                    <h2>Partie 5</h2>
-                </Link> */}
       </div>
     </div>
   );
