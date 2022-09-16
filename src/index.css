@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.wrapper {
+    min-height: 100vh;
+}
+
+footer {
+    position: relative;
+    bottom: 0;
+}
+
+.gradient {
+    background: linear-gradient(90deg, #30aa6d 30%, #bdeedd 100%);
+}
+
