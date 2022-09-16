@@ -9,11 +9,6 @@ import APIManager from "../../services/api";
 
 const Navbar = ({ location }) => {
   const [logged, setLogged] = useAtom(loggedAtom);
-  function classNames(...classes) {
-    return classes.filter(Boolean).join(" ");
-  }
-
-  const scrollPosition = useScrollPosition();
 
   let activeStyle = {
     textDecoration: "underline",
