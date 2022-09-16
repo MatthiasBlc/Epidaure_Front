@@ -27,8 +27,8 @@ export default class APIManager {
     const response = await API.post("/users", {
       user: { email: email, password: password, practice_id: practice_id },
     });
-    const jwt = response.headers.authorization.slice(7);
-    Cookies.set("token", jwt);
+    // const jwt = response.headers.authorization.slice(7);
+    // Cookies.set("token", jwt);
     return response.data;
   }
 
