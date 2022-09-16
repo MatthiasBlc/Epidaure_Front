@@ -11,7 +11,7 @@ import ResetPassword from "./components/ResetPassword/ResetPassword";
 import Profile from "./pages/Profile";
 import Dashboard from "./pages/Dashboard";
 import GestionPraticienTitulaire from "./components/GestionPraticienTitulaire/GestionPraticienTitulaire";
-import Calendar from "./pages/Calendar";
+import Agenda from "./pages/Agenda";
 
 
 const App = () => {
@@ -28,7 +28,7 @@ const App = () => {
           <Route path="/users/:token" element={<ResetPassword />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/gestionPT" element={<GestionPraticienTitulaire />} />
-          <Route path="/calendar" element={<Calendar />} />
+          <Route path="/agenda" element={<Agenda />} />
         </Routes>
       </main>
       <Footer />
