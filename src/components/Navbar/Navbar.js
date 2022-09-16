@@ -86,14 +86,6 @@ const Navbar = ({ location }) => {
             id="nav-content"
           >
             <ul className="list-reset lg:flex justify-end flex-1 items-center">
-              <li className="mr-10">
-                <NavLink
-                  style={({ isActive }) => (isActive ? activeStyle : undefined)}
-                  to="/"
-                >
-                  Accueil
-                </NavLink>
-              </li>
               {logged ? (
                 <li className="mr-10">
                   <NavLink
