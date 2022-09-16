@@ -11,3 +11,10 @@
     outline-color: #e17038;
 }
 
+.containerGrid1 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(1);
+    grid-column-gap: 15px;
+    grid-row-gap: 0px;
+}
