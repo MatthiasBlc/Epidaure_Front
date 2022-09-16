@@ -10,7 +10,6 @@ import ForgotPassword from "./components/ForgotPassword/ForgotPassword";
 import ResetPassword from "./components/ResetPassword/ResetPassword";
 import Profile from "./pages/Profile";
 import Dashboard from "./pages/Dashboard";
-import GestionPraticienTitulaire from "./components/GestionPraticienTitulaire/GestionPraticienTitulaire";
 
 const App = () => {
   return (
@@ -25,7 +24,6 @@ const App = () => {
           <Route path="/users/password" element={<ForgotPassword />} />
           <Route path="/users/:token" element={<ResetPassword />} />
           <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/gestionPT" element={<GestionPraticienTitulaire />} />
         </Routes>
       </main>
     </BrowserRouter>
