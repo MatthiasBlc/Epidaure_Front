@@ -60,10 +60,6 @@ const Profil = () => {
                     type="text"
                     id="password"
                 />
-                <input
-                    type="text"
-                    id="password"
-                />
                 <button type="submit">Submit</button>
             </form>
 
