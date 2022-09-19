@@ -6,7 +6,7 @@ import { BiMenuAltLeft } from "react-icons/bi";
 import { Link } from "react-router-dom";
 
 const SideBar = () => {
-  const menus = [{ name: "Dashboard", link: "/dashboard", icon: GoDashboard },
+  const menus = [{ name: "Dashboard", link: "/dashboard/all", icon: GoDashboard },
   { name: "Planning collaborateurs", link: "/dashboard/plancollab", icon: BsPeople },
   { name: "Planning salles", link: "/dashboard/planrooms", icon: BsDoorOpen },
   { name: "Gérer mon planning", link: "/dashboard/planning", icon: BsCalendar3 },

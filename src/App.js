@@ -34,7 +34,7 @@ const App = () => {
           <Route path="/users/:token" element={<ResetPassword />} />
           <Route path="/dashboard" element={<Dashboard />}>
             <Route
-            path=""
+            path="/all"
             element={<GestionPraticienTitulaire />}
           />
           <Route path="plancollab" element={<PlanCollab />} />
