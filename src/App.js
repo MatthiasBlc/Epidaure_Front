@@ -10,6 +10,10 @@ import ForgotPassword from "./components/ForgotPassword/ForgotPassword";
 import ResetPassword from "./components/ResetPassword/ResetPassword";
 import Profile from "./pages/Profile";
 import Dashboard from "./pages/Dashboard";
+import PlanCollab from "./components/PlanCollab/PlanCollab";
+import GestionPraticienTitulaire from "./components/GestionPraticienTitulaire/GestionPraticienTitulaire";
+import PlanRooms from "./components/PlanRooms/PlanRooms";
+import Planning from "./components/Planning/Planning";
 
 const App = () => {
   return (
@@ -22,9 +26,19 @@ const App = () => {
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
           <Route path="/users/password" element={<ForgotPassword />} />
-          <Route path="/users/pass" element={<ResetPassword />} />
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/users/:token" element={<ResetPassword />} />
+          <Route path="/dashboard" element={<Dashboard />}>
+            <Route
+            path=""
+            element={<GestionPraticienTitulaire />}
+          />
+          <Route path="plancollab" element={<PlanCollab />} />
+          <Route path="planrooms" element={<PlanRooms />} />
+          <Route path="planning" element={<Planning />} />
+          </Route>
+          
         </Routes>
+        
       </main>
     </BrowserRouter>
   );
