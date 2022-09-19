@@ -16,7 +16,6 @@ const ResetPassword = () => {
       newPassword,
       passwordConfirmation
     ).catch((error) => {
-      alert("erreur");
       console.log(error.message);
     });
   };

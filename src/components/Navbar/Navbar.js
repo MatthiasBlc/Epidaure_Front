@@ -1,11 +1,12 @@
 import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import logoWhite from "../../assets/images/logoEpiWhiteBgNone.png";
 import { loggedAtom } from "../../services/Atoms/user";
 import { useAtom } from "jotai";
 import APIManager from "../../services/api";
 
 const Navbar = ({ location }) => {
+  const navigate = useNavigate();
   const [logged, setLogged] = useAtom(loggedAtom);
 
   let activeStyle = {
@@ -17,6 +18,7 @@ const Navbar = ({ location }) => {
     e.preventDefault();
     await APIManager.logoutUser();
     setLogged(false);
+    navigate('/');
   };
 
   // var navMenuDiv = document.getElementById("nav-content");

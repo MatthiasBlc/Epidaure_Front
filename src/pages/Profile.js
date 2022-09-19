@@ -32,7 +32,7 @@ const Profil = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         const email = e.target.email.value;
-        const password = e.target.email.value;
+        const password = e.target.password.value;
         const practice_id = userData.practice_id;
         const response = await APIManager.registerUser(email,password,practice_id)
         console.log("User crée", response)
