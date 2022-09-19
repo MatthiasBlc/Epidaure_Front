@@ -10,7 +10,7 @@ const SideBar = () => {
   { name: "Planning collaborateurs", link: "/", icon: BsPeople },
   { name: "Planning salles", link: "/", icon: BsDoorOpen },
   { name: "Gérer mon planning", link: "/", icon: BsCalendar3 },
-  { name: "(Module vacances?)", icon: BsEmojiSunglasses },
+  { name: "(Module vacances?)", link:"/", icon: BsEmojiSunglasses },
 ];
 
   const [open, setOpen] = useState(false);
