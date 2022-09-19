@@ -39,7 +39,7 @@ const App = () => {
                 <Dashboard />
               </RequireAuth>
             }>
-            <Route path="/all" element={<GestionPraticienTitulaire />} />
+            <Route path="all" element={<GestionPraticienTitulaire />} />
             <Route path="plancollab" element={<PlanCollab />} />
             <Route path="planrooms" element={<PlanRooms />} />
             <Route path="planning" element={<Planning />} />
