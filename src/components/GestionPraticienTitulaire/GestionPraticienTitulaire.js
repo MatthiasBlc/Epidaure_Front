@@ -41,7 +41,7 @@ const GestionPraticienTitulaire = () => {
         </div>
         <div className="containerGrid1 mr-4 h-auto">
           <div className="w-full h-auto">
-            <div className="flex flex-col w-full h-auto bg-orange rounded-xl p-2 shadow-lg">
+            <div className="flex flex-col w-full h-auto border border-green rounded-xl p-2 shadow-lg">
               <h1 className="text-1xl font-bold leading-tight">
                 {practiceData.name}
               </h1>
@@ -54,7 +54,7 @@ const GestionPraticienTitulaire = () => {
                 Modifier
               </button>
             </div>
-            <div className="flex flex-col w-full h-auto bg-orange mt-10 rounded-xl p-2 shadow-lg">
+            <div className="flex flex-col w-full h-auto border border-green mt-10 rounded-xl p-2 shadow-lg">
               <h1 className="text-1xl font-bold leading-tight">MES SALLES</h1>
               <ul>
 
@@ -67,7 +67,7 @@ const GestionPraticienTitulaire = () => {
               </button>
             </div>
           </div>
-          <div className="flex flex-col w-full h-full bg-orange rounded-xl p-2 shadow-lg">
+          <div className="flex flex-col w-full h-full border border-green rounded-xl p-2 shadow-lg">
             <h1 className="text-1xl font-bold leading-tight">
               LES PRATICIENS DU CABINET
             </h1>

@@ -1,19 +1,17 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-
-import { useSetAtom } from "jotai";
-import { loggedAtom } from "../../services/Atoms/user";
+import { useAtom } from "jotai";
 import { currentUserAtom } from "../../services/Atoms/currentUser";
-
 import APIManager from "../../services/api";
+import { loggedAtom } from "../../services/Atoms/user";
 
 const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const logged = useSetAtom(loggedAtom);
-  const userID = useSetAtom(currentUserAtom);
+  const [,setUserID] = useAtom(currentUserAtom);
+  const [,setLogged] = useAtom(loggedAtom);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -23,8 +21,8 @@ const Login = () => {
         console.log(error.message);
       }
       );
-      userID(JSON.stringify(response.user));
-      logged(true);
+      setUserID(JSON.stringify(response.user));
+      setLogged(true);
       navigate("/dashboard");
   };
 

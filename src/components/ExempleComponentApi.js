@@ -9,7 +9,6 @@ const ExampleComponent = () => {
         e.preventDefault();
 
         const response = await APIManager.registerUser(email, password);
-        console.log(response);
     };
 
     return (
