@@ -38,12 +38,11 @@ const App = () => {
               <RequireAuth>
                 <Dashboard />
               </RequireAuth>
-            }>
-            <Route path="all" element={<GestionPraticienTitulaire />} />
+            }/>
+            {/* <Route path="" element={<GestionPraticienTitulaire />} />
             <Route path="plancollab" element={<PlanCollab />} />
             <Route path="planrooms" element={<PlanRooms />} />
-            <Route path="planning" element={<Planning />} />
-          </Route>
+            <Route path="planning" element={<Planning />} /> */}
         </Routes>
       </main>
     </BrowserRouter>
