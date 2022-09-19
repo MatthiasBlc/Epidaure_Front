@@ -7,10 +7,10 @@ import { Link } from "react-router-dom";
 
 const SideBar = () => {
   const menus = [{ name: "Dashboard", link: "/dashboard", icon: GoDashboard },
-  { name: "Planning collaborateurs", link: "/dashboard", icon: BsPeople },
-  { name: "Planning salles", link: "/dashboard", icon: BsDoorOpen },
-  { name: "Gérer mon planning", link: "/dashboard", icon: BsCalendar3 },
-  { name: "(Module vacances?)", link: "/dashboard", icon: BsEmojiSunglasses },
+  { name: "Planning collaborateurs", link: "/dashboard/plancollab", icon: BsPeople },
+  { name: "Planning salles", link: "/dashboard/planrooms", icon: BsDoorOpen },
+  { name: "Gérer mon planning", link: "/dashboard/planning", icon: BsCalendar3 },
+  { name: "(Module vacances?)", icon: BsEmojiSunglasses },
 ];
   const [open, setOpen] = useState(false);
 
