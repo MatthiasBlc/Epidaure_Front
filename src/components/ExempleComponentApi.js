@@ -15,7 +15,7 @@ const ExampleComponent = () => {
     return (
         <form onSubmit={handleSubmit}>
             <input type="text" id="email" onChange={(e) => setEmail(e.target.value)} />
-            <input type="text" id="password" onChange={(e) => setPassword(e.target.value)} />
+            <input type="password" id="password" onChange={(e) => setPassword(e.target.value)} />
             <button type="submit">Submit</button>
         </form>
     );

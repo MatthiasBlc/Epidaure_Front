@@ -21,11 +21,11 @@ const Login = () => {
     const response = await APIManager.loginUser(email, password).catch(
       (error) => {
         alert("erreur");
-        console.log(error.message);
+        console.log("Identifiants incorrects");
       }
       );
-      logged(true);
       userID(JSON.stringify(response.user));
+      logged(true);
       navigate("/dashboard");
   };
 
