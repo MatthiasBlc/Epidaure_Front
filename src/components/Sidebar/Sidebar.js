@@ -1,17 +1,17 @@
 import React, { useState } from "react";
 import { GoDashboard } from "react-icons/go";
-import { BsPeople, BsDoorOpen, BsCalendar3, BsEmojiSunglasses } from "react-icons/bs";
 import { BiMenuAltLeft } from "react-icons/bi";
 
 import { Link } from "react-router-dom";
 
 const SideBar = () => {
-  const menus = [{ name: "Dashboard", link: "/", icon: GoDashboard },
-  { name: "Planning collaborateurs", link: "/", icon: BsPeople },
-  { name: "Planning salles", link: "/", icon: BsDoorOpen },
-  { name: "Gérer mon planning", link: "/", icon: BsCalendar3 },
-  { name: "(Module vacances?)", link:"/", icon: BsEmojiSunglasses },
-];
+  const menus = [
+    { name: "Menu 1", link: "/", icon: GoDashboard },
+    { name: "Menu 2", link: "/", icon: GoDashboard },
+    { name: "Menu 3", link: "/", icon: GoDashboard },
+    { name: "Menu 4", link: "/", icon: GoDashboard },
+    { name: "Menu 5", link: "/", icon: GoDashboard },
+  ];
 
   const [open, setOpen] = useState(false);
 

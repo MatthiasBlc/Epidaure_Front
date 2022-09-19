@@ -8,7 +8,6 @@ const Dashboard = () => {
     <div className="flex gap-6">
       <Sidebar />
       <GestionPraticienTitulaire />
-      {/* <Outlet /> <-- Pour le nesting des routes du dash */}
     </div>
   );
 };
