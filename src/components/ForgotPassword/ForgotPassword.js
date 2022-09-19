@@ -8,7 +8,6 @@ const ForgotPassword = () => {
     const userEmail = e.target.email.value;
 
     await APIManager.forgotPasswordUser(userEmail).catch((error) => {
-      alert("erreur");
       console.log(error.message);
     });
   };

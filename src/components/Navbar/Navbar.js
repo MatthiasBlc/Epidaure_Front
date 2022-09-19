@@ -6,8 +6,8 @@ import { useAtom } from "jotai";
 import APIManager from "../../services/api";
 
 const Navbar = ({ location }) => {
-  const [logged, setLogged] = useAtom(loggedAtom);
   const navigate = useNavigate();
+  const [logged, setLogged] = useAtom(loggedAtom);
 
   let activeStyle = {
     textDecoration: "underline",
@@ -18,7 +18,7 @@ const Navbar = ({ location }) => {
     e.preventDefault();
     await APIManager.logoutUser();
     setLogged(false);
-    navigate("/login");
+    navigate('/');
   };
 
   // var navMenuDiv = document.getElementById("nav-content");
