@@ -32,7 +32,7 @@ const Login = () => {
   return (
     <>
       <div className="wrapper flex items-center justify-center">
-        <div className="w-1/2">
+        <div className="w-1/2 mt-20">
           <h2 className="my-2 text-3xl font-bold leading-tight text-center text-gray-800">
             Se connecter
           </h2>
