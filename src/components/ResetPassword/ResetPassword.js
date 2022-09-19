@@ -26,19 +26,6 @@ const ResetPassword = () => {
 
 
 <div className="wrapper flex items-center justify-center">
-
-      {/* <h1>Change your password</h1>
-      <form onSubmit={handleSubmit}>
-        New password <input type="password" id="newPassword" name="newPassword" />{" "}
-        Confirm password
-        <input
-          type="password"
-          id="passwordConfirmation"
-          name="passwordConfirmation"
-        />
-        <button type="submit">Submit</button>
-      </form> */}
-
 <div className="w-1/2 mt-20">
   <h2 className="my-2 text-3xl font-bold leading-tight text-center text-gray-800">
     Modifier le mot de passe
