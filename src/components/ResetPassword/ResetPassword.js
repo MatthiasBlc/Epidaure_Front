@@ -25,10 +25,10 @@ const ResetPassword = () => {
     <div>
       <h1>Change your password</h1>
       <form onSubmit={handleSubmit}>
-        New password <input type="text" id="newPassword" name="newPassword" />{" "}
+        New password <input type="password" id="newPassword" name="newPassword" />{" "}
         Confirm password
         <input
-          type="text"
+          type="password"
           id="passwordConfirmation"
           name="passwordConfirmation"
         />
