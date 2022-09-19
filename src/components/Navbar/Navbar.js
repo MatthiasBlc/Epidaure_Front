@@ -65,7 +65,7 @@ const Navbar = ({ location }) => {
         <div className="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 py-2">
           <div className="pl-4 flex items-center">
             <Link to={ logged ? "/dashboard" : "/"}>
-              <img className="h-20" src={logoWhite}></img>
+              <img className="h-20" src={logoWhite} alt="Logo Epidaure Navbar"></img>
             </Link>
           </div>
           <div className="block lg:hidden pr-4">
