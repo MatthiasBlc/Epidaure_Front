@@ -24,8 +24,8 @@ const Login = () => {
         console.log(error.message);
       }
       );
-      logged(true);
       userID(JSON.stringify(response.user));
+      logged(true);
       navigate("/dashboard");
   };
 
