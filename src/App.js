@@ -33,7 +33,7 @@ const App = () => {
           <Route path="/users/password" element={<ForgotPassword />} />
           <Route path="/users/:token" element={<ResetPassword />} />
           <Route
-            path=""
+            path="/dashboard"
             element={
               <RequireAuth>
                 <Dashboard />
