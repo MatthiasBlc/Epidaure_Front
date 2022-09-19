@@ -1,4 +1,5 @@
 import React from "react";
+import Footer from "../components/Footer/Footer";
 
 const Home = () => {
   return (
@@ -770,6 +771,7 @@ const Home = () => {
             Action!
           </button>
         </section>
+      <Footer />
       </div>
     </>
   );

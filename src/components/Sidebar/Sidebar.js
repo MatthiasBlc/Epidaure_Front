@@ -1,17 +1,17 @@
 import React, { useState } from "react";
-import { HiMenuAlt3, HiMenuAlt4, HiOutlineMenuAlt3 } from "react-icons/hi";
 import { GoDashboard } from "react-icons/go";
+import { BsPeople, BsDoorOpen, BsCalendar3, BsEmojiSunglasses } from "react-icons/bs";
 import { BiMenuAltLeft } from "react-icons/bi";
 
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-const SideBar = ({ children }) => {
+const SideBar = () => {
   const menus = [
-    { name: "Menu 1", link: "/", icon: GoDashboard },
-    { name: "Menu 2", link: "/", icon: GoDashboard },
-    { name: "Menu 3", link: "/", icon: GoDashboard },
-    { name: "Menu 4", link: "/", icon: GoDashboard },
-    { name: "Menu 5", link: "/", icon: GoDashboard },
+    { name: "Dashboard", link: "/dashboard", icon: GoDashboard },
+    { name: "Planning collaborateurs", link: "/dashboard", icon: BsPeople },
+    { name: "Planning salles", link: "/dashboard", icon: BsDoorOpen },
+    { name: "Gérer mon planning", link: "/dashboard", icon: BsCalendar3 },
+    { name: "(Module vacances?)", link: "/dashboard", icon: BsEmojiSunglasses },
   ];
 
   const [open, setOpen] = useState(false);
@@ -36,7 +36,7 @@ const SideBar = ({ children }) => {
             key={i}
             className="group flex items-center text-sm gap-3.5 font-medium p-2 hover:bg-turquoise rounded-md"
           >
-            <div>{React.createElement(menu?.icon, { size: "20" })}</div>
+            <div>{React.createElement(menu?.icon, { size: "20", color: "white" })}</div>
             <h2
               style={{
                 transitionDelay: `${i + 3}00ms`,
@@ -56,18 +56,6 @@ const SideBar = ({ children }) => {
             </h2>
           </Link>
         ))}
-        {/* <Link to={"/"}>
-                    <h2>Partie 2</h2>
-                </Link>
-                <Link to={"/"}>
-                    <h2>Partie 3</h2>
-                </Link>
-                <Link to={"/"}>
-                    <h2>Partie 4</h2>
-                </Link>
-                <Link to={"/"}>
-                    <h2>Partie 5</h2>
-                </Link> */}
       </div>
     </div>
   );
