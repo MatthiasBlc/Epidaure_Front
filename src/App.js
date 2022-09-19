@@ -32,26 +32,19 @@ const App = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/users/password" element={<ForgotPassword />} />
           <Route path="/users/:token" element={<ResetPassword />} />
-          <Route path="/dashboard" element={<Dashboard />}>
-            <Route
-            path="/all"
-            element={<GestionPraticienTitulaire />}
-          />
-          <Route path="plancollab" element={<PlanCollab />} />
-          <Route path="planrooms" element={<PlanRooms />} />
-          <Route path="planning" element={<Planning />} />
-          </Route>
-          
           <Route
             path="/dashboard"
             element={
               <RequireAuth>
                 <Dashboard />
               </RequireAuth>
-            }
-          />
+            }>
+            <Route path="/all" element={<GestionPraticienTitulaire />} />
+            <Route path="plancollab" element={<PlanCollab />} />
+            <Route path="planrooms" element={<PlanRooms />} />
+            <Route path="planning" element={<Planning />} />
+          </Route>
         </Routes>
-        
       </main>
     </BrowserRouter>
   );
