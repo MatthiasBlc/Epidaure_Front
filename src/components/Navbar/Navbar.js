@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import logoWhite from "../../assets/images/logoEpiWhiteBgNone.png";
 import { loggedAtom } from "../../services/Atoms/user";
 import { useAtom } from "jotai";
@@ -7,6 +7,7 @@ import APIManager from "../../services/api";
 
 const Navbar = ({ location }) => {
   const [logged, setLogged] = useAtom(loggedAtom);
+  const navigate = useNavigate();
 
   let activeStyle = {
     textDecoration: "underline",
@@ -17,6 +18,7 @@ const Navbar = ({ location }) => {
     e.preventDefault();
     await APIManager.logoutUser();
     setLogged(false);
+    navigate("/login");
   };
 
   // var navMenuDiv = document.getElementById("nav-content");
@@ -63,7 +65,7 @@ const Navbar = ({ location }) => {
         <div className="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 py-2">
           <div className="pl-4 flex items-center">
             <Link to={ logged ? "/dashboard" : "/"}>
-              <img className="h-20" src={logoWhite}></img>
+              <img className="h-20" src={logoWhite} alt="Logo Epidaure Navbar"></img>
             </Link>
           </div>
           <div className="block lg:hidden pr-4">
