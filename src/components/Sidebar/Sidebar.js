@@ -1,16 +1,17 @@
 import React, { useState } from "react";
-import { GoDashboard } from "react-icons/go";
-import { BiMenuAltLeft } from "react-icons/bi";
+import { GoDashboard, GoPerson } from "react-icons/go";
+import { BiMenuAltLeft, BiSun } from "react-icons/bi";
+import { MdOutlinePeopleAlt, MdOutlineSensorDoor } from "react-icons/md";
 
 import { Link } from "react-router-dom";
 
 const SideBar = () => {
   const menus = [
-    { name: "Menu 1", link: "/dashboard", icon: GoDashboard },
-    { name: "Menu 2", link: "plancollab", icon: GoDashboard },
-    { name: "Menu 3", link: "planrooms", icon: GoDashboard },
-    { name: "Menu 4", link: "planning", icon: GoDashboard },
-    { name: "Menu 5", link: "/", icon: GoDashboard },
+    { name: "Gestion praticien titulaire", link: "/dashboard", icon: GoDashboard },
+    { name: "Planning collaborateurs", link: "plancollab", icon: MdOutlinePeopleAlt},
+    { name: "Planning salles", link: "planrooms", icon: MdOutlineSensorDoor },
+    { name: "Gérer mon planning", link: "planning", icon: GoPerson },
+    { name: "(Module Vacances?)", link: "/", icon: BiSun },
   ];
 
   const [open, setOpen] = useState(false);
