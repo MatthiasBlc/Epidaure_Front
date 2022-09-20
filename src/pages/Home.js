@@ -1,7 +1,14 @@
+import { useAtom } from "jotai";
 import React from "react";
+import { Navigate } from "react-router-dom";
 import Footer from "../components/Footer/Footer";
-
+import { loggedAtom } from "../services/Atoms/user";
 const Home = () => {
+
+  const [logged,] = useAtom(loggedAtom);
+  if ( logged !== undefined ) return (
+    <Navigate to="/dashboard" replace={true} />
+  )
   return (
     <>
       <div className="leading-normal tracking-normal text-white gradient">

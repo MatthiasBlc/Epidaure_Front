@@ -1,5 +1,6 @@
 import axios from "axios";
 import Cookies from "js-cookie";
+import { loggedAtom } from "./Atoms/user";
 
 // const apiUrl = "https://epidaure-api-preprod.herokuapp.com";
 const apiUrl = process.env.REACT_APP_BACK_URL;
@@ -39,7 +40,6 @@ export default class APIManager {
     });
     const jwt = response.headers.authorization.slice(7);
     Cookies.set("token", jwt);
-    console.log("Je suis log", response);
     return response.data;
   }
 
@@ -70,13 +70,11 @@ export default class APIManager {
   static async memberData() {
     console.log(Cookies.get("token"));
     const response = await API.get("/member-data");
-    console.log("tag", response);
     return response;
   }
 
   static async practiceData(id) {
     const response = await API.get("/practices/" + id);
-    // console.log("hello",response.data);
     return response.data;
   }
 }

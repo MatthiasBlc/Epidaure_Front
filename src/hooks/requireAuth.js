@@ -6,7 +6,7 @@ import { loggedAtom } from '../services/Atoms/user';
 const RequireAuth = ({ children }) => {
   const [logged,] = useAtom(loggedAtom);
   console.log("Oui ou non",logged);
-  return logged === true ? children : <Navigate to="/login" replace={true} />
+  return logged !== undefined ? children : <Navigate to="/login" replace={true} />
 }
 
 export default RequireAuth;
