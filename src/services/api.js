@@ -12,7 +12,7 @@ API.interceptors.request.use(({ headers, ...config }) => ({
   headers: {
     ...headers,
     "Content-Type": "application/json",
-    Authorization: `Bearer ${headers.Authorization || Cookies.get("token")}`,
+    Authorization: `Bearer ${headers.Authorization || Cookies.get("epidaure_id")}`,
   },
 }));
 
@@ -30,7 +30,7 @@ export default class APIManager {
       user: { email: email, password: password, practice_id: practice_id },
     });
     // const jwt = response.headers.authorization.slice(7);
-    // Cookies.set("token", jwt);
+    // Cookies.set("epidaure_id", jwt);
     return response.data;
   }
 
@@ -39,13 +39,13 @@ export default class APIManager {
       user: { email: email, password: password },
     });
     const jwt = response.headers.authorization.slice(7);
-    Cookies.set("token", jwt);
+    Cookies.set("epidaure_id", jwt);
     return response.data;
   }
 
   static async logoutUser() {
     const response = await API.delete("/users/sign_out");
-    Cookies.remove("token");
+    Cookies.remove("epidaure_id");
     return response.data;
   }
 
