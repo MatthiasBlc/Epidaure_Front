@@ -9,7 +9,7 @@ import ResetPassword from "./components/ResetPassword/ResetPassword";
 import Profile from "./pages/Profile";
 import Dashboard from "./pages/Dashboard";
 import PlanCollab from "./components/PlanCollab/PlanCollab";
-import GestionPraticienTitulaire from "./components/GestionPraticienTitulaire/GestionPraticienTitulaire";
+import IndexDashboard from "./components/GestionPraticienTitulaire/IndexDashboard";
 import PlanRooms from "./components/PlanRooms/PlanRooms";
 import Planning from "./components/Planning/Planning";
 import RequireAuth from "./hooks/requireAuth";
@@ -40,7 +40,7 @@ const App = () => {
               </RequireAuth>
             }
           >
-            <Route path="" element={<GestionPraticienTitulaire />} />
+            <Route path="" element={<IndexDashboard />} />
             <Route path="plancollab" element={<PlanCollab />} />
             <Route path="planrooms" element={<PlanRooms />} />
             <Route path="planning" element={<Planning />} />
