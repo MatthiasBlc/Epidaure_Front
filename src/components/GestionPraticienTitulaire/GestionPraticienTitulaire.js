@@ -32,25 +32,6 @@ const GestionPraticienTitulaire = () => {
     getData();
   }, []);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const email = e.target.email.value;
-    const password = e.target.password.value;
-    const confirmPassword = e.target.confirmPassword.value;
-    const practice_id = userData.practice_id;
-    if (password !== confirmPassword) {
-      document.getElementById("messages").innerHTML = "Les mots de passes doivent être identiques"
-    } else {
-      const response = await APIManager.registerUser(
-        email,
-        password,
-        practice_id
-      );
-      console.log("User crée", response);
-      document.getElementById("messages").innerHTML = "Compte practicien crée"
-    }
-  };
-
   return (
     <div className="w-full">
       <div className="w-full flex-column">
