@@ -13,6 +13,9 @@ import GestionPraticienTitulaire from "./components/GestionPraticienTitulaire/Ge
 import PlanRooms from "./components/PlanRooms/PlanRooms";
 import Planning from "./components/Planning/Planning";
 import RequireAuth from "./hooks/requireAuth";
+import NewUserPratice from "./components/NewUserPratice/NewUserPratice";
+import NewRoom from "./components/NewRooms/NewRoom";
+import EditPractice from "./components/EditPractice/EditPractice";
 
 const App = () => {
   return (
@@ -40,7 +43,11 @@ const App = () => {
               </RequireAuth>
             }
           >
-            <Route path="" element={<GestionPraticienTitulaire />} />
+            <Route path="" element={<GestionPraticienTitulaire />}>
+              <Route path="ajoutpraticien" element={<NewUserPratice />} />
+              <Route path="ajoutsalle" element={<NewRoom />} />
+              <Route path="modifier" element={<EditPractice />} />
+            </Route>
             <Route path="plancollab" element={<PlanCollab />} />
             <Route path="planrooms" element={<PlanRooms />} />
             <Route path="planning" element={<Planning />} />
