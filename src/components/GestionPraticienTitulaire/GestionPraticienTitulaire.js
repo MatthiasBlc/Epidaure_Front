@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useNavigate } from "react";
+import React, { useEffect, useState } from "react";
 import APIManager from "../../services/api";
 
 const GestionPraticienTitulaire = () => {
@@ -10,7 +10,6 @@ const GestionPraticienTitulaire = () => {
   const getUserData = async () => {
     const { data } = await APIManager.memberData();
     setUserData(data.user);
-    console.log(data);
     return data;
   };
 
@@ -78,8 +77,10 @@ const GestionPraticienTitulaire = () => {
             <div className="flex flex-col w-full h-auto border border-green mt-10 rounded-xl p-2 shadow-lg">
               <h1 className="text-1xl font-bold leading-tight">MES SALLES</h1>
               <ul>
-                {roomsPractice &&
-                  roomsPractice.map((room) => <li>{room.name}</li>)}
+
+                { roomsPractice && roomsPractice.map((room) => (
+                  <li key={room.id}>{room.name}</li>
+                ))}
               </ul>
               <button className="self-end mt-4 mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-2 py-1 px-4 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
                 Ajouter une salle
@@ -90,8 +91,9 @@ const GestionPraticienTitulaire = () => {
             <h1 className="text-1xl font-bold leading-tight">
               LES PRATICIENS DU CABINET
             </h1>
-            {usersPractice &&
-              usersPractice.map((user) => <li>{user.email}</li>)}
+            { usersPractice && usersPractice.map((user) => (
+                  <li key={user.id}>{user.email}</li>
+                ))}
             <button className="self-end justify-self-end mt-4 mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-2 py-1 px-4 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
               Ajouter un praticien
             </button>
