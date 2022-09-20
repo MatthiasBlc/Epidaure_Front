@@ -68,13 +68,22 @@ export default class APIManager {
   }
 
   static async memberData() {
-    console.log(Cookies.get("token"));
     const response = await API.get("/member-data");
     return response;
   }
 
   static async practiceData(id) {
     const response = await API.get("/practices/" + id);
+    return response.data;
+  }
+
+  static async editUser(email,password) {
+    const response = await API.patch("/users", {
+      user: {
+        email : email,
+        password : password
+      }
+    })
     return response.data;
   }
 }

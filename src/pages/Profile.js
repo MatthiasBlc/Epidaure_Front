@@ -1,29 +1,50 @@
 import React, { useEffect, useState } from "react";
 import APIManager from "../services/api";
+import { currentUserAtom } from "../services/Atoms/currentUser";
+import { useAtom } from "jotai";
 
 const Profil = () => {
   const [userData, setUserData] = useState({});
   const [practiceData, setPracticeData] = useState();
+  const [ _ ,setUserID] = useAtom(currentUserAtom);
 
   const getUserData = async () => {
     const { data } = await APIManager.memberData();
     setUserData(data.user);
-    console.log("con", data);
     return data;
   };
 
   const getPracticeData = async (practice_id) => {
     const data = await APIManager.practiceData(practice_id);
     setPracticeData(data);
-    console.log(data);
     return data;
   };
 
   const getData = async () => {
-    const michel = await getUserData();
-    console.log("michel", michel);
-    getPracticeData(michel.user.practice_id);
+    const data = await getUserData();
+    getPracticeData(data.user.practice_id);
   };
+
+  const handleSubmit = async(e) => {
+    e.preventDefault();
+    const newEmail = e.target.newEmail.value;
+    
+    const data = await APIManager.editUser(newEmail)
+    .catch((error) => {
+      console.log(error.message);
+    });
+    document.getElementById('emailUser').innerHTML=data.email;
+    setUserID(JSON.stringify(data.user));
+    console.log();
+  }
+
+  const passwordSubmit = async(e) => {
+    e.preventDefault();
+    await APIManager.forgotPasswordUser(userData.email)
+    .catch((error) => {
+      console.log(error.message);
+    });
+  }
 
   useEffect(() => {
     getData();
@@ -40,7 +61,7 @@ const Profil = () => {
           <div className="md:col-span-1">
             <div className="px-4 sm:px-0">
               <h1 className="mt-8 my-2 text-1xl font-bold leading-tight text-left text-gray-800">
-                DASHBOARD: {userData.email}
+                DASHBOARD:<span id="emailUser">{userData.email}</span> 
               </h1>
               <div className="w-full mb-4">
                 <div className="mb-10 h-1 gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
@@ -55,6 +76,16 @@ const Profil = () => {
             </div>
           </div>
         </div>
+      </div>
+      <div>
+        <form method="POST" onSubmit={handleSubmit}>
+          <label>Email</label>
+          <input type="text" id="newEmail" defaultValue={userData.email} />
+          <button type="submit">Sauvegarder</button>
+        </form>
+        <form method="POST" onSubmit={passwordSubmit}>
+          <button type="submit">Reset password</button>
+        </form>
       </div>
     </div>
   );
