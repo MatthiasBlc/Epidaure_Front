@@ -14,34 +14,16 @@ const NewRoom = () => {
                   <div className="grid grid-cols-6 gap-6">
                     <div className="col-span-6 sm:col-span-3">
                       <label className="block text-sm font-medium text-gray-700">
-                        Email
+                        Numéro de la salle
                       </label>
                       <input
                         type="text"
-                        id="email"
+                        id="name"
                         className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focusForm mt-2 block w-full rounded-md border-gray-300 shadow-sm sm:text-sm"
                       />
                     </div>
-                    <div className="col-span-6 sm:col-span-3">
-                      <label className="block text-sm font-medium text-gray-700">
-                        Mot de passe
-                      </label>
-                      <input
-                        type="password"
-                        id="password"
-                        className="mt-1 block w-full focusForm mt-2 block w-full rounded-md border-gray-300 shadow-sm sm:text-sm"
-                      />
-                    </div>
-                    <div className="col-span-6 sm:col-span-3">
-                      <label className="block text-sm font-medium text-gray-700">
-                        Confirmer le mot de passe
-                      </label>
-                      <input
-                        type="password"
-                        id="confirmPassword"
-                        className="mt-1 block w-full focusForm mt-2 block w-full rounded-md border-gray-300 shadow-sm sm:text-sm"
-                      />
-                    </div>
+                    
+                    
                   </div>
                 </div>
                 <div className="bg-gray-50 px-4 py-3 text-right sm:px-6">
