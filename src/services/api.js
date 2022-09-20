@@ -89,6 +89,7 @@ export default class APIManager {
     return response.data;
   }
 
+  //  -----------------------        PRACTICE FUNCTIONS
   static async editPractice(id, name, adresse, email) {
     const response = await API.patch("/practices/" + id, {
       practice: {
@@ -99,4 +100,19 @@ export default class APIManager {
     });
     return response.data;
   }
+
+  //  -----------------------        ROOMS FUNCTIONS
+  static async createRoom(practice_id,name) {
+    const response = await API.post("/rooms", {
+      room: {
+        name: name,
+        practice_id: practice_id
+      },
+    });
+    return response.data;
+  };
+
+  static async deleteRoom(id) {
+    await API.delete("/rooms/" + id)    
+  };
 }
