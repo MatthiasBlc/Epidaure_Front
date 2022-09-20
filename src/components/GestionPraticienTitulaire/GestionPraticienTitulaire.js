@@ -11,7 +11,6 @@ const GestionPraticienTitulaire = () => {
   const getUserData = async () => {
     const { data } = await APIManager.memberData();
     setUserData(data.user);
-    console.log(data);
     return data;
   };
 
@@ -61,7 +60,7 @@ const GestionPraticienTitulaire = () => {
               <ul>
 
                 { roomsPractice && roomsPractice.map((room) => (
-                  <li>{room.name}</li>
+                  <li key={room.id}>{room.name}</li>
                 ))}
               </ul>
               <button className="self-end mt-4 mx-auto lg:mx-0 hover:underline bg-lightgrey text-gray-800 font-bold rounded-full my-2 py-1 px-4 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
@@ -74,7 +73,7 @@ const GestionPraticienTitulaire = () => {
               LES PRATICIENS DU CABINET
             </h1>
             { usersPractice && usersPractice.map((user) => (
-                  <li>{user.email}</li>
+                  <li key={user.id}>{user.email}</li>
                 ))}
             <button className="self-end justify-self-end mt-4 mx-auto lg:mx-0 hover:underline bg-lightgrey text-gray-800 font-bold rounded-full my-2 py-1 px-4 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
               <Link to="ajoutpraticien">Ajouter un praticien</Link>

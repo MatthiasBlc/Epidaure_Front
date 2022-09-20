@@ -1,13 +1,13 @@
 import React from 'react';
 
-const EditPractice = () => {
+const EditPratice = () => {
     return (
         <div>
-            <div className="ml-20 mr-20 mt-20 md:col-span-2 ">
+             <div className="ml-20 mr-20 mt-20 md:col-span-2 ">
             <form>
               <div className="overflow-hidden shadow sm:rounded-md">
                 <h1 className="mt-8 mb-5 pl-6 my-2 text-1xl font-bold leading-tight text-left text-gray-800">
-                  Modifier des informations :
+                  Modifier les informations :
                 </h1>
                 <span id="messages"></span>
                 <div className="bg-white px-4 py-5 sm:p-6">
@@ -59,4 +59,4 @@ const EditPractice = () => {
     );
 };
 
-export default EditPractice;
+export default EditPratice;

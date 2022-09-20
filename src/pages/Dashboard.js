@@ -24,11 +24,10 @@ const Dashboard = () => {
     );
   if (currentUserStatus === "administrator")
     return (
-      <>
-        <h1>Administrator</h1>
+      <div className="flex gap-6">
         <Sidebar />
         <Outlet />
-      </>
+      </div>
     );
   return <>ERROR 404</>;
 };
