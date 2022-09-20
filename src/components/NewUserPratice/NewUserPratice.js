@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import APIManager from "../../services/api";
 
 const NewUserPratice = () => {
+
+
     return (
         <div>
             <div className="ml-20 mr-20 mt-20 md:col-span-2 ">
