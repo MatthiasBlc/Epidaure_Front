@@ -1,18 +1,20 @@
 import axios from "axios";
 import Cookies from "js-cookie";
-import { loggedAtom } from "./Atoms/user";
 
 // const apiUrl = "https://epidaure-api-preprod.herokuapp.com";
 const apiUrl = process.env.REACT_APP_BACK_URL;
 const API = axios.create({ baseURL: apiUrl });
 const API2 = axios.create({ baseURL: apiUrl });
 
+
 API.interceptors.request.use(({ headers, ...config }) => ({
   ...config,
   headers: {
     ...headers,
     "Content-Type": "application/json",
-    Authorization: `Bearer ${headers.Authorization || Cookies.get("epidaure_id")}`,
+    Authorization: `Bearer ${
+      headers.Authorization || Cookies.get("epidaure_id")
+    }`,
   },
 }));
 
@@ -77,13 +79,24 @@ export default class APIManager {
     return response.data;
   }
 
-  static async editUser(email,password) {
+  static async editUser(email, password) {
     const response = await API.patch("/users", {
       user: {
-        email : email,
-        password : password
-      }
-    })
+        email: email,
+        password: password,
+      },
+    });
+    return response.data;
+  }
+
+  static async editPractice(id, name, adresse, email) {
+    const response = await API.patch("/practices/" + id, {
+      practice: {
+        name: name,
+        adresse: adresse,
+        email: email,
+      },
+    });
     return response.data;
   }
 }
