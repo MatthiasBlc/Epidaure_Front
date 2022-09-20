@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useNavigate } from "react";
 import APIManager from "../../services/api";
 
 const GestionPraticienTitulaire = () => {
@@ -10,6 +10,7 @@ const GestionPraticienTitulaire = () => {
   const getUserData = async () => {
     const { data } = await APIManager.memberData();
     setUserData(data.user);
+    console.log(data);
     return data;
   };
 
@@ -34,13 +35,19 @@ const GestionPraticienTitulaire = () => {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
+    const confirmPassword = e.target.confirmPassword.value;
     const practice_id = userData.practice_id;
-    const response = await APIManager.registerUser(
-      email,
-      password,
-      practice_id
-    );
-    console.log("User crée", response);
+    if (password !== confirmPassword) {
+      document.getElementById("messages").innerHTML = "Les mots de passes doivent être identiques"
+    } else {
+      const response = await APIManager.registerUser(
+        email,
+        password,
+        practice_id
+      );
+      console.log("User crée", response);
+      document.getElementById("messages").innerHTML = "Compte practicien crée"
+    }
   };
 
   return (
@@ -98,6 +105,7 @@ const GestionPraticienTitulaire = () => {
                 <h1 className="mt-8 mb-5 pl-6 my-2 text-1xl font-bold leading-tight text-left text-gray-800">
                   Créer un compte praticien :
                 </h1>
+                <span id="messages"></span>
                 <div className="bg-white px-4 py-5 sm:p-6">
                   <div className="grid grid-cols-6 gap-6">
                     <div className="col-span-6 sm:col-span-3">
@@ -126,7 +134,7 @@ const GestionPraticienTitulaire = () => {
                       </label>
                       <input
                         type="password"
-                        id="password"
+                        id="confirmPassword"
                         className="mt-1 block w-full focusForm mt-2 block w-full rounded-md border-gray-300 shadow-sm sm:text-sm"
                       />
                     </div>

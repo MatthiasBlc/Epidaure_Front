@@ -18,7 +18,7 @@ const Navbar = ({ location }) => {
     e.preventDefault();
     await APIManager.logoutUser();
     setLogged(false);
-    navigate('/');
+    navigate('/login');
   };
 
   // var navMenuDiv = document.getElementById("nav-content");
