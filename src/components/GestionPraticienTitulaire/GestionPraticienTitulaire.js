@@ -1,6 +1,8 @@
 import React, { useEffect, useState, useNavigate } from "react";
 import { Link, Outlet } from "react-router-dom";
 import APIManager from "../../services/api";
+import EditPracticeForm from "./Layouts/EditPracticeForm";
+import ReactDOM from "react-dom/client";
 
 const GestionPraticienTitulaire = () => {
   const [userData, setUserData] = useState([]);
@@ -31,6 +33,13 @@ const GestionPraticienTitulaire = () => {
     getData();
   }, []);
 
+  const changePracticeDetails = () => {
+    const praticeRoot = ReactDOM.createRoot(document.getElementById("practiceDetails"));
+    praticeRoot.render(
+      <EditPracticeForm />
+    )
+  }
+
   return (
     <div className="w-full">
       <div className="w-full flex-column">
@@ -42,7 +51,7 @@ const GestionPraticienTitulaire = () => {
         </div>
         <div className="containerGrid1 mr-4 h-auto">
           <div className="w-full h-auto">
-            <div className="flex flex-col w-full h-auto border border-green rounded-xl p-2 shadow-lg">
+            <div id="practiceDetails" className="flex flex-col w-full h-auto border border-green rounded-xl p-2 shadow-lg">
               <h1 className="text-1xl font-bold leading-tight">
                 {practiceData.name}
               </h1>
@@ -51,8 +60,8 @@ const GestionPraticienTitulaire = () => {
               </h1>
               <p>{practiceData.adresse}</p>
               <p>{practiceData.email}</p>
-              <button className="self-end mt-4 mx-auto lg:mx-0 hover:underline bg-lightgrey text-gray-800 font-bold rounded-full my-2 py-1 px-4 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
-              <Link to="modifier">Modifier</Link>
+              <button onClick={changePracticeDetails} className="self-end mt-4 mx-auto lg:mx-0 hover:underline bg-lightgrey text-gray-800 font-bold rounded-full my-2 py-1 px-4 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+               Modifier
               </button>
             </div>
             <div className="flex flex-col w-full h-auto border border-green mt-10 rounded-xl p-2 shadow-lg">
