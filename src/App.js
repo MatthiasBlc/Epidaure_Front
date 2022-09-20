@@ -13,6 +13,10 @@ import IndexDashboard from "./components/GestionPraticienTitulaire/IndexDashboar
 import PlanRooms from "./components/PlanRooms/PlanRooms";
 import Planning from "./components/Planning/Planning";
 import RequireAuth from "./hooks/requireAuth";
+import NewUserPratice from "./components/NewUserPractice/NewUserPractice";
+import NewRoom from "./components/NewRooms/NewRoom";
+import EditPractice from "./components/EditPractice/EditPractice";
+import GestionPraticienTitulaire from "./components/GestionPraticienTitulaire/GestionPraticienTitulaire";
 
 const App = () => {
   return (
@@ -40,6 +44,11 @@ const App = () => {
               </RequireAuth>
             }
           >
+            <Route path="" element={<GestionPraticienTitulaire />}>
+              <Route path="ajoutpraticien" element={<NewUserPratice />} />
+              <Route path="ajoutsalle" element={<NewRoom />} />
+              <Route path="modifier" element={<EditPractice />} />
+            </Route>
             <Route path="" element={<IndexDashboard />} />
             <Route path="plancollab" element={<PlanCollab />} />
             <Route path="planrooms" element={<PlanRooms />} />
