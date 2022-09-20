@@ -2,7 +2,7 @@ import axios from "axios";
 import Cookies from "js-cookie";
 
 // const apiUrl = "https://epidaure-api-preprod.herokuapp.com";
-const apiUrl =process.env.REACT_APP_BACK_URL;
+const apiUrl = process.env.REACT_APP_BACK_URL;
 const API = axios.create({ baseURL: apiUrl });
 const API2 = axios.create({ baseURL: apiUrl });
 
@@ -24,7 +24,9 @@ API2.interceptors.request.use(({ headers, ...config }) => ({
 }));
 
 export default class APIManager {
-  static async registerUser(email, password,practice_id) {
+  // user Authentification
+
+  static async registerUser(email, password, practice_id) {
     const response = await API.post("/users", {
       user: { email: email, password: password, practice_id: practice_id },
     });
@@ -39,7 +41,7 @@ export default class APIManager {
     });
     const jwt = response.headers.authorization.slice(7);
     Cookies.set("token", jwt);
-    console.log("Je suis log",response);
+    console.log("Je suis log", response);
     return response.data;
   }
 
@@ -67,10 +69,12 @@ export default class APIManager {
     return response.data;
   }
 
+  // user Data
+
   static async memberData() {
     console.log(Cookies.get("token"));
     const response = await API.get("/member-data");
-    console.log("tag",response);
+    // console.log("tag", response);
     return response;
   }
 
@@ -79,4 +83,23 @@ export default class APIManager {
     // console.log("hello",response.data);
     return response.data;
   }
+
+  // Agenda Data
+
+  static async agendaData() {
+    // console.log(Cookies.get("token"));
+    const response = await API.get("/time_slots");
+    // console.log("tag", response);
+    return response;
+  }
+
+  static async agendaCreate(text, start, end, barColor, resource) {
+    // console.log(Cookies.get("token"));
+    const response = await API.post("/time_slots", {
+      time_slots: { text: text, start: start, end: end, barColor: barColor, resource: resource },
+    });
+    // console.log("tag", response);
+    return response;
+  }
+
 }
