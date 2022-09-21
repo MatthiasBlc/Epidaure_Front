@@ -19,8 +19,8 @@ const ForgotPassword = () => {
   return (
     <>
       <span id="messages"></span>
-      <div className="wrapper flex items-center justify-center">
-        <div className="w-1/3">
+      <div className="flex items-center justify-center">
+        <div className="mt-20">
           <h2 className="my-2 text-3xl font-bold leading-tight text-center text-gray-800">
             Mot de passe oublié ?
           </h2>
