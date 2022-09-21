@@ -1,14 +1,22 @@
 import React from "react";
+import APIManager from "../../services/api";
 
 const Contact = () => {
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const userEmail = e.target.email.value;
     
-    const handleSubmit = () => {
-        
-    }
+        await APIManager.contactForm(userEmail)
+        .catch((error) => {
+          console.log(error.message);
+        });
+        document.getElementById("message").innerHTML = "Merci pour votre demande, notre équipe vous répondra dans les plus brefs délais sur votre adresse mail:<b> " + userEmail
+        console.log("Success")
+      };
 
   return (
       <div className="wrapper flex items-center justify-center">
-        <div className="w-1/2 mt-20">
+        <div id="message" className="w-1/2 mt-20">
           <h2 className="my-2 text-3xl font-bold leading-tight text-center text-gray-800">
             Nous contacter
           </h2>
@@ -22,28 +30,30 @@ const Contact = () => {
                   <div className="grid grid-cols-6 gap-6">
                     <div className="col-span-6 sm:col-span-3">
                       <label
-                        htmlFor="lastName"
+                        htmlFor="last_name"
                         className="block text-sm font-medium text-gray-700"
                       >
                         Nom
                       </label>
                       <input
                         type="text"
-                        id="lastName"
+                        id="last_name"
+                        name="last_name"
                         className="focusForm mt-2 block w-full rounded-md border-gray-300 shadow-sm sm:text-sm"
                         
                       />
                     </div>
                     <div className="col-span-6 sm:col-span-3">
                       <label
-                        htmlFor="firstName"
+                        htmlFor="first_name"
                         className="block text-sm font-medium text-gray-700"
                       >
                         Prénom
                       </label>
                       <input
                         type="text"
-                        id="firstName"
+                        id="first_name"
+                        name="first_name"
                         className="focusForm mt-2 block w-full rounded-md border-gray-300 shadow-sm sm:text-sm"
                         
                       />
@@ -59,6 +69,7 @@ const Contact = () => {
                       <input
                         type="text"
                         id="email"
+                        name="email"
                         className="focusForm mt-2 block w-full rounded-md border-gray-300 shadow-sm sm:text-sm"
                         
                       />
