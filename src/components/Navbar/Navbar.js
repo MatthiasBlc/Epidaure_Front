@@ -92,9 +92,6 @@ const Navbar = () => {
               {logged  ? (
                 <li className="mr-10">
                   <NavLink
-                    style={({ isActive }) =>
-                      isActive ? activeStyle : undefined
-                    }
                     to="/profile"
                   >
                     Profil
