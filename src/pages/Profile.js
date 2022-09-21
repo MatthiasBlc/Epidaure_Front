@@ -6,7 +6,7 @@ import { useAtom } from "jotai";
 const Profil = () => {
   const [userData, setUserData] = useState({});
   const [practiceData, setPracticeData] = useState();
-  const [ _ ,setUserID] = useAtom(currentUserAtom);
+  const [_, setUserID] = useAtom(currentUserAtom);
 
   const getUserData = async () => {
     const { data } = await APIManager.memberData();
@@ -25,32 +25,27 @@ const Profil = () => {
     getPracticeData(data.user.practice_id);
   };
 
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const newEmail = e.target.newEmail.value;
-    
-    const data = await APIManager.editUser(newEmail)
-    .catch((error) => {
-      console.log(error.message);
-    });
-    document.getElementById('emailUser').innerHTML=data.email;
-    setUserID(JSON.stringify(data.user));
-    console.log();
-  }
 
-  const passwordSubmit = async(e) => {
-    e.preventDefault();
-    await APIManager.forgotPasswordUser(userData.email)
-    .catch((error) => {
+    const data = await APIManager.editUser(newEmail).catch((error) => {
       console.log(error.message);
     });
-  }
+    document.getElementById("emailUser").innerHTML = data.email;
+    setUserID(JSON.stringify(data.user));
+  };
+
+  const passwordSubmit = async (e) => {
+    e.preventDefault();
+    await APIManager.forgotPasswordUser(userData.email).catch((error) => {
+      console.log(error.message);
+    });
+  };
 
   useEffect(() => {
     getData();
   }, []);
-
-  
 
   if (practiceData === undefined) return <h1>Loading...</h1>;
 
@@ -60,32 +55,105 @@ const Profil = () => {
         <div className="md:grid md:grid-cols-3 md:gap-6">
           <div className="md:col-span-1">
             <div className="px-4 sm:px-0">
-              <h1 className="mt-8 my-2 text-1xl font-bold leading-tight text-left text-gray-800">
-                DASHBOARD:<span id="emailUser">{userData.email}</span> 
-              </h1>
-              <div className="w-full mb-4">
-                <div className="mb-10 h-1 gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
-              </div>
-              <p>[{userData.status}]</p>
-              <h2>
-                <b>Votre cabinet:</b> {practiceData.name}
-              </h2>
-              <p>
-                <b>Adresse:</b> {practiceData.adress}
+              <h3 className="text-lg font-medium leading-6 text-gray-900">
+                Personal Information
+              </h3>
+              <p className="mt-1 text-sm text-gray-600">
+                This page lists all your personal information, you can edit your mail and ask for a reset password.
               </p>
             </div>
           </div>
+          <div className="mt-5 md:col-span-2 md:mt-0">
+            <form action="#" method="POST">
+              <div className="overflow-hidden shadow sm:rounded-md">
+                <div className="bg-white px-4 py-5 sm:p-6">
+                  <div className="grid grid-cols-6 gap-6">
+                    <div className="col-span-6 sm:col-span-3">
+                      <label
+                        htmlFor="first-name"
+                        className="block text-sm font-medium text-gray-700"
+                      >
+                        Your practice
+                      </label>
+                      <span
+                        type="text"
+                        name="email-address"
+                        id="email-address"
+                        autoComplete="email"
+                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                      >
+                        {practiceData.name}
+                      </span>
+                    </div>
+
+                    <div className="col-span-6 sm:col-span-3">
+                      <label
+                        htmlFor="last-name"
+                        className="block text-sm font-medium text-gray-700"
+                      >
+                        Your status
+                      </label>
+                      <span
+                        type="text"
+                        name="email-address"
+                        id="email-address"
+                        autoComplete="email"
+                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                      >
+                        {userData.status}
+                      </span>
+                    </div>
+
+                    <div className="col-span-6 sm:col-span-4">
+                      <label
+                        htmlFor="email-address"
+                        className="block text-sm font-medium text-gray-700"
+                      >
+                        Your email address
+                      </label>
+                      <span
+                        type="text"
+                        name="email-address"
+                        id="email-address"
+                        autoComplete="email"
+                        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                      >
+                        {userData.email}
+                      </span>
+                    </div>
+                    <div className="col-span-6 sm:col-span-3">
+                      <form method="POST" onSubmit={handleSubmit}>
+                        <label className="block text-sm font-medium text-gray-700">
+                          Edit mail adress
+                        </label>
+                        <input
+                          type="text"
+                          id="newEmail"
+                          defaultValue={userData.email}
+                          className="mt-1 mb-5 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                        />
+                        <button type="submit" className="inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Update email</button>
+                      </form>
+                    </div>
+                    <div className="col-span-6 sm:col-span-3">
+                      <form method="POST" onSubmit={passwordSubmit}>
+                      <label className="block pb-3 text-sm font-medium text-gray-700">
+                          Reset my password
+                        </label>
+                        <button
+                          type="submit"
+                          className="inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                        >
+                          Reset password
+                        </button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
         </div>
-      </div>
-      <div>
-        <form method="POST" onSubmit={handleSubmit}>
-          <label>Email</label>
-          <input type="text" id="newEmail" defaultValue={userData.email} />
-          <button type="submit">Sauvegarder</button>
-        </form>
-        <form method="POST" onSubmit={passwordSubmit}>
-          <button type="submit">Reset password</button>
-        </form>
       </div>
     </div>
   );
