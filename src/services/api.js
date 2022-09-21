@@ -6,7 +6,6 @@ const apiUrl = process.env.REACT_APP_BACK_URL;
 const API = axios.create({ baseURL: apiUrl });
 const API2 = axios.create({ baseURL: apiUrl });
 
-
 API.interceptors.request.use(({ headers, ...config }) => ({
   ...config,
   headers: {
@@ -27,12 +26,12 @@ API2.interceptors.request.use(({ headers, ...config }) => ({
 }));
 
 export default class APIManager {
+  //  -----------------------        USER AUTH FUNCTIONS
+
   static async registerUser(email, password, practice_id) {
     const response = await API.post("/users", {
       user: { email: email, password: password, practice_id: practice_id },
     });
-    // const jwt = response.headers.authorization.slice(7);
-    // Cookies.set("epidaure_id", jwt);
     return response.data;
   }
 
@@ -69,6 +68,8 @@ export default class APIManager {
     return response.data;
   }
 
+  //  -----------------------        USER DATA FUNCTIONS
+
   static async memberData() {
     const response = await API.get("/member-data");
     return response;
@@ -90,7 +91,7 @@ export default class APIManager {
   }
 
   static async deleteUser(id) {
-    await API.delete("/members/"+ id)
+    await API.delete("/members/" + id);
   }
 
   //  -----------------------        PRACTICE FUNCTIONS
@@ -105,25 +106,62 @@ export default class APIManager {
     return response.data;
   }
 
+  //  -----------------------        AGENDA FUNCTIONS
+
+  static async agendaData() {
+    const response = await API.get("/time_slots");
+    return response;
+  }
+
+  static async agendaCreate(text, start, end, barColor, resource) {
+    const response = await API.post("/time_slots", {
+      time_slots: {
+        text: text,
+        start: start,
+        end: end,
+        barColor: barColor,
+        resource: resource,
+      },
+    });
+    return response;
+  }
+
+  static async agendaUpdate(id, text, start, end, barColor, resource) {
+    const response = await API.patch("/time_slots/" + id, {
+      time_slots: {
+        text: text,
+        start: start,
+        end: end,
+        barColor: barColor,
+        resource: resource,
+      },
+    });
+    return response;
+  }
+
+  static async agendaDelete(id) {
+    await API.delete("/time_slots/" + id);
+  }
+
   //  -----------------------        ROOMS FUNCTIONS
-  static async createRoom(practice_id,name) {
+  static async createRoom(practice_id, name) {
     const response = await API.post("/rooms", {
       room: {
         name: name,
-        practice_id: practice_id
+        practice_id: practice_id,
       },
     });
     return response.data;
-  };
+  }
 
   static async deleteRoom(id) {
-    await API.delete("/rooms/" + id)    
-  };
+    await API.delete("/rooms/" + id);
+  }
 
   static async editRoom(id, name) {
     const response = await API.patch("/rooms/" + id, {
       room: {
-        name: name
+        name: name,
       },
     });
     return response.data;
