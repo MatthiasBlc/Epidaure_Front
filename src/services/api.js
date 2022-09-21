@@ -125,11 +125,11 @@ export default class APIManager {
   }
 
   // CONTACT FORM
-  static async contactForm(lastName, firstName, email, content) {
-    const response = await API2.post("/contact", {
+  static async contactForm(last_name, first_name, email, content) {
+    const response = await API2.post("/contacts", {
       contact: {
-        lastName: lastName,
-        firstName: firstName,
+        last_name: last_name,
+        first_name: first_name,
         email: email,
         content: content,
       },
