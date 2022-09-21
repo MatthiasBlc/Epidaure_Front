@@ -10,8 +10,9 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const [,setUserID] = useAtom(currentUserAtom);
-  const [,setLogged] = useAtom(loggedAtom);
+  const [, setUserID] = useAtom(currentUserAtom);
+  const [, setLogged] = useAtom(loggedAtom);
+  const [alertMsg, setAlertMsg] = useState(undefined);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -19,15 +20,23 @@ const Login = () => {
     const response = await APIManager.loginUser(email, password).catch(
       (error) => {
         console.log(error.message);
+        setAlertMsg({ type: "error", error });
       }
-      );
-      setUserID(JSON.stringify(response.user));
-      setLogged(true);
-      navigate("/dashboard");
+    );
+    setUserID(JSON.stringify(response.user));
+    setLogged(true);
+    navigate("/dashboard");
   };
 
   return (
     <>
+      {alertMsg?.type === "error" && (
+        <div className="alert alert-error shadow-lg mt-2">
+          <div>
+            <span>Email ou mot de passe incorrects.</span>
+          </div>
+        </div>
+      )}
       <div className="wrapper flex items-center justify-center">
         <div className="w-1/2 mt-20">
           <h2 className="my-2 text-3xl font-bold leading-tight text-center text-gray-800">
