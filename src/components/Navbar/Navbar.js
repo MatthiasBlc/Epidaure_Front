@@ -1,13 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import logoWhite from "../../assets/images/logoEpiWhiteBgNone.png";
 import { loggedAtom } from "../../services/Atoms/user";
 import { useAtom } from "jotai";
 import APIManager from "../../services/api";
 
-const Navbar = ({ location }) => {
+const Navbar = () => {
   const navigate = useNavigate();
   const [logged, setLogged] = useAtom(loggedAtom);
+  const [alertMsg, setAlertMsg] = useState(undefined);
 
   let activeStyle = {
     textDecoration: "underline",
@@ -18,7 +19,7 @@ const Navbar = ({ location }) => {
     e.preventDefault();
     await APIManager.logoutUser();
     setLogged(false);
-    navigate('/login');
+    navigate("/login", setAlertMsg({type: 'success'}) )
   };
 
   var navMenuDiv = document.getElementById("nav-content");
@@ -84,7 +85,7 @@ const Navbar = ({ location }) => {
             </button>
           </div>
           <div
-            className="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden mt-2 lg:mt-0 gradient text-white p-4 lg:p-0 z-20"
+            className="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden mt-2 lg:mt-0 bg-transparent text-white p-4 lg:p-0 z-20"
             id="nav-content"
           >
             <ul className="list-reset lg:flex justify-end flex-1 items-center">
@@ -127,6 +128,13 @@ const Navbar = ({ location }) => {
         </div>
         <hr className="border-b border-gray-100 opacity-25 my-0 py-0" />
       </nav>
+      {alertMsg?.type === "success" && (
+        <div className="alert alert-success bg-turquoise text-white center shadow-lg mt-2">
+          <div>
+            <span>Vous êtes bien déconnecté.</span>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
