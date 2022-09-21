@@ -1,6 +1,6 @@
 import React from "react";
 import { useAtom } from "jotai";
-import { Navigate, NavLink } from "react-router-dom";
+import { Link, Navigate, NavLink } from "react-router-dom";
 import { loggedAtom } from "../services/Atoms/user";
 import Footer from "../components/Footer/Footer";
 import createAccountLogo from "../assets/images/createaccount.png";
@@ -36,13 +36,15 @@ const Home = () => {
               <h1 className="my-4 text-5xl font-bold leading-tight">
                 Pour votre confort, par nos services
               </h1>
-              <p className="leading-normal text-2xl mb-8">
+              <p className="leading-normal text-1xl mb-8">
                 Epidaure est une application destinée au domaine médical qui
                 permet aux practiciens d'un même cabinet de partager et de gérer
                 facilement leurs emplois du temps grâce à un système de
                 calendrier simple et efficace.
               </p>
-              <a href="#abc">En savoir plus</a>
+              <button className="lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+                <Link to="/contact">En savoir plus</Link> 
+              </button>
             </div>
             {/* <!--Right Col--> */}
             <div className="w-full md:w-3/5 py-6 text-center">
@@ -92,63 +94,63 @@ const Home = () => {
 
         {/* <!-- Section 1 --> */}
         <section id="abc" className="bg-white border-b py-8">
-            <div className="container max-w-5xl mx-auto m-8">
-              <h2 className="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">
-                Notre application
-              </h2>
-              <div className="w-full mb-4">
-                <div className="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
+          <div className="container max-w-5xl mx-auto m-8">
+            <h2 className="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">
+              Notre application
+            </h2>
+            <div className="w-full mb-4">
+              <div className="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
+            </div>
+            <div className="flex flex-wrap">
+              <div className="w-5/6 sm:w-1/3 p-6">
+                <h3 className="text-3xl text-gray-800 font-bold leading-none mb-3">
+                  1. Création d'un compte titulaire
+                </h3>
+                <p className="text-gray-600 mb-8">
+                  Demandez votre compte titulaire à notre équipe. Celui-ci
+                  pourra à son tour, créer des comptes pour les{" "}
+                  <b>collaborateurs</b> du cabinet.
+                </p>
               </div>
-              <div className="flex flex-wrap">
-                <div className="w-5/6 sm:w-1/3 p-6">
+              <div className="w-full sm:w-2/3 p-6">
+                <img src={createAccountLogo} />
+              </div>
+            </div>
+            <div className="flex flex-wrap flex-col-reverse sm:flex-row">
+              <div className="w-full sm:w-2/3 p-6 mt-6">
+                <img src={createAccountLogo} />
+              </div>
+              <div className="w-full sm:w-1/3 p-6 mt-6">
+                <div className="align-middle">
                   <h3 className="text-3xl text-gray-800 font-bold leading-none mb-3">
-                    1. Création d'un compte titulaire
+                    2. Ajout des données de votre cabinet
                   </h3>
                   <p className="text-gray-600 mb-8">
-                    Demandez votre compte titulaire à notre équipe. Celui-ci
-                    pourra à son tour, créer des comptes pour les{" "}
-                    <b>collaborateurs</b> du cabinet.
+                    L'espace titulaire vous permet de consulter et de gérer
+                    directement les informations liées à votre <b>cabinet</b>{" "}
+                    (Collaborateurs, bureaux, données du cabinet.. )
                   </p>
-                </div>
-                <div className="w-full sm:w-2/3 p-6">
-                  <img src={createAccountLogo} />
-                </div>
-              </div>
-              <div className="flex flex-wrap flex-col-reverse sm:flex-row">
-                <div className="w-full sm:w-2/3 p-6 mt-6">
-                  <img src={createAccountLogo} />
-                </div>
-                <div className="w-full sm:w-1/3 p-6 mt-6">
-                  <div className="align-middle">
-                    <h3 className="text-3xl text-gray-800 font-bold leading-none mb-3">
-                      2. Ajout des données de votre cabinet
-                    </h3>
-                    <p className="text-gray-600 mb-8">
-                      L'espace titulaire vous permet de consulter et de gérer
-                      directement les informations liées à votre <b>cabinet</b>{" "}
-                      (Collaborateurs, bureaux, données du cabinet.. )
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div className="flex flex-wrap">
-                <div className="w-5/6 sm:w-1/3 p-6">
-                  <h3 className="text-3xl text-gray-800 font-bold leading-none mb-3">
-                    3. Gestion des plannings
-                  </h3>
-                  <p className="text-gray-600 mb-8">
-                    Notre outil de <b>plannings</b> vous permettra de connaître
-                    à chaque moment de la journée l'utilisation des différents
-                    salles de votre cabinet et les agendas de vos
-                    collaborateurs, ainsi que des les modifier.
-                    <br></br>
-                  </p>
-                </div>
-                <div className="w-full sm:w-2/3 p-6">
-                  <img src={createAccountLogo} />
                 </div>
               </div>
             </div>
+            <div className="flex flex-wrap">
+              <div className="w-5/6 sm:w-1/3 p-6">
+                <h3 className="text-3xl text-gray-800 font-bold leading-none mb-3">
+                  3. Gestion des plannings
+                </h3>
+                <p className="text-gray-600 mb-8">
+                  Notre outil de <b>plannings</b> vous permettra de connaître à
+                  chaque moment de la journée l'utilisation des différents
+                  salles de votre cabinet et les agendas de vos collaborateurs,
+                  ainsi que des les modifier.
+                  <br></br>
+                </p>
+              </div>
+              <div className="w-full sm:w-2/3 p-6">
+                <img src={createAccountLogo} />
+              </div>
+            </div>
+          </div>
         </section>
 
         {/* <!-- Section 2: Pricing --> */}
@@ -239,7 +241,7 @@ const Home = () => {
             répondre!
           </h3>
           <button className="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
-            Nous contactez!
+          <Link to="/contact">Nous contacter</Link> 
           </button>
         </section>
         <Footer />
