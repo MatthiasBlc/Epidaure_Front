@@ -22,7 +22,36 @@ const Contact = () => {
                   <div className="grid grid-cols-6 gap-6">
                     <div className="col-span-6 sm:col-span-3">
                       <label
-                        htmlFor="last-name"
+                        htmlFor="lastName"
+                        className="block text-sm font-medium text-gray-700"
+                      >
+                        Nom
+                      </label>
+                      <input
+                        type="text"
+                        id="lastName"
+                        className="focusForm mt-2 block w-full rounded-md border-gray-300 shadow-sm sm:text-sm"
+                        
+                      />
+                    </div>
+                    <div className="col-span-6 sm:col-span-3">
+                      <label
+                        htmlFor="firstName"
+                        className="block text-sm font-medium text-gray-700"
+                      >
+                        Prénom
+                      </label>
+                      <input
+                        type="text"
+                        id="firstName"
+                        className="focusForm mt-2 block w-full rounded-md border-gray-300 shadow-sm sm:text-sm"
+                        
+                      />
+                    </div>
+                  </div>
+                  <div className="col-span-6 sm:col-span-3 mt-4">
+                      <label
+                        htmlFor="email"
                         className="block text-sm font-medium text-gray-700"
                       >
                         Adresse email
@@ -31,32 +60,26 @@ const Contact = () => {
                         type="text"
                         id="email"
                         className="focusForm mt-2 block w-full rounded-md border-gray-300 shadow-sm sm:text-sm"
-                        onChange={(e) => setEmail(e.target.value)}
+                        
                       />
                     </div>
-                    <div className="col-span-6 sm:col-span-3">
-                      <label
-                        htmlFor="last-name"
-                        className="block text-sm font-medium text-gray-700"
-                      >
-                        Mot de passe
-                      </label>
-                      <input
-                        type="text"
-                        id="password"
-                        className="focusForm mt-2 block w-full rounded-md border-gray-300 shadow-sm sm:text-sm"
-                        onChange={(e) => setPassword(e.target.value)}
+                    <div>
+                    <label htmlFor="about" className="mt-4 block text-sm font-medium text-gray-700">
+                      Message
+                    </label>
+                    <div className="mt-1">
+                      <textarea
+                        id="content"
+                        name="content"
+                        rows={3}
+                        className="focusForm mt-1 block w-full rounded-md border-gray-300 shadow-sm sm:text-sm"
+                        defaultValue={''}
+                        placeholder={"..."}
                       />
                     </div>
                   </div>
                 </div>
                 <div className="bg-gray-50 px-4 py-3 text-right sm:px-6">
-                  <Link
-                    to="/users/password"
-                    className="text-sm hover:underline hover:text-orange"
-                  >
-                    Mot de passe oublié
-                  </Link>
                   <button
                     type="submit"
                     className="ml-10 inline-flex justify-center hover:underline gradient text-white font-bold rounded-full my-3 py-2 px-5 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out"
