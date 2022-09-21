@@ -22,13 +22,12 @@ const EditPracticeForm = () => {
     const email = e.target.newEmail.value;
     const id = userPracticeId;
 
-    const data = await APIManager.editPractice(id, name, adresse, email)
+   await APIManager.editPractice(id, name, adresse, email)
     .catch(
       (error) => {
         console.log(error.message);
       }
     );
-
     window.location.reload();
 };
 
