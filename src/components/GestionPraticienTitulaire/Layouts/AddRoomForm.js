@@ -16,7 +16,6 @@ const AddRoomForm = () => {
         console.log(error.message);
       }
     );
-    window.location.reload();
   }
   return (
     <div>

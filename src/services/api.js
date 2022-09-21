@@ -89,6 +89,10 @@ export default class APIManager {
     return response.data;
   }
 
+  static async deleteUser(id) {
+    await API.delete("/members/"+ id)
+  }
+
   //  -----------------------        PRACTICE FUNCTIONS
   static async editPractice(id, name, adresse, email) {
     const response = await API.patch("/practices/" + id, {

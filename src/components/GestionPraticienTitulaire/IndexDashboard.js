@@ -6,7 +6,7 @@ import GestionPraticienTitulaire from "./GestionPraticienTitulaire";
 const IndexDashboard = () => {
   const [currentUser] = useAtom(currentUserAtom);
   const currentUserStatus = JSON.parse(currentUser).status;
-console.log("state", currentUserStatus)
+
   if (currentUserStatus === "holder")
     return (
       <>

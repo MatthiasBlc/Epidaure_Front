@@ -5,6 +5,7 @@ import EditPracticeForm from "./Layouts/EditPracticeForm";
 import ReactDOM from "react-dom/client";
 import AddRoomForm from "./Layouts/AddRoomForm";
 import EditRoomForm from "./Layouts/EditRoomForm";
+import PracticeData from "./Layouts/PracticeData";
 
 const GestionPraticienTitulaire = () => {
   const [userData, setUserData] = useState([]);
@@ -15,6 +16,7 @@ const GestionPraticienTitulaire = () => {
   const getUserData = async () => {
     const { data } = await APIManager.memberData();
     setUserData(data.user);
+    console.log(data.user);
     return data;
   };
 
@@ -23,6 +25,7 @@ const GestionPraticienTitulaire = () => {
     setPracticeData(data);
     setRoomsPractice(data.rooms);
     setUsersPractice(data.users);
+    console.log(data.rooms);
     return data;
   };
 
@@ -35,13 +38,6 @@ const GestionPraticienTitulaire = () => {
     getData();
   }, []);
 
-  const changePracticeDetails = () => {
-    const praticeRoot = ReactDOM.createRoot(
-      document.getElementById("practiceDetails")
-    );
-    praticeRoot.render(<EditPracticeForm />);
-  };
-
   const addRoom = () => {
     const roomRoot = ReactDOM.createRoot(document.getElementById("addRoom"));
     roomRoot.render(<AddRoomForm />);
@@ -51,16 +47,21 @@ const GestionPraticienTitulaire = () => {
     e.preventDefault();
     const room_id = JSON.stringify(e.target.dataset.name).slice(1, 3);
     await APIManager.deleteRoom(room_id);
+    window.location.reload();
   };
 
   const editRoom = async (e) => {
     e.preventDefault();
     const room_id = e.target.dataset.name;
-    console.log("ROOM_ID",room_id);
-    const editRoomRoot = ReactDOM.createRoot(
-      document.getElementById(room_id)
-    );
+    console.log("ROOM_ID", room_id);
+    const editRoomRoot = ReactDOM.createRoot(document.getElementById(room_id));
     editRoomRoot.render(<EditRoomForm id={room_id} />);
+  };
+
+  const deleteUser = async (e) => {
+    e.preventDefault();
+    const user_id = JSON.stringify(e.target.dataset.name).slice(1, 3);
+    await APIManager.deleteUser(user_id);
   };
 
   return (
@@ -74,25 +75,14 @@ const GestionPraticienTitulaire = () => {
         </div>
         <div className="containerGrid1 mr-4 h-auto">
           <div className="w-full h-auto">
+            
             {/* MENU PRACTICE */}
-            <div
-              id="practiceDetails"
-              className="flex flex-col w-full h-auto border border-green rounded-xl p-2 shadow-lg"
-            >
-              <h1 className="text-1xl font-bold leading-tight">
-                {practiceData.name}
-              </h1>
-              <h1 className="text-1xl font-bold leading-tight">
-                INFOS DU CABINET
-              </h1>
-              <p>{practiceData.adresse}</p>
-              <p>{practiceData.email}</p>
-              <button
-                onClick={changePracticeDetails}
-                className="self-end mt-4 mx-auto lg:mx-0 hover:underline bg-lightgrey text-gray-800 font-bold rounded-full my-2 py-1 px-4 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out"
-              >
-                Modifier
-              </button>
+            <div className="flex flex-col w-full h-auto border border-green rounded-xl p-2 shadow-lg">
+              <PracticeData
+                name={practiceData.name}
+                adresse={practiceData.adresse}
+                email={practiceData.email}
+              />
             </div>
 
             {/* MENU ROOMS */}
@@ -129,11 +119,20 @@ const GestionPraticienTitulaire = () => {
             <h1 className="text-1xl font-bold leading-tight">
               LES PRATICIENS DU CABINET
             </h1>
-            {usersPractice &&
-              usersPractice.map((user) => <li key={user.id}>{user.email}</li>)}
-            <button className="self-end justify-self-end mt-4 mx-auto lg:mx-0 hover:underline bg-lightgrey text-gray-800 font-bold rounded-full my-2 py-1 px-4 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
-              <Link to="ajoutpraticien">Ajouter un praticien</Link>
-            </button>
+            <ul>
+              {usersPractice &&
+                usersPractice.map((user) => (
+                  <>
+                    <li key={user.id}>{user.email}</li>
+                    <button data-name={user.id} onClick={deleteUser}>
+                      ❌
+                    </button>
+                  </>
+                ))}
+            </ul>
+              <button className="self-end justify-self-end mt-4 mx-auto lg:mx-0 hover:underline bg-lightgrey text-gray-800 font-bold rounded-full my-2 py-1 px-4 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+                <Link to="ajoutpraticien">Ajouter un praticien</Link>
+              </button>
           </div>
         </div>
 
