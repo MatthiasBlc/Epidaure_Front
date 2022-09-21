@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import Calendar from "../components/Calendar/Calendar";
 import APIManager from "../services/api";
+
+import Calendar from "../components/Calendar/Calendar";
 
 const Agenda = () => {
   const [agendaData, setAgendaData] = useState();
@@ -14,7 +15,6 @@ const Agenda = () => {
   const getAgendaData = async () => {
     const { data } = await APIManager.agendaData();
     setAgendaData(data);
-    // console.log("con", data);
     return data;
   };
 
@@ -24,7 +24,6 @@ const Agenda = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     await APIManager.agendaCreate(text, start, end, barColor, resource).catch(
       (error) => {
         alert("erreur");
@@ -36,7 +35,7 @@ const Agenda = () => {
   };
 
   if (agendaData === undefined) return <h1>LOADING ...</h1>;
-  console.log(agendaData);
+  // console.log(agendaData);
   return (
     <div>
       <h1>Titre</h1>

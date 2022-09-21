@@ -1,22 +1,33 @@
-import React, { Component } from "react";
+import React, { createRef, useEffect, useRef, useState } from "react";
 import { DayPilot, DayPilotCalendar } from "@daypilot/daypilot-lite-react";
 
-class Calendar extends Component {
-  constructor(props) {
-    super(props);
+const Calendar2 = (eventList) => {
+  const [calendarRef, ] = useState(React.createRef());
+  const [calendar, setCalendar] = useState(calendarRef);
 
-    this.calendarRef = React.createRef();
+  const [calendarState, ] = useState({
+    viewType: "Resources",
+    onEventMoved: (args) => {
+      // DayPilot.message("Moved: " + args.e.text());
+      console.log(args.e.data.id)
+      console.log(args.e.data)
+    //   console.log("okkkkkkkkkkkkkkkkkk", calendarRef.current.control.elements.events[args].data);
+    //   control.elements.events.data
+    },
+  });
 
-    this.state = {
-      viewType: "Resources",
-    };
-  }
 
-  get calendar() {
-    return this.calendarRef.current.control;
-  }
 
-  loadCalendarData() {
+//   const getAgendaData = async () => {
+//     const { data } = await APIManager.agendaData();
+//     setAgendaData(data);
+//     // console.log("con", data);
+//     return data;
+//   };
+
+
+
+  const loadCalendarData = () => {
     const startDate = "2022-09-16";
     const columns = [
       { name: "Lundi (M)", id: "M" },
@@ -28,56 +39,20 @@ class Calendar extends Component {
       { name: "Dimanche (Su)", id: "Su" },
     ];
 
-    const events = this.props.eventList;
+    const events = eventList.eventList;
 
-    // const events = [
-    //   {
-    //     id: 1,
-    //     text: "Event 15",
-    //     start: "2022-09-16T10:30:00",
-    //     end: "2022-09-16T13:00:00",
-    //     barColor: "#fcb711",
-    //     resource: "M",
-    //     user_id: "10",
-    //     room_id: "10",
-    //     patient_id: "10",
-    //   },
-    //   {
-    //     id: 2,
-    //     text: "Event 2",
-    //     start: "2022-09-16T09:30:00",
-    //     end: "2022-09-16T11:30:00",
-    //     barColor: "#f37021",
-    //     resource: "T",
-    //   },
-    //   {
-    //     id: 3,
-    //     text: "Event 3",
-    //     start: "2022-09-16T12:00:00",
-    //     end: "2022-09-16T15:00:00",
-    //     barColor: "#cc004c",
-    //     resource: "T",
-    //   },
-    //   {
-    //     id: 4,
-    //     text: "Event 4",
-    //     start: "2022-09-16T11:30:00",
-    //     end: "2022-09-16T14:30:00",
-    //     barColor: "#6460aa",
-    //     resource: "W",
-    //   },
-    // ];
+    setCalendar(
+      calendarRef.current.control.update({ startDate, columns, events })
+    );
+    return calendar;
+  };
 
-    this.calendar.update({ startDate, columns, events });
-  }
+  useEffect(() => {
+    loadCalendarData();
+  }, []);
 
-  componentDidMount() {
-    this.loadCalendarData();
-  }
+  if (calendar === null) return <div> ...LOADING</div>;
 
-  render() {
-    return <DayPilotCalendar {...this.state} ref={this.calendarRef} />;
-  }
-}
-
-export default Calendar;
+  return <DayPilotCalendar {...calendarState} ref={calendarRef} />;
+};
+export default Calendar2;

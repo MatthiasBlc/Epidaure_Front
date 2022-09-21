@@ -11,12 +11,12 @@ import Dashboard from "./pages/Dashboard";
 import PlanCollab from "./components/PlanCollab/PlanCollab";
 import IndexDashboard from "./components/GestionPraticienTitulaire/IndexDashboard";
 import PlanRooms from "./components/PlanRooms/PlanRooms";
-import Planning from "./components/Planning/Planning";
 import RequireAuth from "./hooks/requireAuth";
 import NewUserPratice from "./components/NewUserPractice/NewUserPractice";
 import NewRoom from "./components/NewRooms/NewRoom";
 import EditPractice from "./components/EditPractice/EditPractice";
 import Agenda from "./pages/Agenda";
+
 
 const App = () => {
   return (
@@ -52,7 +52,7 @@ const App = () => {
             <Route path="" element={<IndexDashboard />} />
             <Route path="plancollab" element={<PlanCollab />} />
             <Route path="planrooms" element={<PlanRooms />} />
-            <Route path="/agenda" element={<Agenda />} />
+            <Route path="agenda" element={<Agenda />} />
           </Route>
         </Routes>
       </main>
