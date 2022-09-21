@@ -6,10 +6,10 @@ import { Link } from "react-router-dom";
 
 const SideBar = () => {
   const menus = [
-    { name: "Menu 1", link: "/", icon: GoDashboard },
-    { name: "Menu 2", link: "/", icon: GoDashboard },
-    { name: "Menu 3", link: "/", icon: GoDashboard },
-    { name: "Menu 4", link: "/", icon: GoDashboard },
+    { name: "Menu 1", link: "/dashboard", icon: GoDashboard },
+    { name: "Menu 2", link: "plancollab", icon: GoDashboard },
+    { name: "Menu 3", link: "planrooms", icon: GoDashboard },
+    { name: "Menu 4", link: "planning", icon: GoDashboard },
     { name: "Menu 5", link: "/", icon: GoDashboard },
   ];
 

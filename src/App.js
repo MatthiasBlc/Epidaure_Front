@@ -2,17 +2,21 @@ import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import Navbar from "./components/Navbar/Navbar";
-import Footer from "./components/Footer/Footer";
 import Home from "./pages/Home";
-import Signup from "./components/Signup/signup";
 import Login from "./components/Login";
 import ForgotPassword from "./components/ForgotPassword/ForgotPassword";
 import ResetPassword from "./components/ResetPassword/ResetPassword";
 import Profile from "./pages/Profile";
 import Dashboard from "./pages/Dashboard";
-import GestionPraticienTitulaire from "./components/GestionPraticienTitulaire/GestionPraticienTitulaire";
+import PlanCollab from "./components/PlanCollab/PlanCollab";
+import IndexDashboard from "./components/GestionPraticienTitulaire/IndexDashboard";
+import PlanRooms from "./components/PlanRooms/PlanRooms";
+import Planning from "./components/Planning/Planning";
+import RequireAuth from "./hooks/requireAuth";
+import NewUserPratice from "./components/NewUserPractice/NewUserPractice";
+import NewRoom from "./components/NewRooms/NewRoom";
+import EditPractice from "./components/EditPractice/EditPractice";
 import Agenda from "./pages/Agenda";
-
 
 const App = () => {
   return (
@@ -21,14 +25,35 @@ const App = () => {
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/Profile" element={<Profile />} />
-          <Route path="/signup" element={<Signup />} />
+          <Route
+            path="/Profile"
+            element={
+              <RequireAuth>
+                <Profile />
+              </RequireAuth>
+            }
+          />
           <Route path="/login" element={<Login />} />
           <Route path="/users/password" element={<ForgotPassword />} />
           <Route path="/users/:token" element={<ResetPassword />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/gestionPT" element={<GestionPraticienTitulaire />} />
-          <Route path="/agenda" element={<Agenda />} />
+          <Route
+            path="/dashboard"
+            element={
+              <RequireAuth>
+                <Dashboard />
+              </RequireAuth>
+            }
+          >
+            <Route path="" element={<IndexDashboard />}>
+              <Route path="ajoutpraticien" element={<NewUserPratice />} />
+              <Route path="ajoutsalle" element={<NewRoom />} />
+              <Route path="modifier" element={<EditPractice />} />
+            </Route>
+            <Route path="" element={<IndexDashboard />} />
+            <Route path="plancollab" element={<PlanCollab />} />
+            <Route path="planrooms" element={<PlanRooms />} />
+            <Route path="/agenda" element={<Agenda />} />
+          </Route>
         </Routes>
       </main>
     </BrowserRouter>

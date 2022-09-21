@@ -1,15 +1,14 @@
-import React from 'react';
-import GestionPraticienTitulaire from '../components/GestionPraticienTitulaire/GestionPraticienTitulaire';
-import Sidebar from '../components/Sidebar/Sidebar';
+import React from "react";
+import { Outlet } from "react-router-dom";
+import Sidebar from "../components/Sidebar/Sidebar";
 
 const Dashboard = () => {
-
-    return (
-        <div className='flex gap-6'>
-            <Sidebar />
-            <GestionPraticienTitulaire />
-        </div>
-    );
+  return (
+    <div className="flex gap-6">
+      <Sidebar />
+      <Outlet />
+    </div>
+  );
 };
 
 export default Dashboard;

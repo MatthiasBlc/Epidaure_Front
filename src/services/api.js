@@ -6,12 +6,15 @@ const apiUrl = process.env.REACT_APP_BACK_URL;
 const API = axios.create({ baseURL: apiUrl });
 const API2 = axios.create({ baseURL: apiUrl });
 
+
 API.interceptors.request.use(({ headers, ...config }) => ({
   ...config,
   headers: {
     ...headers,
     "Content-Type": "application/json",
-    Authorization: `Bearer ${headers.Authorization || Cookies.get("token")}`,
+    Authorization: `Bearer ${
+      headers.Authorization || Cookies.get("epidaure_id")
+    }`,
   },
 }));
 
@@ -31,7 +34,7 @@ export default class APIManager {
       user: { email: email, password: password, practice_id: practice_id },
     });
     // const jwt = response.headers.authorization.slice(7);
-    // Cookies.set("token", jwt);
+    // Cookies.set("epidaure_id", jwt);
     return response.data;
   }
 
@@ -40,14 +43,13 @@ export default class APIManager {
       user: { email: email, password: password },
     });
     const jwt = response.headers.authorization.slice(7);
-    Cookies.set("token", jwt);
-    console.log("Je suis log", response);
+    Cookies.set("epidaure_id", jwt);
     return response.data;
   }
 
   static async logoutUser() {
     const response = await API.delete("/users/sign_out");
-    Cookies.remove("token");
+    Cookies.remove("epidaure_id");
     return response.data;
   }
 
@@ -72,15 +74,33 @@ export default class APIManager {
   // user Data
 
   static async memberData() {
-    console.log(Cookies.get("token"));
     const response = await API.get("/member-data");
-    // console.log("tag", response);
     return response;
   }
 
   static async practiceData(id) {
     const response = await API.get("/practices/" + id);
-    // console.log("hello",response.data);
+    return response.data;
+  }
+
+  static async editUser(email, password) {
+    const response = await API.patch("/users", {
+      user: {
+        email: email,
+        password: password,
+      },
+    });
+    return response.data;
+  }
+
+  static async editPractice(id, name, adresse, email) {
+    const response = await API.patch("/practices/" + id, {
+      practice: {
+        name: name,
+        adresse: adresse,
+        email: email,
+      },
+    });
     return response.data;
   }
 

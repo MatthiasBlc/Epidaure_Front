@@ -1,38 +1,35 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-
-import { useSetAtom } from "jotai";
-import { loggedAtom } from "../../services/Atoms/user";
+import { useAtom } from "jotai";
 import { currentUserAtom } from "../../services/Atoms/currentUser";
-
 import APIManager from "../../services/api";
+import { loggedAtom } from "../../services/Atoms/user";
 
 const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const logged = useSetAtom(loggedAtom);
-  const userID = useSetAtom(currentUserAtom);
+  const [,setUserID] = useAtom(currentUserAtom);
+  const [,setLogged] = useAtom(loggedAtom);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     const response = await APIManager.loginUser(email, password).catch(
       (error) => {
-        alert("erreur");
         console.log(error.message);
       }
       );
-      logged(true);
-      userID(JSON.stringify(response.user));
+      setUserID(JSON.stringify(response.user));
+      setLogged(true);
       navigate("/dashboard");
   };
 
   return (
     <>
       <div className="wrapper flex items-center justify-center">
-        <div className="w-1/2">
+        <div className="w-1/2 mt-20">
           <h2 className="my-2 text-3xl font-bold leading-tight text-center text-gray-800">
             Se connecter
           </h2>
