@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useNavigate } from "react";
 import { Link, Outlet } from "react-router-dom";
 import APIManager from "../../services/api";
-import EditPracticeForm from "./Layouts/EditPracticeForm";
 import ReactDOM from "react-dom/client";
 import AddRoomForm from "./Layouts/AddRoomForm";
 import EditRoomForm from "./Layouts/EditRoomForm";
