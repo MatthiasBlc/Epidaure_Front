@@ -7,6 +7,7 @@ const Profil = () => {
   const [userData, setUserData] = useState({});
   const [practiceData, setPracticeData] = useState();
   const [ _ ,setUserID] = useAtom(currentUserAtom);
+  const [error,setError] = useState();
 
   const getUserData = async () => {
     const { data } = await APIManager.memberData();
@@ -32,8 +33,10 @@ const Profil = () => {
     const data = await APIManager.editUser(newEmail)
     .catch((error) => {
       console.log(error.message);
+      setError(error);
     });
     document.getElementById('emailUser').innerHTML=data.email;
+    document.getElementById('error').innerHTML=error;
     setUserID(JSON.stringify(data.user));
     console.log();
   }
@@ -60,6 +63,7 @@ const Profil = () => {
         <div className="md:grid md:grid-cols-3 md:gap-6">
           <div className="md:col-span-1">
             <div className="px-4 sm:px-0">
+              <div id="error"></div>
               <h1 className="mt-8 my-2 text-1xl font-bold leading-tight text-left text-gray-800">
                 DASHBOARD:<span id="emailUser">{userData.email}</span> 
               </h1>

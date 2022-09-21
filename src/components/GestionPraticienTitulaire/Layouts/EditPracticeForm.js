@@ -2,6 +2,8 @@ import { useAtom } from "jotai";
 import React, { useEffect, useState } from "react";
 import APIManager from "../../../services/api";
 import { currentUserAtom } from "../../../services/Atoms/currentUser";
+import PracticeData from "./PracticeData";
+import ReactDOM from "react-dom/client";
 
 const EditPracticeForm = () => {
   const [practiceData, setPracticeData] = useState([]);
@@ -22,21 +24,24 @@ const EditPracticeForm = () => {
     const email = e.target.newEmail.value;
     const id = userPracticeId;
 
-   await APIManager.editPractice(id, name, adresse, email)
-    .catch(
-      (error) => {
-        console.log(error.message);
-      }
+    await APIManager.editPractice(id, name, adresse, email).catch((error) => {
+      console.log(error.message);
+    });
+
+    const editPraticeRoot = ReactDOM.createRoot(
+      document.getElementById("editPracticeDetails")
     );
-    window.location.reload();
-};
+    editPraticeRoot.render(
+      <PracticeData name={name} adresse={adresse} email={email} />
+    );
+  };
 
   useEffect(() => {
     getPracticeData(userPracticeId);
   }, []);
 
   return (
-     <div>
+    <div id="editPracticeDetails">
       <form method="POST" onSubmit={handleSubmit}>
         <div className="">
           <label className="mr-1">
