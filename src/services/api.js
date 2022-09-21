@@ -115,4 +115,13 @@ export default class APIManager {
   static async deleteRoom(id) {
     await API.delete("/rooms/" + id)    
   };
+
+  static async editRoom(id, name) {
+    const response = await API.patch("/rooms/" + id, {
+      room: {
+        name: name
+      },
+    });
+    return response.data;
+  }
 }
