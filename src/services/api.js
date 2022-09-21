@@ -122,4 +122,17 @@ export default class APIManager {
     return response;
   }
 
+  static async agendaUpdate(id, text, start, end, barColor, resource) {
+    // console.log(Cookies.get("token"));
+    const response = await API.patch("/time_slots/" + id, {
+      time_slots: { text: text, start: start, end: end, barColor: barColor, resource: resource },
+    });
+    // console.log("tag", response);
+    return response;
+  }
+
+  static async agendaDelete(id) {
+    await API.delete("/time_slots/" + id)    
+  };
+
 }

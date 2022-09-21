@@ -28,7 +28,8 @@ const Agenda = () => {
       (error) => {
         alert("erreur");
         console.log(error.message);
-        getAgendaData();
+
+        // getAgendaData();
         // semble ne pas s'actualiser ?
       }
     );
