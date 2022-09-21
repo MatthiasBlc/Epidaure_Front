@@ -4,8 +4,6 @@ import APIManager from "../../services/api";
 
 const ForgotPassword = () => {
 
-  const navigate = useNavigate();
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     const userEmail = e.target.email.value;

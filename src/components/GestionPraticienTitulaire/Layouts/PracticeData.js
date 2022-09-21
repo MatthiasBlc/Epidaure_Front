@@ -12,8 +12,7 @@ const PracticeData = (data) => {
 
   return (
     <div id="practiceDetails">
-      <h1 className="text-1xl font-bold leading-tight">{data.name}</h1>
-      <h1 className="text-1xl font-bold leading-tight">INFOS DU CABINET</h1>
+      <h1 className="text-1xl font-bold leading-tight">INFOS DU CABINET {data.name}</h1>
       <p>{data.adresse}</p>
       <p>{data.email}</p>
       <button
