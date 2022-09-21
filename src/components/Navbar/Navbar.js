@@ -21,43 +21,43 @@ const Navbar = ({ location }) => {
     navigate('/login');
   };
 
-  // var navMenuDiv = document.getElementById("nav-content");
-  // var navMenu = document.getElementById("nav-toggle");
-  // var header = document.getElementById("header");
-  // var navcontent = document.getElementById("nav-content");
-  // var navaction = document.getElementById("navAction");
-  // var brandname = document.getElementById("brandname");
-  // var toToggle = document.querySelectorAll(".toggleColour");
+  var navMenuDiv = document.getElementById("nav-content");
+  var navMenu = document.getElementById("nav-toggle");
+  var header = document.getElementById("header");
+  var navcontent = document.getElementById("nav-content");
+  var navaction = document.getElementById("navAction");
+  var brandname = document.getElementById("brandname");
+  var toToggle = document.querySelectorAll(".toggleColour");
 
-  // document.onclick = check;
-  // function check(e) {
-  //   var target = (e && e.target) || (e && e.srcElement);
+  document.onclick = check;
+  function check(e) {
+    var target = (e && e.target) || (e && e.srcElement);
 
-  //   //Nav Menu
-  //   if (!checkParent(target, navMenuDiv)) {
-  //     // click NOT on the menu
-  //     if (checkParent(target, navMenu)) {
-  //       // click on the link
-  //       if (navMenuDiv.classList.contains("hidden")) {
-  //         navMenuDiv.classList.remove("hidden");
-  //       } else {
-  //         navMenuDiv.classList.add("hidden");
-  //       }
-  //     } else {
-  //       // click both outside link and outside menu, hide menu
-  //       navMenuDiv.classList.add("hidden");
-  //     }
-  //   }
-  // }
-  // function checkParent(t, elm) {
-  //   while (t.parentNode) {
-  //     if (t === elm) {
-  //       return true;
-  //     }
-  //     t = t.parentNode;
-  //   }
-  //   return false;
-  // }
+    //Nav Menu
+    if (!checkParent(target, navMenuDiv)) {
+      // click NOT on the menu
+      if (checkParent(target, navMenu)) {
+        // click on the link
+        if (navMenuDiv.classList.contains("hidden")) {
+          navMenuDiv.classList.remove("hidden");
+        } else {
+          navMenuDiv.classList.add("hidden");
+        }
+      } else {
+        // click both outside link and outside menu, hide menu
+        navMenuDiv.classList.add("hidden");
+      }
+    }
+  }
+  function checkParent(t, elm) {
+    while (t.parentNode) {
+      if (t === elm) {
+        return true;
+      }
+      t = t.parentNode;
+    }
+    return false;
+  }
 
   return (
     <div>
@@ -84,7 +84,7 @@ const Navbar = ({ location }) => {
             </button>
           </div>
           <div
-            className="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden mt-2 lg:mt-0 bg-white lg:bg-transparent text-black p-4 lg:p-0 z-20"
+            className="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden mt-2 lg:mt-0 gradient text-white p-4 lg:p-0 z-20"
             id="nav-content"
           >
             <ul className="list-reset lg:flex justify-end flex-1 items-center">
