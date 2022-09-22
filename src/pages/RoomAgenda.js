@@ -62,7 +62,7 @@ const RoomAgenda = () => {
         {practiceRoomsList &&
           practiceRoomsList.map((room, index) => (
             <option key={index} value={room.id}>
-              {room.name} {room.id}
+              {room.name}
             </option>
           ))}
       </select>

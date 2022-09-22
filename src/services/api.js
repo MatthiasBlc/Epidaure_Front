@@ -144,7 +144,7 @@ export default class APIManager {
     return response;
   }
 
-  static async agendaCreate(text, start, end, barColor, resource) {
+  static async agendaCreate(text, start, end, barColor, resource, selectedRoom) {
     const response = await API.post("/time_slots", {
       time_slots: {
         text: text,
@@ -152,12 +152,13 @@ export default class APIManager {
         end: end,
         barColor: barColor,
         resource: resource,
+        room_id: selectedRoom,
       },
     });
     return response;
   }
 
-  static async agendaUpdate(id, text, start, end, barColor, resource) {
+  static async agendaUpdate(id, text, start, end, barColor, resource, selectedRoom) {
     const response = await API.patch("/time_slots/" + id, {
       time_slots: {
         text: text,
@@ -165,6 +166,7 @@ export default class APIManager {
         end: end,
         barColor: barColor,
         resource: resource,
+        room_id: selectedRoom,
       },
     });
     return response;
