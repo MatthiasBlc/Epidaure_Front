@@ -4,13 +4,16 @@ import APIManager from "../../services/api";
 const Contact = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const userEmail = e.target.email.value;
+        const last_name = e.target.last_name.value;
+        const first_name = e.target.first_name.value;
+        const email = e.target.email.value;
+        const content = e.target.content.value
     
-        await APIManager.contactForm(userEmail)
+        await APIManager.contactForm(last_name, first_name, email, content)
         .catch((error) => {
           console.log(error.message);
         });
-        document.getElementById("message").innerHTML = "Merci pour votre demande, notre équipe vous répondra dans les plus brefs délais sur votre adresse mail:<b> " + userEmail
+        document.getElementById("message").innerHTML = "Merci pour votre demande, notre équipe vous répondra dans les plus brefs délais sur votre adresse mail:<b> " + email
         console.log("Success")
       };
 
