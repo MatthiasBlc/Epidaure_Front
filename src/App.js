@@ -13,6 +13,7 @@ import PlanRooms from "./components/PlanRooms/PlanRooms";
 import RequireAuth from "./hooks/requireAuth";
 import Agenda from "./pages/Agenda";
 import IndexDashboard from "./components/HolderDashboard/IndexDashboard";
+import Contact from "./components/Contact/Contact";
 
 
 const App = () => {
@@ -33,6 +34,7 @@ const App = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/users/password" element={<ForgotPassword />} />
           <Route path="/users/:token" element={<ResetPassword />} />
+          <Route path="/contact" element={<Contact />} />
           <Route
             path="/dashboard"
             element={

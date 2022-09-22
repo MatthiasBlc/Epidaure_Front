@@ -109,7 +109,7 @@ const Navbar = () => {
               <button
                 onClick={logout}
                 id="navAction"
-                className="mx-auto lg:mx-0 hover:underline font-bold rounded-full mt-4 lg:mt-0 py-4 px-8 shadow opacity-100 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out bg-white text-grey"
+                className="mx-auto lg:mx-0 hover:underline font-bold rounded-full mt-4 lg:mt-0 py-1 px-4 md:py-4 md:px-8 shadow opacity-100 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out bg-white text-grey"
               >
                 Se déconnecter
               </button>
@@ -118,7 +118,7 @@ const Navbar = () => {
                 <Link to="/login">
                   <button
                     id="navAction"
-                    className="mx-auto lg:mx-0 hover:underline font-bold rounded-full mt-4 lg:mt-0 py-4 px-8 shadow opacity-100 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out bg-white text-grey"
+                    className="mx-auto lg:mx-0 hover:underline font-bold rounded-full mt-4 lg:mt-0 py-1 px-4 md:py-4 md:px-8 shadow opacity-100 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out bg-white text-grey"
                   >
                     Connexion
                   </button>
