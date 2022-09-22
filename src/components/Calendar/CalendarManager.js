@@ -2,13 +2,19 @@ import React, { useEffect, useState } from "react";
 import { DayPilot, DayPilotCalendar } from "@daypilot/daypilot-lite-react";
 import APIManager from "../../services/api";
 import "./CalendarStyles.css";
+import { useAtom } from "jotai";
+import { currentUserAtom } from "../../services/Atoms/currentUser";
 
 const CalendarManager = (eventList) => {
   const [calendarRef] = useState(React.createRef());
   const [calendar, setCalendar] = useState(calendarRef);
-  const [newEvent, setNewEvent] = useState("");
+  const [newEvent, setNewEvent] = useState();
 
-  // --------------- SETUP CALENDAR ACTIONS 
+  const [agendaData, setAgendaData] = useState();
+  let [currentUser] = useAtom(currentUserAtom);
+  currentUser = JSON.parse(currentUser);
+
+  // --------------- SETUP CALENDAR ACTIONS
   const [calendarState] = useState({
     viewType: "Resources",
     heightSpec: "BusinessHours",
@@ -116,6 +122,7 @@ const CalendarManager = (eventList) => {
         newResourceEvent,
         newSelectedRomEvent
       );
+      setNewEvent(args);
     },
   });
 
@@ -146,7 +153,6 @@ const CalendarManager = (eventList) => {
       alert("erreur");
       console.log(error.message);
     });
-    setNewEvent(args);
   };
 
   const editEvent = async (
@@ -180,8 +186,21 @@ const CalendarManager = (eventList) => {
     await APIManager.agendaDelete(eventId);
   };
 
-
   // --------------- INIT DISPLAY
+
+  const getCurrentUserAgendaData = async () => {
+    const { data } = await APIManager.agendaData();
+    const currentUserData = data.filter(
+      (data) => data.user_id === currentUser.id
+    );
+    setAgendaData(currentUserData);
+    return currentUserData;
+  };
+
+  useEffect(() => {
+    getCurrentUserAgendaData();
+  }, [newEvent]);
+
   const loadCalendarData = () => {
     const startDate = "2022-09-16";
     const columns = [
@@ -193,18 +212,22 @@ const CalendarManager = (eventList) => {
       { name: "Samedi (S)", id: "S" },
       { name: "Dimanche (Su)", id: "Su" },
     ];
-    const events = eventList.eventList;
+
+    let events = eventList.eventList;
+    if (agendaData != null) {
+      events = agendaData;
+    }
+    console.log(events);
     setCalendar(
       calendarRef.current.control.update({ startDate, columns, events })
     );
     return calendar;
   };
 
-
-   // --------------- REFRESH DISPLAY
+  // --------------- REFRESH DISPLAY
   useEffect(() => {
     loadCalendarData();
-  }, [eventList, newEvent]);
+  }, [eventList, agendaData]);
 
   if (calendar === null) return <div> ...LOADING</div>;
   return <DayPilotCalendar {...calendarState} ref={calendarRef} />;
