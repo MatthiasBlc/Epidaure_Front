@@ -78,6 +78,11 @@ export default class APIManager {
     return response.data;
   }
 
+  static async patientsData() {
+    const response = await API.get("/patients");
+    return response.data;
+  }
+
   static async editUser(email, password) {
     const response = await API.patch("/users", {
       user: {
