@@ -1,7 +1,7 @@
 import { useAtom } from "jotai";
 import { currentUserAtom } from "../../services/Atoms/currentUser";
 import ClassicDashboard from "./ClassicDashboard";
-import GestionPraticienTitulaire from "./GestionPraticienTitulaire";
+import GestionPraticienTitulaire from "./HolderDashboard";
 
 const IndexDashboard = () => {
   const [currentUser] = useAtom(currentUserAtom);

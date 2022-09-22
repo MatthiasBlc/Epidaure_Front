@@ -8,16 +8,12 @@ import ForgotPassword from "./components/ForgotPassword/ForgotPassword";
 import ResetPassword from "./components/ResetPassword/ResetPassword";
 import Profile from "./pages/Profile";
 import Dashboard from "./pages/Dashboard";
-import PlanCollab from "./components/PlanCollab/PlanCollab";
-import IndexDashboard from "./components/GestionPraticienTitulaire/IndexDashboard";
-import PlanRooms from "./components/PlanRooms/PlanRooms";
+import PlanCollab from "./components/PlanCollab/CollaboratorAgenda";
+import PlanRooms from "./components/PlanRooms/RoomAgenda";
 import RequireAuth from "./hooks/requireAuth";
-import NewUserPratice from "./components/NewUserPractice/NewUserPractice";
-import NewRoom from "./components/NewRooms/NewRoom";
-import EditPractice from "./components/EditPractice/EditPractice";
-import MyAgenda from "./pages/MyAgenda";
-import CollaboratorAgenda from "./pages/CollaboratorAgenda";
-import RoomAgenda from "./pages/RoomAgenda";
+import Agenda from "./pages/MyAgenda";
+import IndexDashboard from "./components/HolderDashboard/IndexDashboard";
+import Contact from "./components/Contact/Contact";
 
 const App = () => {
   return (
@@ -37,6 +33,7 @@ const App = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/users/password" element={<ForgotPassword />} />
           <Route path="/users/:token" element={<ResetPassword />} />
+          <Route path="/contact" element={<Contact />} />
           <Route
             path="/dashboard"
             element={
@@ -45,17 +42,12 @@ const App = () => {
               </RequireAuth>
             }
           >
-            <Route path="" element={<IndexDashboard />}>
-              <Route path="ajoutpraticien" element={<NewUserPratice />} />
-              <Route path="ajoutsalle" element={<NewRoom />} />
-              <Route path="modifier" element={<EditPractice />} />
-            </Route>
             <Route path="" element={<IndexDashboard />} />
             <Route path="plancollab" element={<PlanCollab />} />
             <Route path="planrooms" element={<PlanRooms />} />
-            <Route path="mon-agenda" element={<MyAgenda />} />
-            <Route path="mes-collaborateurs" element={<CollaboratorAgenda />} />
-            <Route path="bureaux" element={<RoomAgenda />} />
+            <Route path="planning" element={<Agenda />} />
+            <Route path="plancollab" element={<PlanCollab />} />
+            <Route path="planrooms" element={<PlanRooms />} />
           </Route>
         </Routes>
       </main>
