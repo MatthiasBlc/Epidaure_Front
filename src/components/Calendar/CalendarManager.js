@@ -8,6 +8,7 @@ const CalendarManager = (eventList) => {
   const [calendar, setCalendar] = useState(calendarRef);
   const [newEvent, setNewEvent] = useState("");
 
+  // --------------- SETUP CALENDAR ACTIONS 
   const [calendarState] = useState({
     viewType: "Resources",
     heightSpec: "BusinessHours",
@@ -51,14 +52,7 @@ const CalendarManager = (eventList) => {
     },
 
     onEventClick: async (args) => {
-      const form = [
-        { name: "Text", id: "text" },
-        // { name: "Start", id: "start", type: "time" },
-        // { name: "End", id: "end", type: "time" },
-        // { name: "Color", id: "barColor" },
-        // { type: "checkbox", id: "delete", name: "delete" },
-      ];
-      console.log(args);
+      const form = [{ name: "Text", id: "text" }];
       const modal = await DayPilot.Modal.form(form, args.e.data);
       const newIdEvent = modal.result.id;
       const newTextEvent = modal.result.text;
@@ -69,11 +63,6 @@ const CalendarManager = (eventList) => {
       if (modal.canceled) {
         return;
       }
-      // if (modal.result.delete) {
-      //   console.log("Delete");
-      //   deleteEvent(newIdEvent);
-      //   return;
-      // }
       editEvent(
         newIdEvent,
         newTextEvent,
@@ -86,24 +75,6 @@ const CalendarManager = (eventList) => {
 
     contextMenu: new DayPilot.Menu({
       items: [
-        // {
-        //   text: "Show event ID",
-        //   onClick: (args) => {
-        //     DayPilot.Modal.alert("Event id: " + args.source.id());
-        //   },
-        // },
-        // {
-        //   text: "Show event text",
-        //   onClick: (args) => {
-        //     DayPilot.Modal.alert("Event text: " + args.source.text());
-        //   },
-        // },
-        // {
-        //   text: "Show event start",
-        //   onClick: (args) => {
-        //     DayPilot.Modal.alert("Event start: " + args.source.start());
-        //   },
-        // },
         {
           text: "Delete",
           onClick: async (args) => {
@@ -114,7 +85,6 @@ const CalendarManager = (eventList) => {
             if (modal.canceled) {
               return;
             }
-            console.log("delete");
             deleteEvent(newIdEvent);
           },
         },
@@ -127,7 +97,6 @@ const CalendarManager = (eventList) => {
         { name: "Color", id: "barColor" },
         { name: "SelectedRoom", id: "selectedRoom" },
       ];
-      console.log("data", args);
       const modal = await DayPilot.Modal.form(form);
       const newTextEvent = modal.result.text;
       const newStartEvent = args.start;
@@ -150,6 +119,7 @@ const CalendarManager = (eventList) => {
     },
   });
 
+  // --------------- FUNCTIONS
   const newEventFunction = async (
     args,
     newTextEvent,
@@ -210,6 +180,8 @@ const CalendarManager = (eventList) => {
     await APIManager.agendaDelete(eventId);
   };
 
+
+  // --------------- INIT DISPLAY
   const loadCalendarData = () => {
     const startDate = "2022-09-16";
     const columns = [
@@ -221,15 +193,15 @@ const CalendarManager = (eventList) => {
       { name: "Samedi (S)", id: "S" },
       { name: "Dimanche (Su)", id: "Su" },
     ];
-
     const events = eventList.eventList;
-console.log("hello")
     setCalendar(
       calendarRef.current.control.update({ startDate, columns, events })
     );
     return calendar;
   };
 
+
+   // --------------- REFRESH DISPLAY
   useEffect(() => {
     loadCalendarData();
   }, [eventList, newEvent]);
