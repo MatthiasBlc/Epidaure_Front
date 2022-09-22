@@ -1,16 +1,16 @@
 import React, { useState } from "react";
-import { GoDashboard } from "react-icons/go";
 import { BiMenuAltLeft } from "react-icons/bi";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCalendarDays, faUserGroup, faGauge, faDoorClosed  } from '@fortawesome/free-solid-svg-icons'
 
 import { Link } from "react-router-dom";
 
 const SideBar = () => {
   const menus = [
-    { name: "Menu 1", link: "/dashboard", icon: GoDashboard },
-    { name: "Menu 2", link: "plancollab", icon: GoDashboard },
-    { name: "Menu 3", link: "planrooms", icon: GoDashboard },
-    { name: "Menu 4", link: "planning", icon: GoDashboard },
-    { name: "Menu 5", link: "/", icon: GoDashboard },
+    { name: "Dashboard", link: "/dashboard", icon: faGauge },
+    { name: "Mon planning", link: "planning", icon: faCalendarDays },
+    { name: "Planning collaborateurs", link: "plancollab", icon: faUserGroup },
+    { name: "Planning salles", link: "planrooms", icon: faDoorClosed }
   ];
 
   const [open, setOpen] = useState(false);
@@ -35,7 +35,7 @@ const SideBar = () => {
             key={i}
             className="group flex items-center text-sm gap-3.5 font-medium p-2 hover:bg-turquoise rounded-md"
           >
-            <div><FontAwesomeIcon icon={React.createElement(menu?.icon, { size: "20" })}></FontAwesomeIcon></div>
+            <div className="w-5 h-5 flex items-center justify-center"><FontAwesomeIcon size="xl" icon={menu?.icon}></FontAwesomeIcon></div>
             <h2
               style={{
                 transitionDelay: `${i + 3}00ms`,
@@ -49,7 +49,7 @@ const SideBar = () => {
             <h2
               className={`${
                 open && "hidden"
-              } absolute left-48 bg-white font-semibold whitespace-pre text-darkgrey rounded-md drop-shadow-lg px-0 py-0 w-0 overflow-hidden group-hover:px-2 group-hover:py-1 group-hover:left-14 group-hover:duration-300 group-hover:w-fit`}
+              } z-50 absolute left-48 bg-turquoise font-semibold whitespace-pre text-white rounded-md drop-shadow-lg px-0 py-0 w-0 overflow-hidden group-hover:px-2 group-hover:py-1 group-hover:left-14 group-hover:duration-300 group-hover:w-fit`}
             >
               {menu?.name}
             </h2>

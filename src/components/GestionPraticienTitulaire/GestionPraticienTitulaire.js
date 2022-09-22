@@ -1,5 +1,7 @@
 import React, { useEffect, useState, useNavigate } from "react";
 import { Link, Outlet } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faXmark, faPencil } from '@fortawesome/free-solid-svg-icons'
 import APIManager from "../../services/api";
 import ReactDOM from "react-dom/client";
 import AddRoomForm from "./Layouts/AddRoomForm";
@@ -94,10 +96,10 @@ const GestionPraticienTitulaire = () => {
                       <div id={room.id}>
                         <li key={room.id}>{room.name}</li>
                         <button data-name={room.id} onClick={deleteRoom}>
-                          ❌
+                          <FontAwesomeIcon color="red" icon={faXmark} size="xl" />
                         </button>
-                        <button data-name={room.id} onClick={editRoom}>
-                          ✎
+                        <button className="ml-2" data-name={room.id} onClick={editRoom}>
+                        <FontAwesomeIcon color="green" icon={faPencil} size="l" />
                         </button>
                       </div>
                     </>
@@ -124,7 +126,7 @@ const GestionPraticienTitulaire = () => {
                   <>
                     <li key={user.id}>{user.email}</li>
                     <button data-name={user.id} onClick={deleteUser}>
-                      ❌
+                      <FontAwesomeIcon color="red" icon={faXmark} size="xl" />
                     </button>
                   </>
                 ))}
