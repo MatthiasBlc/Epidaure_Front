@@ -3,11 +3,10 @@ import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
 import APIManager from "../../../services/api";
 import { currentUserAtom } from "../../../services/Atoms/currentUser";
-import AddRoomForm from "./AddRoomForm";
+import AddRoomForm from "./AddRoomForm"
 import EditRoomForm from "./EditRoomForm";
 
 const RoomData = () => {
-
   const [userAtom] = useAtom(currentUserAtom);
   const practice_id = JSON.parse(userAtom).practice_id;
   const [roomsPractice, setRoomsPractice] = useState([]);
@@ -40,25 +39,40 @@ const RoomData = () => {
   useEffect(() => {
     getPracticeData(practice_id);
   }, [practice_id]);
-  
+
   return (
     <div>
-      <div id="addRoom"></div>
-      <h1 className="text-1xl font-bold leading-tight">MES SALLES</h1>
+      <h1 className="text-1xl font-bold leading-tight">
+        Les salles du cabinet:
+      </h1>
+      <div className="w-full mb-4">
+        <div className="mb-10 h-1 gradient w-30 opacity-25 my-0 py-0 rounded-t"></div>
+      </div>
       <ul>
         {roomsPractice &&
           roomsPractice.map((room) => (
-            <>
-              <div id={room.id}>
-                <li key={room.id}>{room.name}</li>
-                <button data-name={room.id} onClick={deleteRoom}>
-                  ❌
-                </button>
-                <button data-name={room.id} onClick={editRoom}>
-                  ✎
-                </button>
-              </div>
-            </>
+            <div id={room.id} key={room.id}>
+              <li
+                className="flex flex-row flex-wrap justify-between mt-2"
+              >
+                <p>
+                  Salle numéro {room.id} - {room.name}
+                </p>
+                <div>
+                  <button data-name={room.id} onClick={editRoom}>
+                    ✎ Modifier
+                  </button>
+                  <button
+                    className="ml-2"
+                    data-name={room.id}
+                    onClick={deleteRoom}
+                  >
+                    ❌ Supprimer
+                  </button>
+                </div>
+              </li>
+              <hr />
+            </div>
           ))}
       </ul>
       <button
@@ -67,6 +81,7 @@ const RoomData = () => {
       >
         Ajouter une salle
       </button>
+      <div id="addRoom"></div>
     </div>
   );
 };

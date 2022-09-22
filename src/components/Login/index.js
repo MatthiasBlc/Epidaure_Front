@@ -72,7 +72,7 @@ const Login = () => {
                         Mot de passe
                       </label>
                       <input
-                        type="text"
+                        type="password"
                         id="password"
                         className="focusForm mt-2 block w-full rounded-md border-gray-300 shadow-sm sm:text-sm"
                         onChange={(e) => setPassword(e.target.value)}

@@ -9,13 +9,10 @@ import ResetPassword from "./components/ResetPassword/ResetPassword";
 import Profile from "./pages/Profile";
 import Dashboard from "./pages/Dashboard";
 import PlanCollab from "./components/PlanCollab/PlanCollab";
-import IndexDashboard from "./components/GestionPraticienTitulaire/IndexDashboard";
 import PlanRooms from "./components/PlanRooms/PlanRooms";
 import RequireAuth from "./hooks/requireAuth";
-import NewUserPratice from "./components/NewUserPractice/NewUserPractice";
-import NewRoom from "./components/NewRooms/NewRoom";
-import EditPractice from "./components/EditPractice/EditPractice";
 import Agenda from "./pages/Agenda";
+import IndexDashboard from "./components/HolderDashboard/IndexDashboard";
 
 
 const App = () => {
@@ -44,11 +41,6 @@ const App = () => {
               </RequireAuth>
             }
           >
-            <Route path="" element={<IndexDashboard />}>
-              <Route path="ajoutpraticien" element={<NewUserPratice />} />
-              <Route path="ajoutsalle" element={<NewRoom />} />
-              <Route path="modifier" element={<EditPractice />} />
-            </Route>
             <Route path="" element={<IndexDashboard />} />
             <Route path="plancollab" element={<PlanCollab />} />
             <Route path="planrooms" element={<PlanRooms />} />

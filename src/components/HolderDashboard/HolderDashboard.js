@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Link, Outlet } from "react-router-dom";
 import APIManager from "../../services/api";
-import PracticeData from "./Layouts/PracticeData";
-import RoomData from "./Layouts/RoomData";
+import RoomData from "./Room/RoomData";
+import PracticeData from "./Practice/PracticeData";
+import UserData from "./User/UserData";
 
 const GestionPraticienTitulaire = () => {
   const [userData, setUserData] = useState([]);
   const [practiceData, setPracticeData] = useState([]);
-  const [roomsPractice, setRoomsPractice] = useState([]);
   const [usersPractice, setUsersPractice] = useState([]);
 
   const getUserData = async () => {
@@ -19,7 +19,6 @@ const GestionPraticienTitulaire = () => {
   const getPracticeData = async (practice_id) => {
     const data = await APIManager.practiceData(practice_id);
     setPracticeData(data);
-    setRoomsPractice(data.rooms);
     setUsersPractice(data.users);
     return data;
   };
@@ -33,11 +32,7 @@ const GestionPraticienTitulaire = () => {
     getData();
   }, []);
 
-  const deleteUser = async (e) => {
-    e.preventDefault();
-    const user_id = JSON.stringify(e.target.dataset.name).slice(1, 3);
-    await APIManager.deleteUser(user_id);
-  };
+ 
 
   return (
     <div className="w-full">
@@ -67,26 +62,9 @@ const GestionPraticienTitulaire = () => {
 
           {/* MENU USERS */}
           <div className="flex flex-col w-full h-full border border-green rounded-xl p-2 shadow-lg">
-            <h1 className="text-1xl font-bold leading-tight">
-              LES PRATICIENS DU CABINET
-            </h1>
-            <ul>
-              {usersPractice &&
-                usersPractice.map((user) => (
-                  <>
-                    <li key={user.id}>{user.email}</li>
-                    <button data-name={user.id} onClick={deleteUser}>
-                      ❌
-                    </button>
-                  </>
-                ))}
-            </ul>
-            <button className="self-end justify-self-end mt-4 mx-auto lg:mx-0 hover:underline bg-lightgrey text-gray-800 font-bold rounded-full my-2 py-1 px-4 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
-              <Link to="ajoutpraticien">Ajouter un praticien</Link>
-            </button>
+              <UserData />
           </div>
         </div>
-
         <Outlet />
       </div>
     </div>
