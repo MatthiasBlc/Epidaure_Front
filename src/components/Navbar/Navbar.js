@@ -4,35 +4,24 @@ import logoWhite from "../../assets/images/logoEpiWhiteBgNone.png";
 import { loggedAtom } from "../../services/Atoms/user";
 import { useAtom } from "jotai";
 import APIManager from "../../services/api";
-import { currentUserAtom } from "../../services/Atoms/currentUser";
 
 const Navbar = () => {
   const navigate = useNavigate();
   const [logged, setLogged] = useAtom(loggedAtom);
   const [alertMsg, setAlertMsg] = useState(undefined);
-  const [userAtom] = useAtom(currentUserAtom);
-
-  let activeStyle = {
-    textDecoration: "underline",
-    fontWeight: "bold",
-  };
-
-
 
   const logout = async (e) => {
     e.preventDefault();
     await APIManager.logoutUser();
-    navigate("/login", setAlertMsg({ type: "success" , }));
     setLogged(false);
+    navigate("/login", setAlertMsg({ type: "success" , }));
+    setTimeout(() => {
+      window.location.reload();
+    }, 3000);
   };
 
   var navMenuDiv = document.getElementById("nav-content");
   var navMenu = document.getElementById("nav-toggle");
-  var header = document.getElementById("header");
-  var navcontent = document.getElementById("nav-content");
-  var navaction = document.getElementById("navAction");
-  var brandname = document.getElementById("brandname");
-  var toToggle = document.querySelectorAll(".toggleColour");
 
   document.onclick = check;
   function check(e) {

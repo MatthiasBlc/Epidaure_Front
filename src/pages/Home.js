@@ -43,7 +43,7 @@ const Home = () => {
                 calendrier simple et efficace.
               </p>
               <button className="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
-                <Link to="/contact">En savoir plus</Link> 
+                <Link to="/contact">En savoir plus</Link>
               </button>
             </div>
             {/* <!--Right Col--> */}
@@ -166,12 +166,14 @@ const Home = () => {
               <div className="flex flex-col w-5/6 lg:w-1/3 mx-auto lg:mx-0 rounded-lg bg-white mt-4 sm:-mt-6 shadow-lg z-10">
                 <div className="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
                   <div className="w-full p-8 text-3xl font-bold text-center">
-                    Basique
+                    Gratuit
                   </div>
                   <div className="h-1 w-full gradient my-0 py-0 rounded-t"></div>
                   <ul className="w-full text-center text-base font-bold">
-                    {freeFeatures.map((freeFeature,i) => (
-                      <li key={i} className="border-b py-4">{freeFeature}</li>
+                    {freeFeatures.map((freeFeature, i) => (
+                      <li key={i} className="border-b py-4">
+                        {freeFeature}
+                      </li>
                     ))}
                   </ul>
                 </div>
@@ -182,16 +184,24 @@ const Home = () => {
                     Pro
                   </div>
                   <ul className="w-full text-center text-sm">
-                    {paidFeatures.map((paidFeature,i) => (
-                      <li key={i} className="border-b py-4">{paidFeature}</li>
+                    {paidFeatures.map((paidFeature, i) => (
+                      <li key={i} className="border-b py-4">
+                        {paidFeature}
+                      </li>
                     ))}
                   </ul>
-                  <button disabled type="button" className="py-2 px-4 w-full text-center font-medium text-left bg-gray-100 rounded-b-lg cursor-not-allowed dark:bg-gray-600 dark:text-gray-400">Prochainement</button>
+                  <button
+                    disabled
+                    type="button"
+                    className="py-2 px-4 w-full text-center font-medium text-left bg-gray-100 rounded-b-lg cursor-not-allowed dark:bg-gray-600 dark:text-gray-400"
+                  >
+                    Prochainement
+                  </button>
                 </div>
               </div>
             </div>
             <button className="mx-auto center lg:mx-0 hover:underline gradient text-white font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
-              Je veux en savoir plus
+              <Link to="/contact">Je veux en savoir plus</Link>
             </button>
           </div>
         </section>
@@ -241,7 +251,7 @@ const Home = () => {
             répondre!
           </h3>
           <button className="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
-          <Link to="/contact">Nous contacter</Link> 
+            <Link to="/contact">Nous contacter</Link>
           </button>
         </section>
         <Footer />
