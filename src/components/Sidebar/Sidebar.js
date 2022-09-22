@@ -1,16 +1,14 @@
 import React, { useState } from "react";
+import { GoDashboard } from "react-icons/go";
 import { BiMenuAltLeft } from "react-icons/bi";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCalendarDays, faUserGroup, faGauge, faDoorClosed } from '@fortawesome/free-solid-svg-icons'
-
 import { Link } from "react-router-dom";
 
 const SideBar = () => {
   const menus = [
-    { name: "Dashboard", link: "/dashboard", icon: faGauge },
-    { name: "Mon planning", link: "planning", icon: faGauge },
-    { name: "Planning collaborateurs", link: "plancollab", icon: faGauge },
-    { name: "Planning salles", link: "planrooms", icon: faGauge }
+    { name: "Dashboard", link: "/dashboard", icon: GoDashboard },
+    { name: "Mon planning", link: "planning", icon: GoDashboard },
+    { name: "Planning collaborateurs", link: "plancollab", icon: GoDashboard },
+    { name: "Planning salles", link: "planrooms", icon: GoDashboard }
   ];
 
   const [open, setOpen] = useState(false);
@@ -35,7 +33,7 @@ const SideBar = () => {
             key={i}
             className="group flex items-center text-sm gap-3.5 font-medium p-2 hover:bg-turquoise rounded-md"
           >
-            <div className="w-5 h-5 flex items-center justify-center"><FontAwesomeIcon size="xl" icon={menu?.icon}></FontAwesomeIcon></div>
+            <div>{React.createElement(menu?.icon, { size: "20" })}</div>
             <h2
               style={{
                 transitionDelay: `${i + 3}00ms`,
