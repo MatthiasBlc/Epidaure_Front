@@ -30,15 +30,15 @@ const RoomData = () => {
     setDeleteRoom(e);
   };
 
-  const editRoomFunction = async (e) => {
-    e.preventDefault();
-    console.log(editRoomID);
-    // const name = e.target.newName.value;
-    // await APIManager.editRoom(editRoomID,name).catch((error) => {
-    //   console.log(error.message);
-    // });
-    // setEditRoomList(e);
-  };
+  // const editRoomFunction = async (e) => {
+  //   e.preventDefault();
+  //   console.log(editRoomID);
+  //   // const name = e.target.newName.value;
+  //   // await APIManager.editRoom(editRoomID,name).catch((error) => {
+  //   //   console.log(error.message);
+  //   // });
+  //   // setEditRoomList(e);
+  // };
 
   const createRoom = async (e) => {
     e.preventDefault();
@@ -61,18 +61,18 @@ const RoomData = () => {
     }
   };
 
-  const editRoomButton = (e) => {
-    e.preventDefault();
-    const roomID = e.target.dataset.name;
-    setEditRoomID(roomID);
-    console.log(roomID);
-    const editRoomDiv = document.getElementById("editRoom");
-    if (editRoomDiv.style.display !== "block") {
-      editRoomDiv.style.display = "block";
-    } else {
-      editRoomDiv.style.display = "none";
-    }
-  };
+  // const editRoomButton = (e) => {
+  //   e.preventDefault();
+  //   const roomID = e.target.dataset.name;
+  //   setEditRoomID(roomID);
+  //   console.log(roomID);
+  //   const editRoomDiv = document.getElementById("editRoom");
+  //   if (editRoomDiv.style.display !== "block") {
+  //     editRoomDiv.style.display = "block";
+  //   } else {
+  //     editRoomDiv.style.display = "none";
+  //   }
+  // };
 
   useEffect(() => {
     getPracticeData(practice_id);
@@ -95,9 +95,9 @@ const RoomData = () => {
                   Salle {room.id} - {room.name}
                 </p>
                 <div>
-                  <button data-name={room.id} onClick={editRoomButton}>
+                  {/* <button data-name={room.id} onClick={editRoomButton}>
                     ✎ Modifier
-                  </button>
+                  </button> */}
                   <button
                     className="ml-2"
                     data-name={room.id}
@@ -143,7 +143,7 @@ const RoomData = () => {
             </form>
           </div>
         </div>
-        <div id="editRoom">
+        {/* <div id="editRoom">
           <form method="POST" onSubmit={editRoomFunction}>
             <div>
               <label htmlFor="roomName" className="mr-1">
@@ -158,7 +158,7 @@ const RoomData = () => {
               </button>
             </div>
           </form>
-        </div>
+        </div> */}
       </>
     </div>
   );

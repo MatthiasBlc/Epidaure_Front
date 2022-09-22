@@ -2,7 +2,7 @@ import React from "react";
 import { useAtom } from "jotai";
 import { Link, Navigate } from "react-router-dom";
 import { loggedAtom } from "../../services/Atoms/user";
-import Footer from "../../components/Footer/Footer";
+import Footer from "./Footer/Footer";
 import createAccountLogo from "../../assets/images/createAccountLogo.png";
 import SVG1 from "./svg/SVG1";
 import SVG0 from "./svg/SVG0";
@@ -58,7 +58,7 @@ const Home = () => {
         {/* <!-- Separator 1 --> */}
         <SVG0 />
         {/* <!-- Section 1 --> */}
-        
+
         <section id="abc" className="bg-white border-b py-8">
           <div className="container max-w-5xl mx-auto m-8">
             <h2 className="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">

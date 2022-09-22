@@ -30,6 +30,12 @@
   }
 }
 
-#addUser {
-  display: none;
+.grid {
+  display: flex;
+}
+.center {
+  justify-content: center;
+  width: 100vh;
+  text-align:center;
+  word-wrap : break-word;
 }
