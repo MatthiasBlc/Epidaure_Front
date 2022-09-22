@@ -47,7 +47,7 @@ const UserData = () => {
         Les practiciens du cabinet:
       </h1>
       <div className="w-full mb-4">
-        <div className="mb-10 h-1 gradient w-30 opacity-25 my-0 py-0 rounded-t"></div>
+        <div className="mb-6 h-1 gradient w-30 opacity-25 my-0 py-0 rounded-t"></div>
       </div>
       <ul>
         {usersPractice &&
