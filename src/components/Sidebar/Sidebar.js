@@ -1,14 +1,17 @@
 import React, { useState } from "react";
-import { GoDashboard } from "react-icons/go";
 import { BiMenuAltLeft } from "react-icons/bi";
 import { Link } from "react-router-dom";
+import Gauge from "../../assets/icons/gauge.svg"
+import Calendar from "../../assets/icons/calendar.svg"
+import Group from "../../assets/icons/group.svg"
+import Room from "../../assets/icons/room.svg"
 
 const SideBar = () => {
   const menus = [
-    { name: "Dashboard", link: "/dashboard", icon: GoDashboard },
-    { name: "Mon planning", link: "planning", icon: GoDashboard },
-    { name: "Planning collaborateurs", link: "plancollab", icon: GoDashboard },
-    { name: "Planning salles", link: "planrooms", icon: GoDashboard }
+    { name: "Dashboard", link: "/dashboard", icon: Gauge },
+    { name: "Mon planning", link: "planning", icon: Calendar },
+    { name: "Planning collaborateurs", link: "plancollab", icon: Group },
+    { name: "Planning salles", link: "planrooms", icon: Room }
   ];
 
   const [open, setOpen] = useState(false);
@@ -33,7 +36,7 @@ const SideBar = () => {
             key={i}
             className="group flex items-center text-sm gap-3.5 font-medium p-2 hover:bg-turquoise rounded-md"
           >
-            <div>{React.createElement(menu?.icon, { size: "20" })}</div>
+            <img className="fill-white" src={menu?.icon} alt={`icon de ${menu?.icon}`} />
             <h2
               style={{
                 transitionDelay: `${i + 3}00ms`,
