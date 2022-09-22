@@ -4,10 +4,9 @@ import APIManager from "../../../services/api";
 import { currentUserAtom } from "../../../services/Atoms/currentUser";
 import AddPracticeUser from "./AddPracticeUser";
 import ReactDOM from "react-dom/client";
-import Delete from "../../../assets/icons/delete.svg";
 
 const UserData = () => {
-  const [userAtom] = useAtom(currentUserAtom);
+  const [userAtom] = useAtom(currentUserAtom)
   const practice_id = JSON.parse(userAtom).practice_id;
   const [usersPractice, setUsersPractice] = useState();
 
@@ -15,7 +14,7 @@ const UserData = () => {
     const data = await APIManager.practiceData(practice_id);
     setUsersPractice(data.users);
   };
-
+  
   useEffect(() => {
     getPracticeData(practice_id);
   }, [practice_id]);
@@ -32,16 +31,15 @@ const UserData = () => {
   };
 
   const toggleButton = () => {
-    const button = document.getElementById("buttonAddUser");
-    if ((button.style.display = "block")) {
-      button.style.display = "none";
-    }
-  };
+    const button = document.getElementById('buttonAddUser');
+    if (button.style.display = "block") { 
+      button.style.display = "none" } 
+  }
 
   const addUserAndToggle = () => {
     addUser();
-    toggleButton();
-  };
+    toggleButton();    
+  }
 
   return (
     <div>
@@ -53,23 +51,21 @@ const UserData = () => {
       </div>
       <ul>
         {usersPractice &&
-          usersPractice.map((user, index) => (
+          usersPractice.map((user,index) => (
             <div key={index}>
-              <li className="flex flex-row flex-wrap justify-between mt-2">
+              <li
+                className="flex flex-row flex-wrap justify-between mt-2"
+              >
                 <p>{user.email}</p>
                 <button data-name={user.id} onClick={deleteUser}>
-                  <img className="h-5 w-5" src={Delete} alt="iconne supprimer" />
+                  ❌ 
                 </button>
               </li>
-              <hr className="mr-40 ml-40" />
+              <hr className="mr-40 ml-40"/>
             </div>
           ))}
       </ul>
-      <button
-        id="buttonAddUser"
-        onClick={addUserAndToggle}
-        className="self-end mt-4 mx-auto lg:mx-0 hover:underline bg-lightgrey text-gray-800 font-bold rounded-full my-2 py-1 px-4 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out"
-      >
+      <button id="buttonAddUser" onClick={addUserAndToggle} className="self-end mt-4 mx-auto lg:mx-0 hover:underline bg-lightgrey text-gray-800 font-bold rounded-full my-2 py-1 px-4 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
         Ajouter un practicien
       </button>
       <div id="addUser"></div>
