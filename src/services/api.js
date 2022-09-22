@@ -92,6 +92,10 @@ export default class APIManager {
     });
     return response.data;
   }
+  static async deleteUser(id) {
+    const response = await API.delete("/members/"+id)
+    return response.data;
+  }
 
   //  -----------------------        PRACTICE FUNCTIONS
   static async editPractice(id, name, adresse, email) {
@@ -129,7 +133,7 @@ export default class APIManager {
     return response.data;
   }
 
-  // CONTACT FORM
+  // -----------------------      CONTACT FORM
   static async contactForm(last_name, first_name, email, content) {
     const response = await API2.post("/contacts", {
       contact: {
@@ -140,5 +144,44 @@ export default class APIManager {
       },
     });
     return response.data;
+  }
+
+  //  -----------------------        AGENDA FUNCTIONS
+
+  static async agendaData() {
+    const response = await API.get("/time_slots");
+    return response;
+  }
+
+  static async agendaCreate(text, start, end, barColor, resource, selectedRoom) {
+    const response = await API.post("/time_slots", {
+      time_slots: {
+        text: text,
+        start: start,
+        end: end,
+        barColor: barColor,
+        resource: resource,
+        room_id: selectedRoom,
+      },
+    });
+    return response;
+  }
+
+  static async agendaUpdate(id, text, start, end, barColor, resource, selectedRoom) {
+    const response = await API.patch("/time_slots/" + id, {
+      time_slots: {
+        text: text,
+        start: start,
+        end: end,
+        barColor: barColor,
+        resource: resource,
+        room_id: selectedRoom,
+      },
+    });
+    return response;
+  }
+
+  static async agendaDelete(id) {
+    await API.delete("/time_slots/" + id);
   }
 }

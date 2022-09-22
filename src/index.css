@@ -29,3 +29,7 @@
     grid-row-gap: 40px;
   }
 }
+
+#addUser {
+  display: none;
+}
