@@ -103,7 +103,7 @@ const RoomData = () => {
                     data-name={room.id}
                     onClick={deleteRoom}
                   >
-                    ❌ Supprimer
+                    ❌ 
                   </button>
                 </div>
               </li>
