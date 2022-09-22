@@ -170,8 +170,8 @@ const Home = () => {
                   </div>
                   <div className="h-1 w-full gradient my-0 py-0 rounded-t"></div>
                   <ul className="w-full text-center text-base font-bold">
-                    {freeFeatures.map((freeFeature) => (
-                      <li className="border-b py-4">{freeFeature}</li>
+                    {freeFeatures.map((freeFeature,i) => (
+                      <li key={i} className="border-b py-4">{freeFeature}</li>
                     ))}
                   </ul>
                 </div>
@@ -182,11 +182,11 @@ const Home = () => {
                     Pro
                   </div>
                   <ul className="w-full text-center text-sm">
-                    {paidFeatures.map((paidFeature) => (
-                      <li className="border-b py-4">{paidFeature}</li>
+                    {paidFeatures.map((paidFeature,i) => (
+                      <li key={i} className="border-b py-4">{paidFeature}</li>
                     ))}
                   </ul>
-                  <button>Prochainement</button>
+                  <button disabled type="button" className="py-2 px-4 w-full text-center font-medium text-left bg-gray-100 rounded-b-lg cursor-not-allowed dark:bg-gray-600 dark:text-gray-400">Prochainement</button>
                 </div>
               </div>
             </div>

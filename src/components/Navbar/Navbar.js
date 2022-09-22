@@ -4,22 +4,26 @@ import logoWhite from "../../assets/images/logoEpiWhiteBgNone.png";
 import { loggedAtom } from "../../services/Atoms/user";
 import { useAtom } from "jotai";
 import APIManager from "../../services/api";
+import { currentUserAtom } from "../../services/Atoms/currentUser";
 
 const Navbar = () => {
   const navigate = useNavigate();
   const [logged, setLogged] = useAtom(loggedAtom);
   const [alertMsg, setAlertMsg] = useState(undefined);
+  const [userAtom] = useAtom(currentUserAtom);
 
   let activeStyle = {
     textDecoration: "underline",
     fontWeight: "bold",
   };
 
+
+
   const logout = async (e) => {
     e.preventDefault();
     await APIManager.logoutUser();
+    navigate("/login", setAlertMsg({ type: "success" , }));
     setLogged(false);
-    navigate("/login", setAlertMsg({type: 'success'}) )
   };
 
   var navMenuDiv = document.getElementById("nav-content");
@@ -65,8 +69,12 @@ const Navbar = () => {
       <nav id="header" className="w-full z-30 top-0 text-white gradient">
         <div className="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 py-2">
           <div className="pl-4 flex items-center">
-            <Link to={ logged  ? "/dashboard" : "/"}>
-              <img className="h-20" src={logoWhite} alt="Logo Epidaure Navbar"></img>
+            <Link to={logged ? "/dashboard" : "/"}>
+              <img
+                className="h-20"
+                src={logoWhite}
+                alt="Logo Epidaure Navbar"
+              ></img>
             </Link>
           </div>
           <div className="block lg:hidden pr-4">
@@ -89,16 +97,9 @@ const Navbar = () => {
             id="nav-content"
           >
             <ul className="list-reset lg:flex justify-end flex-1 items-center">
-              {logged  ? (
+              {logged ? (
                 <li className="mr-10">
-                  <NavLink
-                    style={({ isActive }) =>
-                      isActive ? activeStyle : undefined
-                    }
-                    to="/profile"
-                  >
-                    Profil
-                  </NavLink>
+                  <NavLink to="/profile">Profil</NavLink>
                 </li>
               ) : (
                 " "

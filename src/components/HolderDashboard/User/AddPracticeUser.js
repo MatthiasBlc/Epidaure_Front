@@ -1,9 +1,10 @@
 import { useAtom } from "jotai";
 import React from "react";
-import APIManager from "../../services/api";
-import { currentUserAtom } from "../../services/Atoms/currentUser";
+import { Link } from "react-router-dom";
+import APIManager from "../../../services/api";
+import { currentUserAtom } from "../../../services/Atoms/currentUser";
 
-const NewUserPratice = () => {
+const AddPracticeUser = () => {
   const [userAtom] = useAtom(currentUserAtom);
 
   const handleSubmit = async (e) => {
@@ -28,9 +29,9 @@ const NewUserPratice = () => {
 
   return (
     <div>
-      <div className="ml-20 mr-20 mt-20 md:col-span-2 ">
+      <div className="ml-20 mr-20 mt-10 md:col-span-2 ">
         <form onSubmit={handleSubmit}>
-          <div className="overflow-hidden shadow sm:rounded-md">
+          <div className="overflow-hidden shadow sm:rounded-md border border-gray-300">
             <h1 className="mt-8 mb-5 pl-6 my-2 text-1xl font-bold leading-tight text-left text-gray-800">
               Créer un compte praticien :
             </h1>
@@ -44,7 +45,7 @@ const NewUserPratice = () => {
                   <input
                     type="text"
                     id="email"
-                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focusForm mt-2 block w-full rounded-md border-gray-300 shadow-sm sm:text-sm"
+                    className="mt-1 block w-full rounded-md border-gray-900 shadow-sm focusForm mt-2 block w-full rounded-md border-gray-300 shadow-sm sm:text-sm"
                   />
                 </div>
                 <div className="col-span-6 sm:col-span-3">
@@ -67,15 +68,10 @@ const NewUserPratice = () => {
                     className="mt-1 block w-full focusForm mt-2 block w-full rounded-md border-gray-300 shadow-sm sm:text-sm"
                   />
                 </div>
+                <button type="submit" className="self-end mt-4 mx-auto lg:mx-0 hover:underline bg-lightgrey text-gray-800 font-bold rounded-full  shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+        Ajouter un practicien
+      </button>
               </div>
-            </div>
-            <div className="bg-gray-50 px-4 py-3 text-right sm:px-6">
-              <button
-                type="submit"
-                className="ml-10 inline-flex justify-center hover:underline gradient text-white font-bold rounded-full my-3 py-2 px-5 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out"
-              >
-                Valider
-              </button>
             </div>
           </div>
         </form>
@@ -84,4 +80,4 @@ const NewUserPratice = () => {
   );
 };
 
-export default NewUserPratice;
+export default AddPracticeUser;
