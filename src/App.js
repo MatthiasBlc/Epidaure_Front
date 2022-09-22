@@ -15,8 +15,9 @@ import RequireAuth from "./hooks/requireAuth";
 import NewUserPratice from "./components/NewUserPractice/NewUserPractice";
 import NewRoom from "./components/NewRooms/NewRoom";
 import EditPractice from "./components/EditPractice/EditPractice";
-import Agenda from "./pages/Agenda";
-
+import MyAgenda from "./pages/MyAgenda";
+import CollaboratorAgenda from "./pages/CollaboratorAgenda";
+import RoomAgenda from "./pages/RoomAgenda";
 
 const App = () => {
   return (
@@ -52,7 +53,9 @@ const App = () => {
             <Route path="" element={<IndexDashboard />} />
             <Route path="plancollab" element={<PlanCollab />} />
             <Route path="planrooms" element={<PlanRooms />} />
-            <Route path="agenda" element={<Agenda />} />
+            <Route path="mon-agenda" element={<MyAgenda />} />
+            <Route path="mes-collaborateurs" element={<CollaboratorAgenda />} />
+            <Route path="bureaux" element={<RoomAgenda />} />
           </Route>
         </Routes>
       </main>

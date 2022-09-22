@@ -7,9 +7,9 @@ import { Link } from "react-router-dom";
 const SideBar = () => {
   const menus = [
     { name: "Menu 1", link: "/dashboard", icon: GoDashboard },
-    { name: "Menu 2", link: "plancollab", icon: GoDashboard },
-    { name: "Menu 3", link: "planrooms", icon: GoDashboard },
-    { name: "Menu 4", link: "planning", icon: GoDashboard },
+    { name: "Menu 2", link: "mon-agenda", icon: GoDashboard },
+    { name: "Menu 3", link: "mes-collaborateurs", icon: GoDashboard },
+    { name: "Menu 4", link: "bureaux", icon: GoDashboard },
     { name: "Menu 5", link: "/", icon: GoDashboard },
   ];
 
