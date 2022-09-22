@@ -2,7 +2,6 @@ import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import Navbar from "./components/Navbar/Navbar";
-import Home from "./pages/Home";
 import Login from "./components/Login";
 import ForgotPassword from "./components/ForgotPassword/ForgotPassword";
 import ResetPassword from "./components/ResetPassword/ResetPassword";
@@ -14,6 +13,7 @@ import RequireAuth from "./hooks/requireAuth";
 import Agenda from "./pages/MyAgenda";
 import IndexDashboard from "./components/HolderDashboard/IndexDashboard";
 import Contact from "./components/Contact/Contact";
+import Home from "./pages/HomePage/Home";
 
 const App = () => {
   return (
