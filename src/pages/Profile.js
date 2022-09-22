@@ -51,7 +51,7 @@ const Profil = () => {
 
   return (
     <div className="pl-20 pr-20 pt-20">
-      <div className="mt-10 sm:mt-0">
+      <div className="mt-10 mb-10 sm:mt-0">
         <div className="md:grid md:grid-cols-3 md:gap-6">
           <div className="md:col-span-1">
             <div className="px-4 sm:px-0">
