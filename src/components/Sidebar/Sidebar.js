@@ -35,7 +35,7 @@ const SideBar = () => {
             key={i}
             className="group flex items-center text-sm gap-3.5 font-medium p-2 hover:bg-turquoise rounded-md"
           >
-            <div>{React.createElement(menu?.icon, { size: "20" })}</div>
+            <div><FontAwesomeIcon icon={React.createElement(menu?.icon, { size: "20" })}></FontAwesomeIcon></div>
             <h2
               style={{
                 transitionDelay: `${i + 3}00ms`,
