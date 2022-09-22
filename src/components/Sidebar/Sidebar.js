@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 import { BiMenuAltLeft } from "react-icons/bi";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCalendarDays, faUserGroup, faGauge, faDoorClosed  } from '@fortawesome/free-solid-svg-icons'
+import { faCalendarDays, faUserGroup, faGauge, faDoorClosed } from '@fortawesome/free-solid-svg-icons'
 
 import { Link } from "react-router-dom";
 
 const SideBar = () => {
   const menus = [
     { name: "Dashboard", link: "/dashboard", icon: faGauge },
-    { name: "Mon planning", link: "planning", icon: faCalendarDays },
-    { name: "Planning collaborateurs", link: "plancollab", icon: faUserGroup },
-    { name: "Planning salles", link: "planrooms", icon: faDoorClosed }
+    { name: "Mon planning", link: "planning", icon: faGauge },
+    { name: "Planning collaborateurs", link: "plancollab", icon: faGauge },
+    { name: "Planning salles", link: "planrooms", icon: faGauge }
   ];
 
   const [open, setOpen] = useState(false);
