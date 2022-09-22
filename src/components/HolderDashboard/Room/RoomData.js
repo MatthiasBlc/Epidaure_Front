@@ -5,6 +5,8 @@ import APIManager from "../../../services/api";
 import { currentUserAtom } from "../../../services/Atoms/currentUser";
 import AddRoomForm from "./AddRoomForm"
 import EditRoomForm from "./EditRoomForm";
+import Delete from "../../../assets/icons/delete.svg"
+import Pencil from "../../../assets/icons/pencil.svg"
 
 const RoomData = () => {
   const [userAtom] = useAtom(currentUserAtom);
@@ -58,16 +60,16 @@ const RoomData = () => {
                 <p>
                   Salle numéro {room.id} - {room.name}
                 </p>
-                <div>
+                <div className="flex">
                   <button data-name={room.id} onClick={editRoom}>
-                    ✎ Modifier
+                  <img className="h-4 w-4" src={Pencil} alt="iconne modifier" />
                   </button>
                   <button
                     className="ml-2"
                     data-name={room.id}
                     onClick={deleteRoom}
                   >
-                    ❌ Supprimer
+                    <img className="h-5 w-5" src={Delete} alt="iconne supprimer" />
                   </button>
                 </div>
               </li>
