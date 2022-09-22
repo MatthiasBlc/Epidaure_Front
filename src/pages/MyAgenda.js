@@ -16,8 +16,11 @@ const Agenda = () => {
   const [resource, setResource] = useState("");
   const [selectedRoom, setSelectedRoom] = useState("");
 
+  const [newEvent, setNewEvent] = useState("");
+
   let [currentUser] = useAtom(currentUserAtom);
   currentUser = JSON.parse(currentUser);
+  const practice_id = currentUser.practice_id;
 
   const getPracticeData = async (practice_id) => {
     const data = await APIManager.practiceData(practice_id);
@@ -25,7 +28,7 @@ const Agenda = () => {
   };
 
   useEffect(() => {
-    getPracticeData();
+    getPracticeData(practice_id);
   }, []);
 
   const getCurrentUserAgendaData = async () => {
@@ -39,10 +42,11 @@ const Agenda = () => {
 
   useEffect(() => {
     getCurrentUserAgendaData();
-  }, []);
+  }, [newEvent]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log("selectedRoom", selectedRoom)
     await APIManager.agendaCreate(
       text,
       start,
@@ -54,6 +58,7 @@ const Agenda = () => {
       alert("erreur");
       console.log(error.message);
     });
+    setNewEvent(e)
   };
 
   if (agendaData === undefined) return <h1>LOADING ...</h1>;
@@ -156,7 +161,7 @@ const Agenda = () => {
                   {practiceRoomsList &&
                     practiceRoomsList.map((room, index) => (
                       <option key={index} value={room.id}>
-                        {room.name} {room.id}
+                        {room.name}
                       </option>
                     ))}
                 </select>

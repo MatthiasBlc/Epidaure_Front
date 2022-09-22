@@ -61,7 +61,7 @@ const CollaboratorAgenda = () => {
         {practiceUsersList &&
           practiceUsersList.map((user, index) => (
             <option key={index} value={user.id}>
-              {user.email} {user.id}
+              {user.email}
             </option>
           ))}
       </select>
