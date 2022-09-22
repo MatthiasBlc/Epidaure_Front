@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import APIManager from "../services/api";
 
-import Calendar from "../components/Calendar/Calendar";
+import CalendarManager from "../components/Calendar/CalendarManager";
+import { currentUserAtom } from "../services/Atoms/currentUser";
+import { useAtom } from "jotai";
 
 const Agenda = () => {
   const [agendaData, setAgendaData] = useState();
@@ -12,14 +14,18 @@ const Agenda = () => {
   const [barColor, setBarColor] = useState("");
   const [resource, setResource] = useState("");
 
-  const getAgendaData = async () => {
+  let [currentUser] = useAtom(currentUserAtom);
+  currentUser =  JSON.parse(currentUser)
+
+  const getCurrentUserAgendaData = async () => {
     const { data } = await APIManager.agendaData();
-    setAgendaData(data);
-    return data;
+    const currentUserData = data.filter(data => data.user_id === currentUser.id )
+    setAgendaData(currentUserData);
+    return currentUserData;
   };
 
   useEffect(() => {
-    getAgendaData();
+    getCurrentUserAgendaData();
   }, []);
 
   const handleSubmit = async (e) => {
@@ -28,24 +34,16 @@ const Agenda = () => {
       (error) => {
         alert("erreur");
         console.log(error.message);
-
-        // getAgendaData();
-        // semble ne pas s'actualiser ?
       }
     );
   };
 
   if (agendaData === undefined) return <h1>LOADING ...</h1>;
-  // console.log(agendaData);
   return (
     <div>
       <h1>Titre</h1>
-      <p>
-        La page d'accueil doit montrer un lien pour se signup et un lien pour se
-        signin si la personne parcourant le site n'est pas connectée. Si elle
-        est connectée, le lien pour se logout doit être affiché à la place.
-      </p>
-      <Calendar eventList={agendaData} />
+
+      <CalendarManager eventList={agendaData} />
 
       <div className="mt-5 md:col-span-2 md:mt-0">
         <form onSubmit={handleSubmit}>

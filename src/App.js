@@ -8,13 +8,12 @@ import ForgotPassword from "./components/ForgotPassword/ForgotPassword";
 import ResetPassword from "./components/ResetPassword/ResetPassword";
 import Profile from "./pages/Profile";
 import Dashboard from "./pages/Dashboard";
-import PlanCollab from "./components/PlanCollab/PlanCollab";
-import PlanRooms from "./components/PlanRooms/PlanRooms";
+import PlanCollab from "./components/PlanCollab/CollaboratorAgenda";
+import PlanRooms from "./components/PlanRooms/RoomAgenda";
 import RequireAuth from "./hooks/requireAuth";
-import Agenda from "./pages/Agenda";
+import Agenda from "./pages/MyAgenda";
 import IndexDashboard from "./components/HolderDashboard/IndexDashboard";
 import Contact from "./components/Contact/Contact";
-
 
 const App = () => {
   return (
@@ -46,7 +45,9 @@ const App = () => {
             <Route path="" element={<IndexDashboard />} />
             <Route path="plancollab" element={<PlanCollab />} />
             <Route path="planrooms" element={<PlanRooms />} />
-            <Route path="agenda" element={<Agenda />} />
+            <Route path="planning" element={<Agenda />} />
+            <Route path="plancollab" element={<PlanCollab />} />
+            <Route path="planrooms" element={<PlanRooms />} />
           </Route>
         </Routes>
       </main>
