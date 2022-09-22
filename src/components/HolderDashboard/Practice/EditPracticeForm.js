@@ -50,13 +50,13 @@ const EditPracticeForm = () => {
             <div className="mb-4 h-1 gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
           </div>
           <div>
-            <label className="mr-1">
+            <label htmlFor="practiceName" className="mr-1">
               <b>Nom du cabinet:</b>
             </label>
             <input type="text" id="newName" defaultValue={practiceData.name} />
           </div>
           <div>
-            <label className="mr-1">
+            <label htmlFor="practiceAdress" className="mr-1">
               <b>Adresse :</b>
             </label>
             <input
@@ -66,7 +66,7 @@ const EditPracticeForm = () => {
             />
           </div>
           <div>
-            <label className="mr-1">
+            <label htmlFor="practiceEmail" className="mr-1">
               <b>Email :</b>
             </label>
             <input

@@ -87,6 +87,10 @@ export default class APIManager {
     });
     return response.data;
   }
+  static async deleteUser(id) {
+    const response = await API.delete("/members/"+id)
+    return response.data;
+  }
 
   //  -----------------------        PRACTICE FUNCTIONS
   static async editPractice(id, name, adresse, email) {
@@ -124,7 +128,7 @@ export default class APIManager {
     return response.data;
   }
 
-  // CONTACT FORM
+  // -----------------------      CONTACT FORM
   static async contactForm(last_name, first_name, email, content) {
     const response = await API2.post("/contacts", {
       contact: {

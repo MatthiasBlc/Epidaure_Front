@@ -123,7 +123,10 @@ const Profil = () => {
                 <div className="col-span-6 sm:col-span-3 mr-6 mt-3">
                   <hr />
                   <form method="POST" onSubmit={handleSubmit}>
-                    <label className="block text-sm font-medium text-gray-700">
+                    <label
+                      htmlFor="email"
+                      className="block text-sm font-medium text-gray-700"
+                    >
                       Changez d'adresse mail
                     </label>
                     <input
@@ -142,7 +145,10 @@ const Profil = () => {
                 </div>
                 <div className="col-span-6 sm:col-span-3">
                   <form method="POST" onSubmit={passwordSubmit}>
-                    <label className="block pb-3 text-sm font-medium text-gray-700">
+                    <label
+                      htmlFor="password"
+                      className="block pb-3 text-sm font-medium text-gray-700"
+                    >
                       Réinitialiser mon mot de passe
                     </label>
                     <button
