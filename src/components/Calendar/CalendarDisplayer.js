@@ -38,7 +38,7 @@ const CalendarDisplayer = (eventList) => {
 
   useEffect(() => {
     loadCalendarData();
-  }, []);
+  }, [eventList]);
 
   if (calendar === null) return <div> ...LOADING</div>;
 

@@ -136,7 +136,7 @@ const CalendarManager = (eventList) => {
 
   useEffect(() => {
     loadCalendarData();
-  }, []);
+  }, [eventList]);
 
   if (calendar === null) return <div> ...LOADING</div>;
   return <DayPilotCalendar {...calendarState} ref={calendarRef} />;
