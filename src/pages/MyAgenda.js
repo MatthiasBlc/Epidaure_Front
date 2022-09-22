@@ -7,19 +7,32 @@ import { useAtom } from "jotai";
 
 const Agenda = () => {
   const [agendaData, setAgendaData] = useState();
+  const [practiceRoomsList, setPracticeRoomsList] = useState();
 
   const [text, setText] = useState("");
   const [start, setStart] = useState("");
   const [end, setEnd] = useState("");
   const [barColor, setBarColor] = useState("");
   const [resource, setResource] = useState("");
+  const [selectedRoom, setSelectedRoom] = useState("");
 
   let [currentUser] = useAtom(currentUserAtom);
-  currentUser =  JSON.parse(currentUser)
+  currentUser = JSON.parse(currentUser);
+
+  const getPracticeData = async (practice_id) => {
+    const data = await APIManager.practiceData(practice_id);
+    setPracticeRoomsList(data.rooms);
+  };
+
+  useEffect(() => {
+    getPracticeData();
+  }, []);
 
   const getCurrentUserAgendaData = async () => {
     const { data } = await APIManager.agendaData();
-    const currentUserData = data.filter(data => data.user_id === currentUser.id )
+    const currentUserData = data.filter(
+      (data) => data.user_id === currentUser.id
+    );
     setAgendaData(currentUserData);
     return currentUserData;
   };
@@ -30,12 +43,17 @@ const Agenda = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await APIManager.agendaCreate(text, start, end, barColor, resource).catch(
-      (error) => {
-        alert("erreur");
-        console.log(error.message);
-      }
-    );
+    await APIManager.agendaCreate(
+      text,
+      start,
+      end,
+      barColor,
+      resource,
+      selectedRoom
+    ).catch((error) => {
+      alert("erreur");
+      console.log(error.message);
+    });
   };
 
   if (agendaData === undefined) return <h1>LOADING ...</h1>;
@@ -123,6 +141,25 @@ const Agenda = () => {
                   className="focusForm mt-2 block w-full rounded-md border-2 border-gray-600 shadow-sm sm:text-sm"
                   onChange={(e) => setResource(e.target.value)}
                 />
+              </div>
+              <div className="grid grid-cols-6 gap-6">
+                <label
+                  htmlFor="last-name"
+                  className="block text-sm font-medium text-gray-700"
+                >
+                  Bureau
+                </label>
+                <select
+                  className="select select-accent w-full max-w-xs"
+                  onChange={(e) => setSelectedRoom(e.target.value)}
+                >
+                  {practiceRoomsList &&
+                    practiceRoomsList.map((room, index) => (
+                      <option key={index} value={room.id}>
+                        {room.name} {room.id}
+                      </option>
+                    ))}
+                </select>
               </div>
             </div>
             <div className="bg-gray-50 px-4 py-3 text-right sm:px-6">
