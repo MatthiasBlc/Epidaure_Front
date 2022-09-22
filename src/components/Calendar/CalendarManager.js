@@ -1,17 +1,20 @@
-import React, { createRef, useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { DayPilot, DayPilotCalendar } from "@daypilot/daypilot-lite-react";
 import APIManager from "../../services/api";
 
-const Calendar2 = (eventList) => {
+const CalendarManager = (eventList) => {
   const [calendarRef] = useState(React.createRef());
   const [calendar, setCalendar] = useState(calendarRef);
 
   const [calendarState] = useState({
     viewType: "Resources",
+    heightSpec: ('BusinessHours'),
+    businessEndsHour: (19),
+    businessBeginsHour: (7),
+    timeFormat: ('Clock24Hours'),
+    width: ("98%"),
+
     onEventMoved: (args) => {
-      // DayPilot.message("Moved: " + args.e.text());
-      // console.log(args.e.data.id);
-      // console.log(args.e.data);
       const newIdEvent = args.e.data.id;
       const newTextEvent = args.e.data.text;
       const newStartEvent = args.e.data.start.value;
@@ -28,7 +31,6 @@ const Calendar2 = (eventList) => {
       );
     },
     onEventResized: (args) => {
-      // DayPilot.message("Moved: " + args.e.text());
       const newIdEvent = args.e.data.id;
       const newTextEvent = args.e.data.text;
       const newStartEvent = args.e.data.start.value;
@@ -43,8 +45,6 @@ const Calendar2 = (eventList) => {
         newBarColorEvent,
         newResourceEvent
       );
-      //   console.log("okkkkkkkkkkkkkkkkkk", calendarRef.current.control.elements.events[args].data);
-      //   control.elements.events.data
     },
 
     onEventClick: async (args) => {
@@ -72,7 +72,6 @@ const Calendar2 = (eventList) => {
         deleteEvent(newIdEvent);
         return;
       }
-      // calendar.events.update(modal.result);
       editEvent(
         newIdEvent,
         newTextEvent,
@@ -108,8 +107,6 @@ const Calendar2 = (eventList) => {
     ).catch((error) => {
       console.log(error.message);
     });
-
-    // console.log("con", data);
     return data;
   };
 
@@ -139,10 +136,9 @@ const Calendar2 = (eventList) => {
 
   useEffect(() => {
     loadCalendarData();
-  }, []);
+  }, [eventList]);
 
   if (calendar === null) return <div> ...LOADING</div>;
-
   return <DayPilotCalendar {...calendarState} ref={calendarRef} />;
 };
-export default Calendar2;
+export default CalendarManager;

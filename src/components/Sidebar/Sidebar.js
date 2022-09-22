@@ -1,16 +1,17 @@
 import React, { useState } from "react";
-import { GoDashboard } from "react-icons/go";
 import { BiMenuAltLeft } from "react-icons/bi";
-
 import { Link } from "react-router-dom";
+import Gauge from "../../assets/icons/gauge.svg"
+import Calendar from "../../assets/icons/calendar.svg"
+import Group from "../../assets/icons/group.svg"
+import Room from "../../assets/icons/room.svg"
 
 const SideBar = () => {
   const menus = [
-    { name: "Menu 1", link: "/dashboard", icon: GoDashboard },
-    { name: "Menu 2", link: "plancollab", icon: GoDashboard },
-    { name: "Menu 3", link: "planrooms", icon: GoDashboard },
-    { name: "Menu 4", link: "planning", icon: GoDashboard },
-    { name: "Menu 5", link: "/", icon: GoDashboard },
+    { name: "Dashboard", link: "/dashboard", icon: Gauge },
+    { name: "Mon planning", link: "planning", icon: Calendar },
+    { name: "Planning collaborateurs", link: "plancollab", icon: Group },
+    { name: "Planning salles", link: "planrooms", icon: Room }
   ];
 
   const [open, setOpen] = useState(false);
@@ -35,7 +36,7 @@ const SideBar = () => {
             key={i}
             className="group flex items-center text-sm gap-3.5 font-medium p-2 hover:bg-turquoise rounded-md"
           >
-            <div>{React.createElement(menu?.icon, { size: "20" })}</div>
+            <img className="fill-white" src={menu?.icon} alt={`icon de ${menu?.icon}`} />
             <h2
               style={{
                 transitionDelay: `${i + 3}00ms`,
@@ -49,7 +50,7 @@ const SideBar = () => {
             <h2
               className={`${
                 open && "hidden"
-              } absolute left-48 bg-white font-semibold whitespace-pre text-darkgrey rounded-md drop-shadow-lg px-0 py-0 w-0 overflow-hidden group-hover:px-2 group-hover:py-1 group-hover:left-14 group-hover:duration-300 group-hover:w-fit`}
+              } z-50 absolute left-48 bg-turquoise font-semibold whitespace-pre text-white rounded-md drop-shadow-lg px-0 py-0 w-0 overflow-hidden group-hover:px-2 group-hover:py-1 group-hover:left-14 group-hover:duration-300 group-hover:w-fit`}
             >
               {menu?.name}
             </h2>
