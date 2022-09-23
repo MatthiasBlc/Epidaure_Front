@@ -48,8 +48,12 @@ const RoomAgenda = () => {
   if (agendaData === undefined) return <h1>LOADING ...</h1>;
   return (
     <div>
-      <h1>Les bureaux du Cabinet</h1>
-
+      <h2 className="mt-8 my-2 text-1xl font-bold leading-tight text-left text-gray-800">
+          Planning des salles
+        </h2>
+        <div className="w-full mb-4">
+          <div className="mb-5 h-1 gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
+        </div>
       <select
         className="select select-accent w-full max-w-xs"
         onChange={handleChange}
