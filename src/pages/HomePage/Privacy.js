@@ -1,9 +1,17 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Footer from "./Footer/Footer";
 
 const Privacy = () => {
   return (
     <div className="container-privacy">
+      <Link
+        to="/"
+        className="no-underline hover:underline text-gray-800 hover:text-orange-500"
+      >
+        <h3> Revenir à l'accueil</h3>
+      </Link>
+      <br></br>
       <h1>Politique de confidentialité</h1>
       <div className="content">
         <p>
@@ -225,8 +233,8 @@ const Privacy = () => {
         <ul>
           <li>
             <p>
-              <strong>Nécessité contractuelle : </strong>nous pouvons traiter vos
-              données personnelles pour conclure ou exécuter un contrat avec
+              <strong>Nécessité contractuelle : </strong>nous pouvons traiter
+              vos données personnelles pour conclure ou exécuter un contrat avec
               vous.
             </p>
           </li>
@@ -247,7 +255,7 @@ const Privacy = () => {
             </p>
           </li>
         </ul>
-   
+
         <h3>Limites d’âge </h3>
         <p>
           Notre Service est destiné aux adultes âgés de 18 ans et plus. Nous ne
@@ -258,7 +266,7 @@ const Privacy = () => {
           confidentialité. Veuillez indiquer dans votre demande « Demande
           d’information COPPA».{" "}
         </p>
-  
+
         <h3>Modifications apportées à cette politique de confidentialité </h3>
         <p>
           Epidaure peut modifier cette politique de confidentialité de temps à
@@ -268,7 +276,7 @@ const Privacy = () => {
           de nos Services. Votre utilisation continue des Services indique que
           vous acceptez la Politique de confidentialité modifiée.
         </p>
-    
+
         <h3>Newsletters</h3>
         <p>
           Vous pouvez refuser de recevoir nos courriels ou bulletins de
@@ -287,7 +295,7 @@ const Privacy = () => {
           américaines pourraient ne pas offrir le même niveau de protection que
           celles de votre pays.
         </p>
-    
+
         <h3>Nous contactez</h3>
         <p>
           Si vous avez des questions, des commentaires ou des préoccupations au
@@ -299,8 +307,14 @@ const Privacy = () => {
             <p>epidaure.contact@gmail.com</p>
           </li>
         </ul>
-
       </div>
+      <Link
+        to="/"
+        className="no-underline hover:underline text-gray-800 hover:text-orange-500"
+      >
+        <h3> Revenir à l'accueil</h3>
+      </Link>
+      <br></br>
       <hr />
       <Footer />
     </div>
