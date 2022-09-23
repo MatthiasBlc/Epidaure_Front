@@ -4,6 +4,8 @@ import { Link, Navigate } from "react-router-dom";
 import { loggedAtom } from "../../services/Atoms/user";
 import Footer from "./Footer/Footer";
 import createAccountLogo from "../../assets/images/createAccountLogo.png";
+import Dashboard from "../../assets/images/Dashboard.png";
+import Planning from "../../assets/images/planning.png";
 import SVG1 from "./svg/SVG1";
 import SVG0 from "./svg/SVG0";
 
@@ -79,12 +81,12 @@ const Home = () => {
                 </p>
               </div>
               <div className="w-full sm:w-2/3 p-6">
-                <img src={createAccountLogo} alt="create-account"/>
+                <img className="shadow-lg shadow-gray-200" src={createAccountLogo} />
               </div>
             </div>
             <div className="flex flex-wrap flex-col-reverse sm:flex-row mt-20">
               <div className="w-full sm:w-2/3 p-6 mt-6">
-                <img src={createAccountLogo} />
+                <img className="shadow-lg shadow-gray-200" src={Dashboard} />
               </div>
               <div className="w-full sm:w-1/3 p-6 mt-6">
                 <div className="align-middle">
@@ -113,7 +115,7 @@ const Home = () => {
                 </p>
               </div>
               <div className="w-full sm:w-2/3 p-6">
-                <img src={createAccountLogo} />
+                <img className="shadow-lg shadow-gray-200" src={Planning} />
               </div>
             </div>
           </div>
