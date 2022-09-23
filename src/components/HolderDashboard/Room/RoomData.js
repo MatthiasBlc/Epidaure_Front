@@ -51,6 +51,7 @@ const RoomData = () => {
       });
       setNewRoom(e);
       document.getElementById("addRoom").style.display = "none";
+      setAlertMsg("");
     }
   };
 
