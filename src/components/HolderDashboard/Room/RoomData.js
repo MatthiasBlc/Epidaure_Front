@@ -96,14 +96,14 @@ const RoomData = () => {
                 </p>
                 <div>
                   <button data-name={room.id} onClick={editRoomButton}>
-                    ✎ Modifier
+                  ✏️
                   </button>
                   <button
                     className="ml-2"
                     data-name={room.id}
                     onClick={deleteRoom}
                   >
-                    ❌ 
+                    ❌
                   </button>
                 </div>
               </li>
