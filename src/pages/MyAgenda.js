@@ -46,7 +46,7 @@ const Agenda = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("selectedRoom", selectedRoom)
+    // console.log("selectedRoom", selectedRoom);
     await APIManager.agendaCreate(
       text,
       start,
@@ -58,7 +58,7 @@ const Agenda = () => {
       alert("erreur");
       console.log(error.message);
     });
-    setNewEvent(e)
+    setNewEvent(e);
   };
 
   if (agendaData === undefined) return <h1>LOADING ...</h1>;
@@ -158,6 +158,10 @@ const Agenda = () => {
                   className="select select-accent w-full max-w-xs"
                   onChange={(e) => setSelectedRoom(e.target.value)}
                 >
+                  <option disabled selected>
+                    {" "}
+                    choisir un bureau
+                  </option>
                   {practiceRoomsList &&
                     practiceRoomsList.map((room, index) => (
                       <option key={index} value={room.id}>

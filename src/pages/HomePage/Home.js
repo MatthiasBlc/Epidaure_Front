@@ -32,10 +32,10 @@ const Home = () => {
           <div className="container px-3 mx-auto flex flex-wrap flex-col md:flex-row items-center">
             {/* <!--Left Col--> */}
             <div className="flex flex-col w-full md:w-2/5 justify-center items-start text-center md:text-left">
-              <p className="text-2xl tracking-loose w-full">
+              <p id="pHome1" className="text-1xl tracking-loose w-full">
                 APPLICATION DE GESTION POUR VOTRE CABINET MEDICAL
               </p>
-              <h1 className="my-4 text-5xl font-bold leading-tight">
+              <h1 className="mb-6 text-5xl font-bold leading-tight">
                 Pour votre confort, par nos services
               </h1>
               <p className="leading-normal text-1xl mb-8">
@@ -58,54 +58,54 @@ const Home = () => {
         {/* <!-- Separator 1 --> */}
         <SVG0 />
         {/* <!-- Section 1 --> */}
-
-        <section id="abc" className="bg-white border-b py-8">
+        
+        <section id="abc" className="bg-white border-b py-8 pb-20">
           <div className="container max-w-5xl mx-auto m-8">
-            <h2 className="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">
+            <h2 className="w-full my-2 text-4xl font-bold leading-tight text-center text-gray-800">
               Notre application
             </h2>
-            <div className="w-full mb-4">
+            <div className="w-full mb-20">
               <div className="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
             </div>
             <div className="flex flex-wrap">
               <div className="w-5/6 sm:w-1/3 p-6">
-                <h3 className="text-3xl text-gray-800 font-bold leading-none mb-3">
-                  1. Création d'un compte titulaire
+                <h3 className="text-2xl text-gray-800 font-bold leading-none mb-3">
+                  Création d'un compte titulaire
                 </h3>
                 <p className="text-gray-600 mb-8">
                   Demandez votre compte titulaire à notre équipe. Celui-ci
                   pourra à son tour, créer des comptes pour les{" "}
-                  <b>collaborateurs</b> du cabinet.
+                  <b className="text-orange">collaborateurs</b> du cabinet.
                 </p>
               </div>
               <div className="w-full sm:w-2/3 p-6">
                 <img src={createAccountLogo} alt="create-account"/>
               </div>
             </div>
-            <div className="flex flex-wrap flex-col-reverse sm:flex-row">
+            <div className="flex flex-wrap flex-col-reverse sm:flex-row mt-20">
               <div className="w-full sm:w-2/3 p-6 mt-6">
                 <img src={createAccountLogo} />
               </div>
               <div className="w-full sm:w-1/3 p-6 mt-6">
                 <div className="align-middle">
-                  <h3 className="text-3xl text-gray-800 font-bold leading-none mb-3">
-                    2. Ajout des données de votre cabinet
+                  <h3 className="text-2xl text-gray-800 font-bold leading-none mb-3">
+                    Ajout des données de votre cabinet
                   </h3>
                   <p className="text-gray-600 mb-8">
                     L'espace titulaire vous permet de consulter et de gérer
-                    directement les informations liées à votre <b>cabinet</b>{" "}
+                    directement les informations liées à votre <b className="text-orange">cabinet</b>{" "}
                     (Collaborateurs, bureaux, données du cabinet.. )
                   </p>
                 </div>
               </div>
             </div>
-            <div className="flex flex-wrap">
+            <div className="flex flex-wrap mt-20">
               <div className="w-5/6 sm:w-1/3 p-6">
-                <h3 className="text-3xl text-gray-800 font-bold leading-none mb-3">
-                  3. Gestion des plannings
+                <h3 className="text-2xl text-gray-800 font-bold leading-none mb-3">
+                  Gestion des plannings
                 </h3>
                 <p className="text-gray-600 mb-8">
-                  Notre outil de <b>plannings</b> vous permettra de connaître à
+                  Notre outil de <b className="text-orange">plannings</b> vous permettra de connaître à
                   chaque moment de la journée l'utilisation des différents
                   salles de votre cabinet et les agendas de vos collaborateurs,
                   ainsi que des les modifier.
@@ -122,8 +122,8 @@ const Home = () => {
         {/* <!-- Section 2: Pricing --> */}
         <section className="bg-gray-100 py-8">
           <div className="container mx-auto px-2 pt-4 pb-12 text-gray-800">
-            <h2 className="w-full my-2 text-5xl font-bold leading-tight text-center text-gray-800">
-              Tarif de l'application
+            <h2 className="w-full my-2 text-4xl font-bold leading-tight text-center text-gray-800">
+              Nos tarifs
             </h2>
             <div className="w-full mb-4">
               <div className="h-1 mx-auto gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
@@ -131,7 +131,7 @@ const Home = () => {
             <div className="flex flex-col sm:flex-row justify-center pt-12 my-12 sm:my-4">
               <div className="flex flex-col w-5/6 lg:w-1/3 mx-auto lg:mx-0 rounded-lg bg-white mt-4 sm:-mt-6 shadow-lg z-10">
                 <div className="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
-                  <div className="w-full p-8 text-3xl font-bold text-center">
+                  <div className="w-full p-8 text-2xl font-bold text-center">
                     Version Standard
                   </div>
                   <div className="h-1 w-full gradient my-0 py-0 rounded-t"></div>
@@ -146,7 +146,7 @@ const Home = () => {
               </div>
               <div className="flex flex-col w-5/6 lg:w-1/4 mx-auto lg:mx-0 rounded-none lg:rounded-l-lg bg-white mt-4">
                 <div className="flex-1 bg-white text-gray-600 rounded-t rounded-b-none overflow-hidden shadow">
-                  <div className="p-8 text-3xl font-bold text-center border-b-4">
+                  <div className="p-8 text-2xl font-bold text-center border-b-4">
                     Version Prenium
                   </div>
                   <ul className="w-full text-center text-sm">
@@ -166,9 +166,11 @@ const Home = () => {
                 </div>
               </div>
             </div>
-            <button className="mx-auto center lg:mx-0 hover:underline gradient text-white font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+            <div className="flex justify-center">
+            <button className="lg:mx-0 hover:underline gradient text-white font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
               <Link to="/contact">Pour plus d'informations, contactez-nous!</Link>
             </button>
+            </div>
           </div>
         </section>
         <SVG1 />
@@ -183,7 +185,7 @@ const Home = () => {
           <div className="w-full mb-4">
             <div className="h-1 mx-auto bg-white w-1/6 opacity-25 my-0 py-0 rounded-t"></div>
           </div>
-          <h3 className="my-4 text-3xl leading-tight">
+          <h3 className="my-4 text-2xl leading-tight">
             N'hésitez pas à nous contacter, nous ferons un plaisir de vous
             répondre!
           </h3>

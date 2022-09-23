@@ -1,18 +1,28 @@
 import React, { useEffect, useState } from "react";
 import { DayPilot, DayPilotCalendar } from "@daypilot/daypilot-lite-react";
 import APIManager from "../../services/api";
+import "./CalendarStyles.css";
+import { useAtom } from "jotai";
+import { currentUserAtom } from "../../services/Atoms/currentUser";
 
 const CalendarManager = (eventList) => {
   const [calendarRef] = useState(React.createRef());
   const [calendar, setCalendar] = useState(calendarRef);
+  const [newEvent, setNewEvent] = useState();
 
+  const [agendaData, setAgendaData] = useState();
+  let [currentUser] = useAtom(currentUserAtom);
+  currentUser = JSON.parse(currentUser);
+
+  // --------------- SETUP CALENDAR ACTIONS
   const [calendarState] = useState({
     viewType: "Resources",
-    heightSpec: ('BusinessHours'),
-    businessEndsHour: (19),
-    businessBeginsHour: (7),
-    timeFormat: ('Clock24Hours'),
-    width: ("98%"),
+    heightSpec: "BusinessHours",
+    businessEndsHour: 19,
+    businessBeginsHour: 7,
+    timeFormat: "Clock24Hours",
+    width: "98%",
+    eventRightClickHandling: "ContextMenu",
 
     onEventMoved: (args) => {
       const newIdEvent = args.e.data.id;
@@ -48,14 +58,7 @@ const CalendarManager = (eventList) => {
     },
 
     onEventClick: async (args) => {
-      const form = [
-        { name: "Text", id: "text" },
-        // { name: "Start", id: "start", type: "time" },
-        // { name: "End", id: "end", type: "time" },
-        // { name: "Color", id: "barColor" },
-        { type: "checkbox", id: "delete", name: "delete" },
-      ];
-
+      const form = [{ name: "Text", id: "text" }];
       const modal = await DayPilot.Modal.form(form, args.e.data);
       const newIdEvent = modal.result.id;
       const newTextEvent = modal.result.text;
@@ -63,13 +66,7 @@ const CalendarManager = (eventList) => {
       const newEndEvent = modal.result.end;
       const newBarColorEvent = modal.result.barColor;
       const newResourceEvent = modal.result.resource;
-      console.log("modal", modal.result.delete);
       if (modal.canceled) {
-        return;
-      }
-      if (modal.result.delete) {
-        console.log("Delete");
-        deleteEvent(newIdEvent);
         return;
       }
       editEvent(
@@ -81,7 +78,82 @@ const CalendarManager = (eventList) => {
         newResourceEvent
       );
     },
+
+    contextMenu: new DayPilot.Menu({
+      items: [
+        {
+          text: "Delete",
+          onClick: async (args) => {
+            const modal = await DayPilot.Modal.confirm(
+              "Do you really want to delete this event?"
+            );
+            const newIdEvent = args.source.id();
+            if (modal.canceled) {
+              return;
+            }
+            deleteEvent(newIdEvent);
+          },
+        },
+      ],
+    }),
+
+    onTimeRangeSelected: async function (args) {
+      const form = [
+        { name: "Text", id: "text" },
+        { name: "Color", id: "barColor" },
+        { name: "SelectedRoom", id: "selectedRoom" },
+      ];
+      const modal = await DayPilot.Modal.form(form);
+      const newTextEvent = modal.result.text;
+      const newStartEvent = args.start;
+      const newEndEvent = args.end;
+      const newBarColorEvent = modal.result.barColor;
+      const newResourceEvent = args.resource;
+      const newSelectedRomEvent = modal.result.selectedRoom;
+      if (modal.canceled) {
+        return;
+      }
+      newEventFunction(
+        args,
+        newTextEvent,
+        newStartEvent,
+        newEndEvent,
+        newBarColorEvent,
+        newResourceEvent,
+        newSelectedRomEvent
+      );
+      setNewEvent(args);
+    },
   });
+
+  // --------------- FUNCTIONS
+  const newEventFunction = async (
+    args,
+    newTextEvent,
+    newStartEvent,
+    newEndEvent,
+    newBarColorEvent,
+    newResourceEvent,
+    newSelectedRomEvent
+  ) => {
+    const text = newTextEvent;
+    const start = newStartEvent;
+    const end = newEndEvent;
+    const barColor = newBarColorEvent;
+    const resource = newResourceEvent;
+    const selectedRoom = newSelectedRomEvent;
+    await APIManager.agendaCreate(
+      text,
+      start,
+      end,
+      barColor,
+      resource,
+      selectedRoom
+    ).catch((error) => {
+      alert("erreur");
+      console.log(error.message);
+    });
+  };
 
   const editEvent = async (
     newIdEvent,
@@ -114,6 +186,21 @@ const CalendarManager = (eventList) => {
     await APIManager.agendaDelete(eventId);
   };
 
+  // --------------- INIT DISPLAY
+
+  const getCurrentUserAgendaData = async () => {
+    const { data } = await APIManager.agendaData();
+    const currentUserData = data.filter(
+      (data) => data.user_id === currentUser.id
+    );
+    setAgendaData(currentUserData);
+    return currentUserData;
+  };
+
+  useEffect(() => {
+    getCurrentUserAgendaData();
+  }, [newEvent]);
+
   const loadCalendarData = () => {
     const startDate = "2022-09-16";
     const columns = [
@@ -126,17 +213,21 @@ const CalendarManager = (eventList) => {
       { name: "Dimanche (Su)", id: "Su" },
     ];
 
-    const events = eventList.eventList;
-
+    let events = eventList.eventList;
+    if (agendaData != null) {
+      events = agendaData;
+    }
+    console.log(events);
     setCalendar(
       calendarRef.current.control.update({ startDate, columns, events })
     );
     return calendar;
   };
 
+  // --------------- REFRESH DISPLAY
   useEffect(() => {
     loadCalendarData();
-  }, [eventList]);
+  }, [eventList, agendaData]);
 
   if (calendar === null) return <div> ...LOADING</div>;
   return <DayPilotCalendar {...calendarState} ref={calendarRef} />;
