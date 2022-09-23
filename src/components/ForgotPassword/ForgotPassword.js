@@ -1,23 +1,44 @@
-import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useState } from "react";
 import APIManager from "../../services/api";
 
 const ForgotPassword = () => {
+  const [alertMsg, setAlertMsg] = useState(undefined);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const userEmail = e.target.email.value;
-
-    await APIManager.forgotPasswordUser(userEmail).catch((error) => {
-      console.log(error.message);
-    });
-    document.getElementById("messages").innerHTML =
-      "Un email vous a été envoyé à l'adresse " + userEmail;
-    console.log("Email envoyé");
+    if (userEmail === "") {
+      setAlertMsg({type: "error"})
+      setTimeout(() => {
+        setAlertMsg({type: undefined})
+      }, 5000);
+    } else {
+      await APIManager.forgotPasswordUser(userEmail).catch((error) => {
+        console.log(error.message);
+      })
+      setAlertMsg({type: "sucess"})
+      setTimeout(() => {
+        setAlertMsg({type: undefined})
+      }, 5000);
+    }
   };
 
   return (
     <>
-      <span id="messages"></span>
+        {alertMsg?.type === "sucess" && (
+          <div className="alert alert-sucess bg-turquoise shadow-lg mt-2 mb-2">
+            <div>
+              <span>Un email vous a été envoyé avec les instructions.</span>
+            </div>
+          </div>
+        )}
+        {alertMsg?.type === "error" && (
+          <div className="alert alert-error shadow-lg mt-2 mb-2">
+            <div>
+              <span>Vous n'avez pas renseigné d'adresse mail.</span>
+            </div>
+          </div>
+        )}
       <div className="flex items-center justify-center">
         <div className="mt-20">
           <h2 className="my-2 text-3xl font-bold leading-tight text-center text-gray-800">
