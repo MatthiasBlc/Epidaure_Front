@@ -14,7 +14,6 @@ const RoomData = () => {
   const [deleteRooms, setDeleteRoom] = useState();
   const [editRoomList, setEditRoomList] = useState();
   const [editRoomID, setEditRoomID] = useState();
-  const [editRoomDiv,setEditRoomDiv] = useState(false);
 
   const getPracticeData = async (practice_id) => {
     const data = await APIManager.practiceData(practice_id);
@@ -34,7 +33,6 @@ const RoomData = () => {
   const editRoomFunction = async (e) => {
     e.preventDefault();
     const name = e.target.newName.value;
-    console.log("editRoomID",editRoomID);
     await APIManager.editRoom(editRoomID,name).catch((error) => {
       console.log(error.message);
     });
@@ -67,7 +65,6 @@ const RoomData = () => {
     e.preventDefault();
     const roomID = e.target.dataset.name;
     setEditRoomID(roomID);
-    console.log(roomID);
     const editRoomDiv = document.getElementById("editRoom");
     if (editRoomDiv.style.display !== "block") {
       editRoomDiv.style.display = "block";

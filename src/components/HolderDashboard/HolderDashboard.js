@@ -49,7 +49,7 @@ const GestionPraticienTitulaire = () => {
             <div className="flex flex-col w-full h-auto border border-green rounded-xl p-2 shadow-lg">
               <PracticeData
                 name={practiceData.name}
-                adresse={practiceData.adresse}
+                adress={practiceData.adress}
                 email={practiceData.email}
               />
             </div>
