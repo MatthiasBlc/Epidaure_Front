@@ -59,7 +59,7 @@ const Home = () => {
         <SVG0 />
         {/* <!-- Section 1 --> */}
         
-        <section id="abc" className="bg-white border-b py-8">
+        <section id="abc" className="bg-white border-b py-8 pb-20">
           <div className="container max-w-5xl mx-auto m-8">
             <h2 className="w-full my-2 text-4xl font-bold leading-tight text-center text-gray-800">
               Notre application
@@ -82,7 +82,7 @@ const Home = () => {
                 <img src={createAccountLogo} />
               </div>
             </div>
-            <div className="flex flex-wrap flex-col-reverse sm:flex-row">
+            <div className="flex flex-wrap flex-col-reverse sm:flex-row mt-20">
               <div className="w-full sm:w-2/3 p-6 mt-6">
                 <img src={createAccountLogo} />
               </div>
@@ -99,7 +99,7 @@ const Home = () => {
                 </div>
               </div>
             </div>
-            <div className="flex flex-wrap">
+            <div className="flex flex-wrap mt-20">
               <div className="w-5/6 sm:w-1/3 p-6">
                 <h3 className="text-2xl text-gray-800 font-bold leading-none mb-3">
                   Gestion des plannings
