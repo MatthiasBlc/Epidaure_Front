@@ -32,6 +32,8 @@ const CalendarManager = (eventList) => {
   const [practiceRoomsList, setPracticeRoomsList] = useState();
 
   const [modalIsOpen, setIsOpen] = React.useState(false);
+  const [modalIsOpenOnEdit, setIsOpenOnEdit] = React.useState(false);
+  const [idEvent, setIDevent] = useState("");
   const [text, setText] = useState("");
   const [start, setStart] = useState("");
   const [end, setEnd] = useState("");
@@ -47,6 +49,14 @@ const CalendarManager = (eventList) => {
 
   const closeModal = () => {
     setIsOpen(false);
+  };
+
+  const openModalEdit = () => {
+    setIsOpenOnEdit(true);
+  };
+
+  const closeModalEdit = () => {
+    setIsOpenOnEdit(false);
   };
 
   // --------------- SETUP CALENDAR ACTIONS
@@ -66,13 +76,15 @@ const CalendarManager = (eventList) => {
       const newEndEvent = args.e.data.end.value;
       const newBarColorEvent = args.e.data.barColor;
       const newResourceEvent = args.e.data.resource;
+      const newRoomEvent = args.e.data.room_id;
       editEvent(
         newIdEvent,
         newTextEvent,
         newStartEvent,
         newEndEvent,
         newBarColorEvent,
-        newResourceEvent
+        newResourceEvent,
+        newRoomEvent
       );
     },
     onEventResized: async (args) => {
@@ -82,37 +94,28 @@ const CalendarManager = (eventList) => {
       const newEndEvent = args.e.data.end.value;
       const newBarColorEvent = args.e.data.barColor;
       const newResourceEvent = args.e.data.resource;
+      const newRoomEvent = args.e.data.room_id;
       await editEvent(
         newIdEvent,
         newTextEvent,
         newStartEvent,
         newEndEvent,
         newBarColorEvent,
-        newResourceEvent
+        newResourceEvent,
+        newRoomEvent
       );
       await setNewEvent("reset");
     },
 
     onEventClick: async (args) => {
-      const form = [{ name: "Text", id: "text" }];
-      const modal = await DayPilot.Modal.form(form, args.e.data);
-      const newIdEvent = modal.result.id;
-      const newTextEvent = modal.result.text;
-      const newStartEvent = modal.result.start;
-      const newEndEvent = modal.result.end;
-      const newBarColorEvent = modal.result.barColor;
-      const newResourceEvent = modal.result.resource;
-      if (modal.canceled) {
-        return;
-      }
-      editEvent(
-        newIdEvent,
-        newTextEvent,
-        newStartEvent,
-        newEndEvent,
-        newBarColorEvent,
-        newResourceEvent
-      );
+      setIDevent(args.e.data.id);
+      setText(args.e.data.text);
+      setStart(args.e.data.start);
+      setEnd(args.e.data.end);
+      setBarColor(args.e.data.barColor);
+      setResource(args.e.data.resource);
+      await openModalEdit();
+
       await setNewEvent("reset");
     },
 
@@ -151,7 +154,8 @@ const CalendarManager = (eventList) => {
     newStartEvent,
     newEndEvent,
     newBarColorEvent,
-    newResourceEvent
+    newResourceEvent,
+    newRoomEvent
   ) => {
     const id = newIdEvent;
     const text = newTextEvent;
@@ -159,13 +163,15 @@ const CalendarManager = (eventList) => {
     const end = newEndEvent;
     const barColor = newBarColorEvent;
     const resource = newResourceEvent;
+    const room_id = newRoomEvent;
     const data = await APIManager.agendaUpdate(
       id,
       text,
       start,
       end,
       barColor,
-      resource
+      resource,
+      room_id
     ).catch((error) => {
       console.log(error.message);
     });
@@ -217,7 +223,6 @@ const CalendarManager = (eventList) => {
     if (agendaData != null) {
       events = agendaData;
     }
-    console.log(events);
     setCalendar(
       calendarRef.current.control.update({ startDate, columns, events })
     );
@@ -246,6 +251,29 @@ const CalendarManager = (eventList) => {
     setNewEvent(e);
   };
 
+  const handleSubmitOnEdit = async (e) => {
+    e.preventDefault();
+    const newIdEvent = idEvent;
+    const newTextEvent = text;
+    const newStartEvent = start;
+    const newEndEvent = end;
+    const newBarColorEvent = barColor;
+    const newResourceEvent = resource;
+    const newRoomEvent = selectedRoom;
+
+    editEvent(
+      newIdEvent,
+      newTextEvent,
+      newStartEvent,
+      newEndEvent,
+      newBarColorEvent,
+      newResourceEvent,
+      newRoomEvent
+    );
+    closeModalEdit();
+    setNewEvent(e);
+  };
+
   if (calendar === null) return <div> ...LOADING</div>;
   return (
     <>
@@ -264,7 +292,7 @@ const CalendarManager = (eventList) => {
                 <div className="bg-white px-4 py-5 sm:p-6">
                   <div className="grid grid-cols-6 gap-6">
                     <label
-                      htmlFor="last-name"
+                      htmlFor="event-name"
                       className="block text-sm font-medium text-gray-700"
                     >
                       Nom de l'évent
@@ -279,7 +307,7 @@ const CalendarManager = (eventList) => {
                   </div>
                   <div className="grid grid-cols-6 gap-6">
                     <label
-                      htmlFor="last-name"
+                      htmlFor="color"
                       className="block text-sm font-medium text-gray-700"
                     >
                       BarColor
@@ -296,7 +324,87 @@ const CalendarManager = (eventList) => {
                   </div>
                   <div className="grid grid-cols-6 gap-6">
                     <label
-                      htmlFor="last-name"
+                      htmlFor="room"
+                      className="block text-sm font-medium text-gray-700"
+                    >
+                      Bureau
+                    </label>
+                    <select
+                      className="select select-accent w-full max-w-xs"
+                      onChange={(e) => setSelectedRoom(e.target.value)}
+                    >
+                      <option disabled selected>
+                        {" "}
+                        choisir un bureau
+                      </option>
+                      {practiceRoomsList &&
+                        practiceRoomsList.map((room, index) => (
+                          <option key={index} value={room.id}>
+                            {room.name}
+                          </option>
+                        ))}
+                    </select>
+                  </div>
+                </div>
+                <div className="bg-gray-50 px-4 py-3 text-right sm:px-6">
+                  <button
+                    type="submit"
+                    className="ml-10 inline-flex justify-center hover:underline gradient text-white font-bold rounded-full my-3 py-2 px-5 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out"
+                  >
+                    Valider
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </Modal>
+      </div>
+      <div>
+        <Modal
+          isOpen={modalIsOpenOnEdit}
+          onRequestClose={closeModalEdit}
+          style={customStyles}
+          contentLabel="Editer un evenement"
+        >
+          <div className="mt-5 md:col-span-2 md:mt-0">
+            <form onSubmit={handleSubmitOnEdit}>
+              <div className="overflow-hidden shadow sm:rounded-md">
+                <div className="bg-white px-4 py-5 sm:p-6">
+                  <div className="grid grid-cols-6 gap-6">
+                    <label
+                      htmlFor="event-name"
+                      className="block text-sm font-medium text-gray-700"
+                    >
+                      Nom de l'évent
+                    </label>
+                    <input
+                      type="text"
+                      id="text"
+                      placeholder={text}
+                      className="focusForm mt-2 block w-full rounded-md border-2 border-gray-600 shadow-sm sm:text-sm"
+                      onChange={(e) => setText(e.target.value)}
+                    />
+                  </div>
+                  <div className="grid grid-cols-6 gap-6">
+                    <label
+                      htmlFor="color"
+                      className="block text-sm font-medium text-gray-700"
+                    >
+                      BarColor
+                    </label>
+                    <div className="blockpicker">
+                      <h6>Couleur de l'évènement</h6>
+                      <BlockPicker
+                        color={barColor}
+                        onChange={(color) => {
+                          setBarColor(color.hex);
+                        }}
+                      />
+                    </div>
+                  </div>
+                  <div className="grid grid-cols-6 gap-6">
+                    <label
+                      htmlFor="room"
                       className="block text-sm font-medium text-gray-700"
                     >
                       Bureau
