@@ -79,7 +79,7 @@ const Home = () => {
                 </p>
               </div>
               <div className="w-full sm:w-2/3 p-6">
-                <img src={createAccountLogo} />
+                <img src={createAccountLogo} alt="create-account"/>
               </div>
             </div>
             <div className="flex flex-wrap flex-col-reverse sm:flex-row">

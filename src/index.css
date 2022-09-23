@@ -20,6 +20,33 @@
     grid-row-gap: 0px;
 }
 
+.container-privacy {
+  display: flex;
+  flex-direction: column;
+}
+
+.container-privacy h1 {
+  font-size: 5vmin;
+  text-align: center;
+  margin-top: 20px;
+  color: #333;
+  text-decoration: underline;
+}
+
+.container-privacy h3 {
+  font-size: 3vmin;
+  text-align: center;
+  margin-top: 20px;
+  color: #333;
+  text-decoration: underline;
+}
+
+.container-privacy .content {
+  padding: 2vw 30vw 5vw;
+  text-align: justify;
+
+}
+
 @media screen and (max-width: 768px)
 {
     .containerGrid1
@@ -28,14 +55,4 @@
     grid-template-rows: repeat(4, minmax(100px, auto));
     grid-row-gap: 40px;
   }
-}
-
-.grid {
-  display: flex;
-}
-.center {
-  justify-content: center;
-  width: 100vh;
-  text-align:center;
-  word-wrap : break-word;
 }
