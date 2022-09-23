@@ -5,6 +5,7 @@ import { loggedAtom } from "../../services/Atoms/user";
 import Footer from "../../components/Footer/Footer";
 import createAccountLogo from "../../assets/images/createAccountLogo.png";
 import Dashboard from "../../assets/images/Dashboard.png";
+import Planning from "../../assets/images/planning.png";
 import SVG1 from "./svg/SVG1";
 import SVG0 from "./svg/SVG0";
 
@@ -114,7 +115,7 @@ const Home = () => {
                 </p>
               </div>
               <div className="w-full sm:w-2/3 p-6">
-                <img src={createAccountLogo} />
+                <img className="shadow-lg shadow-gray-200" src={Planning} />
               </div>
             </div>
           </div>
