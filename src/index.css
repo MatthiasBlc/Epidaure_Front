@@ -2,10 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-.gradient {
-    background: linear-gradient(90deg, #30aa6d 30%, #bdeedd 100%);
-}
-
 .focusForm:focus {
     background-color: #e1703834;
     outline-color: #e17038;
@@ -28,14 +24,6 @@
     grid-template-rows: repeat(4, minmax(100px, auto));
     grid-row-gap: 40px;
   }
-
-  .child1  {
-    width: 80%;
-  }
-
-  .child2  {
-    width: 80%;
-  }
 }
 
 #addUser {
@@ -43,5 +31,5 @@
 }
 
 .gradient {
-  background: linear-gradient(90deg, #30aa6d 30%, #96edc2  100%);
+  background: linear-gradient(90deg, #30aa6d 30%, #83e6b4  100%);
 }
