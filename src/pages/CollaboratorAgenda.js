@@ -48,12 +48,7 @@ const CollaboratorAgenda = () => {
   if (agendaData === undefined) return <h1>LOADING ...</h1>;
   return (
     <div>
-      <h2 className="mt-8 my-2 text-1xl font-bold leading-tight text-left text-gray-800">
-          Planning collaborateurs
-        </h2>
-        <div className="w-full mb-4">
-          <div className="mb-5 h-1 gradient w-64 opacity-25 my-0 py-0 rounded-t"></div>
-        </div>
+      <h1>Mes collaborateurs</h1>
 
       <select
         className="select select-accent w-full max-w-xs"
