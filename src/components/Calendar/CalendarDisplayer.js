@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { DayPilot, DayPilotCalendar } from "@daypilot/daypilot-lite-react";
+import "./CalendarStyles.css";
 
 const CalendarDisplayer = (eventList) => {
   const [calendarRef] = useState(React.createRef());
