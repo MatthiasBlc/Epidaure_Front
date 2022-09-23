@@ -185,7 +185,7 @@ const Home = () => {
           <div className="w-full mb-4">
             <div className="h-1 mx-auto bg-white w-1/6 opacity-25 my-0 py-0 rounded-t"></div>
           </div>
-          <h3 className="my-4 text-3xl leading-tight">
+          <h3 className="my-4 text-2xl leading-tight">
             N'hésitez pas à nous contacter, nous ferons un plaisir de vous
             répondre!
           </h3>
