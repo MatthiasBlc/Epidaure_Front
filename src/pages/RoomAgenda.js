@@ -36,6 +36,7 @@ const RoomAgenda = () => {
   };
 
   useEffect(() => {
+    console.log("selectedRoom au useEffect", selectedRoom);
     getSelectedRoomAgendaData(selectedRoom);
   }, [selectedRoom]);
 

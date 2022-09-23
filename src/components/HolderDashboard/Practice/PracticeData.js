@@ -25,7 +25,7 @@ const PracticeData = (practice) => {
         <div className="mb-6 h-1 gradient w-30 opacity-25 my-0 py-0 rounded-t"></div>
       </div>
       <p>
-        <b>Adresse:</b> {practice.adress}
+        <b>Adresse:</b> {practice.adresse}
       </p>
       <p>
         <b>Mail:</b> {practice.email}

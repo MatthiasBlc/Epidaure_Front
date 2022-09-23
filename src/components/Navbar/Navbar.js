@@ -17,7 +17,7 @@ const Navbar = () => {
     navigate("/login", setAlertMsg({ type: "success" , }));
     setTimeout(() => {
       window.location.reload();
-    }, 2000);
+    }, 3000);
   };
 
   var navMenuDiv = document.getElementById("nav-content");

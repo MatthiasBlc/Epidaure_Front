@@ -19,11 +19,11 @@ const EditPracticeForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const name = e.target.newName.value;
-    const adress = e.target.newAdress.value;
+    const adresse = e.target.newAdresse.value;
     const email = e.target.newEmail.value;
     const id = userPracticeId;
 
-    await APIManager.editPractice(id, name, adress, email).catch((error) => {
+    await APIManager.editPractice(id, name, adresse, email).catch((error) => {
       console.log(error.message);
     });
 
@@ -31,7 +31,7 @@ const EditPracticeForm = () => {
       document.getElementById("editPracticeDetails")
     );
     editPraticeRoot.render(
-      <PracticeData name={name} adress={adress} email={email} />
+      <PracticeData name={name} adresse={adresse} email={email} />
     );
   };
 
@@ -61,8 +61,8 @@ const EditPracticeForm = () => {
             </label>
             <input
               type="text"
-              id="newAdress"
-              defaultValue={practiceData.adress}
+              id="newAdresse"
+              defaultValue={practiceData.adresse}
             />
           </div>
           <div>

@@ -217,6 +217,7 @@ const CalendarManager = (eventList) => {
     if (agendaData != null) {
       events = agendaData;
     }
+    console.log(events);
     setCalendar(
       calendarRef.current.control.update({ startDate, columns, events })
     );

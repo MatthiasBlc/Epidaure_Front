@@ -16,7 +16,10 @@ const Contact = () => {
         console.log(error.message);
       }
     );
-    document.getElementById("message").innerHTML = email;
+    document.getElementById("message").innerHTML =
+      "Merci pour votre demande, notre équipe vous répondra dans les plus brefs délais sur votre adresse mail:<b> " +
+      email;
+    console.log("Success");
     setTimeout(() => {
       navigate("/");
     }, 3000);
