@@ -5,6 +5,8 @@ import CalendarManager from "../components/Calendar/CalendarManager";
 import { currentUserAtom } from "../services/Atoms/currentUser";
 import { useAtom } from "jotai";
 
+import { BlockPicker } from "react-color";
+
 const Agenda = () => {
   const [agendaData, setAgendaData] = useState();
   const [practiceRoomsList, setPracticeRoomsList] = useState();
@@ -12,7 +14,8 @@ const Agenda = () => {
   const [text, setText] = useState("");
   const [start, setStart] = useState("");
   const [end, setEnd] = useState("");
-  const [barColor, setBarColor] = useState("");
+  const [barColor, setBarColor] = useState("#37d67a");
+
   const [resource, setResource] = useState("");
   const [selectedRoom, setSelectedRoom] = useState("");
 
@@ -46,7 +49,6 @@ const Agenda = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // console.log("selectedRoom", selectedRoom);
     await APIManager.agendaCreate(
       text,
       start,
@@ -124,13 +126,15 @@ const Agenda = () => {
                 >
                   BarColor
                 </label>
-                <input
-                  type="text"
-                  id="barColor"
-                  placeholder="#6460aa"
-                  className="focusForm mt-2 block w-full rounded-md border-2 border-gray-600 shadow-sm sm:text-sm"
-                  onChange={(e) => setBarColor(e.target.value)}
-                />
+                <div className="blockpicker">
+                  <h6>Couleur de l'évènement</h6>
+                  <BlockPicker
+                    color={barColor}
+                    onChange={(color) => {
+                      setBarColor(color.hex);
+                    }}
+                  />
+                </div>
               </div>
               <div className="grid grid-cols-6 gap-6">
                 <label
@@ -139,13 +143,22 @@ const Agenda = () => {
                 >
                   Resource
                 </label>
-                <input
-                  type="text"
-                  id="resource"
-                  placeholder="Th"
-                  className="focusForm mt-2 block w-full rounded-md border-2 border-gray-600 shadow-sm sm:text-sm"
+                <select
+                  className="select select-accent w-full max-w-xs"
                   onChange={(e) => setResource(e.target.value)}
-                />
+                >
+                  <option disabled selected>
+                    {" "}
+                    choisir jour
+                  </option>
+                  <option Value="M">Lundi</option>
+                  <option Value="T">Mardi</option>
+                  <option Value="W">Mercredi</option>
+                  <option Value="Th">Jeudi</option>
+                  <option Value="F">Vendredi</option>
+                  <option Value="S">Samedi</option>
+                  <option Value="Su">Dimanche</option>
+                </select>
               </div>
               <div className="grid grid-cols-6 gap-6">
                 <label
