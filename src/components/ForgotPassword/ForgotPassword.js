@@ -3,17 +3,16 @@ import { Link, useNavigate } from "react-router-dom";
 import APIManager from "../../services/api";
 
 const ForgotPassword = () => {
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     const userEmail = e.target.email.value;
 
-    await APIManager.forgotPasswordUser(userEmail)
-    .catch((error) => {
+    await APIManager.forgotPasswordUser(userEmail).catch((error) => {
       console.log(error.message);
     });
-    document.getElementById("messages").innerHTML = "Un email vous a été envoyé à l'adresse " + userEmail
-    console.log("Email envoyé")
+    document.getElementById("messages").innerHTML =
+      "Un email vous a été envoyé à l'adresse " + userEmail;
+    console.log("Email envoyé");
   };
 
   return (

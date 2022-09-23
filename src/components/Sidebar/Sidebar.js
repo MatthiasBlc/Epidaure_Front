@@ -36,7 +36,7 @@ const SideBar = () => {
             key={i}
             className="group flex items-center text-sm gap-3.5 font-medium p-2 hover:bg-turquoise rounded-md"
           >
-            <img className="fill-white" src={menu?.icon} alt={`icon de ${menu?.icon}`} />
+            <img src={menu?.icon} alt={`icon de ${menu?.icon}`} />
             <h2
               style={{
                 transitionDelay: `${i + 3}00ms`,

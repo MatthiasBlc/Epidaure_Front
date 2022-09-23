@@ -78,6 +78,11 @@ export default class APIManager {
     return response.data;
   }
 
+  static async patientsData() {
+    const response = await API.get("/patients");
+    return response.data;
+  }
+
   static async editUser(email, password) {
     const response = await API.patch("/users", {
       user: {
@@ -85,6 +90,10 @@ export default class APIManager {
         password: password,
       },
     });
+    return response.data;
+  }
+  static async deleteUser(id) {
+    const response = await API.delete("/members/"+id)
     return response.data;
   }
 
@@ -124,7 +133,7 @@ export default class APIManager {
     return response.data;
   }
 
-  // CONTACT FORM
+  // -----------------------      CONTACT FORM
   static async contactForm(last_name, first_name, email, content) {
     const response = await API2.post("/contacts", {
       contact: {
