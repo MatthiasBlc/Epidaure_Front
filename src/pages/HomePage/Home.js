@@ -26,7 +26,7 @@ const Home = () => {
 
   return (
     <>
-      <div className="leading-normal tracking-normal text-white gradient">
+      <div className="bgheader leading-normal tracking-normal text-white gradient">
         <div className="pt-24">
           {/* <!-- Section 1 --> */}
           <div className="container px-3 mx-auto flex flex-wrap flex-col md:flex-row items-center">

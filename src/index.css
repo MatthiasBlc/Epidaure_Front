@@ -33,3 +33,7 @@
 #addUser {
   display: none;
 }
+
+.gradient {
+  background: linear-gradient(90deg, #30aa6d 30%, #9cf0c6  100%);
+}

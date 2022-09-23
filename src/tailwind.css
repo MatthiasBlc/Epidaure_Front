@@ -94,10 +94,6 @@
   background-color: transparent;
 }
 
-.gradient {
-  background: linear-gradient(90deg, #30aa6d 30%, #bdeedd 100%);
-}
-
 .bg-black {
   background-color: #000;
 }
