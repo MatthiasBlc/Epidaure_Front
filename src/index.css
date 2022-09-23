@@ -20,6 +20,33 @@
     grid-row-gap: 0px;
 }
 
+.container-privacy {
+  display: flex;
+  flex-direction: column;
+}
+
+.container-privacy h1 {
+  font-size: 5vmin;
+  text-align: center;
+  margin-top: 20px;
+  color: #333;
+  text-decoration: underline;
+}
+
+.container-privacy h3 {
+  font-size: 3vmin;
+  text-align: center;
+  margin-top: 20px;
+  color: #333;
+  text-decoration: underline;
+}
+
+.container-privacy .content {
+  padding: 2vw 30vw 5vw;
+  text-align: justify;
+
+}
+
 @media screen and (max-width: 768px)
 {
     .containerGrid1
