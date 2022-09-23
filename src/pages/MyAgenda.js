@@ -7,6 +7,22 @@ import { useAtom } from "jotai";
 
 import { BlockPicker } from "react-color";
 
+// modal
+import Modal from 'react-modal';
+const customStyles = {
+  content: {
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)',
+  },
+};
+// end modal
+
+
+
 const Agenda = () => {
   const [agendaData, setAgendaData] = useState();
   const [practiceRoomsList, setPracticeRoomsList] = useState();
@@ -15,7 +31,6 @@ const Agenda = () => {
   const [start, setStart] = useState("");
   const [end, setEnd] = useState("");
   const [barColor, setBarColor] = useState("#37d67a");
-
   const [resource, setResource] = useState("");
   const [selectedRoom, setSelectedRoom] = useState("");
 
@@ -24,6 +39,26 @@ const Agenda = () => {
   let [currentUser] = useAtom(currentUserAtom);
   currentUser = JSON.parse(currentUser);
   const practice_id = currentUser.practice_id;
+
+
+  // Modal
+ 
+  const [modalIsOpen, setIsOpen] = React.useState(false);
+
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  function afterOpenModal() {
+
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+  }
+// End modal
+
+
 
   const getPracticeData = async (practice_id) => {
     const data = await APIManager.practiceData(practice_id);
@@ -68,9 +103,23 @@ const Agenda = () => {
     <div>
       <h1>Titre</h1>
 
+
+
+
       <CalendarManager eventList={agendaData} />
 
-      <div className="mt-5 md:col-span-2 md:mt-0">
+
+{/* Modal */}
+<div>
+      <button onClick={openModal}>Nouveau</button>
+      <Modal
+        isOpen={modalIsOpen}
+        onAfterOpen={afterOpenModal}
+        onRequestClose={closeModal}
+        style={customStyles}
+        contentLabel="Nouvel evenement"
+      >
+        <div className="mt-5 md:col-span-2 md:mt-0">
         <form onSubmit={handleSubmit}>
           <div className="overflow-hidden shadow sm:rounded-md">
             <div className="bg-white px-4 py-5 sm:p-6">
@@ -195,6 +244,15 @@ const Agenda = () => {
           </div>
         </form>
       </div>
+
+
+
+      </Modal>
+    </div>
+{/* Endmodal */}
+
+
+      
     </div>
   );
 };
