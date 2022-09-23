@@ -14,6 +14,7 @@ import Agenda from "./pages/MyAgenda";
 import IndexDashboard from "./components/HolderDashboard/IndexDashboard";
 import Contact from "./components/Contact/Contact";
 import Home from "./pages/HomePage/Home";
+import Privacy from "./pages/HomePage/Privacy";
 
 const App = () => {
   return (
@@ -34,6 +35,7 @@ const App = () => {
           <Route path="/users/password" element={<ForgotPassword />} />
           <Route path="/users/:token" element={<ResetPassword />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/privacy" element={<Privacy />} />
           <Route
             path="/dashboard"
             element={

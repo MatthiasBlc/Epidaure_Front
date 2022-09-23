@@ -2,7 +2,7 @@ import React from "react";
 import { useAtom } from "jotai";
 import { Link, Navigate } from "react-router-dom";
 import { loggedAtom } from "../../services/Atoms/user";
-import Footer from "../../components/Footer/Footer";
+import Footer from "./Footer/Footer";
 import createAccountLogo from "../../assets/images/createAccountLogo.png";
 import Dashboard from "../../assets/images/Dashboard.png";
 import Planning from "../../assets/images/planning.png";

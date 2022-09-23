@@ -14,6 +14,7 @@ const RoomData = () => {
   const [deleteRooms, setDeleteRoom] = useState();
   const [editRoomList, setEditRoomList] = useState();
   const [editRoomID, setEditRoomID] = useState();
+  const [editRoomDiv,setEditRoomDiv] = useState(false);
 
   const getPracticeData = async (practice_id) => {
     const data = await APIManager.practiceData(practice_id);
@@ -32,12 +33,12 @@ const RoomData = () => {
 
   const editRoomFunction = async (e) => {
     e.preventDefault();
-    console.log(editRoomID);
-    // const name = e.target.newName.value;
-    // await APIManager.editRoom(editRoomID,name).catch((error) => {
-    //   console.log(error.message);
-    // });
-    // setEditRoomList(e);
+    const name = e.target.newName.value;
+    console.log("editRoomID",editRoomID);
+    await APIManager.editRoom(editRoomID,name).catch((error) => {
+      console.log(error.message);
+    });
+    setEditRoomList(e);
   };
 
   const createRoom = async (e) => {
@@ -51,6 +52,7 @@ const RoomData = () => {
       });
       setNewRoom(e);
       document.getElementById("addRoom").style.display = "none";
+      setAlertMsg("");
     }
   };
 
@@ -151,7 +153,7 @@ const RoomData = () => {
               </label>
               <input type="text" id="newName" className="mr-2" />
               <button
-                onClick={editRoomButton}
+                type="submit"
                 className="self-end mt-4 mx-auto lg:mx-0 hover:underline bg-lightgrey text-gray-800 font-bold rounded-full my-2 py-1 px-4 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out"
               >
                 Sauvegarder
