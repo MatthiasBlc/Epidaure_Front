@@ -30,6 +30,8 @@ export default class APIManager {
     const response = await API.post("/users", {
       user: { email: email, password: password, practice_id: practice_id },
     });
+    // const jwt = response.headers.authorization.slice(7);
+    // Cookies.set("epidaure_id", jwt);
     return response.data;
   }
 
@@ -96,11 +98,11 @@ export default class APIManager {
   }
 
   //  -----------------------        PRACTICE FUNCTIONS
-  static async editPractice(id, name, adress, email) {
+  static async editPractice(id, name, adresse, email) {
     const response = await API.patch("/practices/" + id, {
       practice: {
         name: name,
-        adress: adress,
+        adresse: adresse,
         email: email,
       },
     });
