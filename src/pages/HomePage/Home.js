@@ -2,7 +2,7 @@ import React from "react";
 import { useAtom } from "jotai";
 import { Link, Navigate } from "react-router-dom";
 import { loggedAtom } from "../../services/Atoms/user";
-import Footer from "../../components/Footer/Footer";
+import Footer from "./Footer/Footer";
 import createAccountLogo from "../../assets/images/createAccountLogo.png";
 import SVG1 from "./svg/SVG1";
 import SVG0 from "./svg/SVG0";
@@ -79,7 +79,7 @@ const Home = () => {
                 </p>
               </div>
               <div className="w-full sm:w-2/3 p-6">
-                <img src={createAccountLogo} />
+                <img src={createAccountLogo} alt="create-account"/>
               </div>
             </div>
             <div className="flex flex-wrap flex-col-reverse sm:flex-row mt-20">
