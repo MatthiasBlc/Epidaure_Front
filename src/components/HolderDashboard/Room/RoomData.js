@@ -51,6 +51,7 @@ const RoomData = () => {
       });
       setNewRoom(e);
       document.getElementById("addRoom").style.display = "none";
+      setAlertMsg("");
     }
   };
 
@@ -103,7 +104,7 @@ const RoomData = () => {
                     data-name={room.id}
                     onClick={deleteRoom}
                   >
-                    ❌ Supprimer
+                    ❌ 
                   </button>
                 </div>
               </li>

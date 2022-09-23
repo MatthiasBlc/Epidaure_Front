@@ -60,7 +60,7 @@ const UserData = () => {
         Les practiciens du cabinet:
       </h1>
       <div className="w-full mb-4">
-        <div className="mb-10 h-1 gradient w-30 opacity-25 my-0 py-0 rounded-t"></div>
+        <div className="mb-6 h-1 gradient w-30 opacity-25 my-0 py-0 rounded-t"></div>
       </div>
       <ul>
         {usersPractice &&
@@ -69,7 +69,7 @@ const UserData = () => {
               <li className="flex flex-row flex-wrap justify-between mt-2">
                 <p>{user.email}</p>
                 <button data-name={user.id} onClick={deleteUser}>
-                  ❌ Supprimer
+                  ❌ 
                 </button>
               </li>
               <hr className="mr-40 ml-40" />
