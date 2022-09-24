@@ -5,7 +5,6 @@ import APIManager from "../../services/api";
 const ResetPassword = () => {
   const userToken = useParams().token;
   const navigate = useNavigate();
-  console.log(userToken);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
