@@ -16,6 +16,8 @@ const customStyles = {
     bottom: "auto",
     marginRight: "-50%",
     transform: "translate(-50%, -50%)",
+    width: "50%",
+    borderRadius: "15px",
   },
 };
 
@@ -286,43 +288,41 @@ const CalendarManager = (eventList) => {
           style={customStyles}
           contentLabel="Nouvel evenement"
         >
-          <div className="mt-5 md:col-span-2 md:mt-0">
-            <form onSubmit={handleSubmit}>
-              <div className="overflow-hidden shadow sm:rounded-md">
-                <div className="bg-white px-4 py-5 sm:p-6">
-                  <div className="grid grid-cols-6 gap-6">
-                    <label
-                      htmlFor="event-name"
-                      className="block text-sm font-medium text-gray-700"
-                    >
-                      Nom de l'évent
-                    </label>
-                    <input
-                      type="text"
-                      id="text"
-                      placeholder="RDV de ???"
-                      className="focusForm mt-2 block w-full rounded-md border-2 border-gray-600 shadow-sm sm:text-sm"
-                      onChange={(e) => setText(e.target.value)}
+          <form onSubmit={handleSubmit}>
+            <div className="flex flex-col">
+              <div className="bg-white px-4 py-5 sm:p-6">
+                <div className="w-1/2 mx-auto">
+                  <label
+                    htmlFor="event-name"
+                    className="block text-sm font-medium text-gray-700"
+                  >
+                    Nom de l'évent
+                  </label>
+                  <input
+                    type="text"
+                    id="text"
+                    placeholder="RDV de ???"
+                    className="focusForm mt-2 block w-full rounded-md shadow-sm sm:text-sm"
+                    onChange={(e) => setText(e.target.value)}
+                  />
+                </div>
+
+                <div className="mt-10 flex flex-col">
+                  <div className="blockpicker mx-auto">
+                    <h6 className="mb-5 text-sm font-medium text-gray-700">
+                      Couleur de l'évènement
+                    </h6>
+                    <BlockPicker
+                      className="w-"
+                      color={barColor}
+                      onChange={(color) => {
+                        setBarColor(color.hex);
+                      }}
                     />
                   </div>
-                  <div className="grid grid-cols-6 gap-6">
-                    <label
-                      htmlFor="color"
-                      className="block text-sm font-medium text-gray-700"
-                    >
-                      BarColor
-                    </label>
-                    <div className="blockpicker">
-                      <h6>Couleur de l'évènement</h6>
-                      <BlockPicker
-                        color={barColor}
-                        onChange={(color) => {
-                          setBarColor(color.hex);
-                        }}
-                      />
-                    </div>
-                  </div>
-                  <div className="grid grid-cols-6 gap-6">
+                </div>
+                <div className="mt-10 flex flex-col items-center">
+                  <div className="mx-auto">
                     <label
                       htmlFor="room"
                       className="block text-sm font-medium text-gray-700"
@@ -330,7 +330,7 @@ const CalendarManager = (eventList) => {
                       Bureau
                     </label>
                     <select
-                      className="select select-accent w-full max-w-xs"
+                      className="select select-accent w-full max-w-xs mt-2"
                       onChange={(e) => setSelectedRoom(e.target.value)}
                     >
                       <option disabled selected>
@@ -346,17 +346,17 @@ const CalendarManager = (eventList) => {
                     </select>
                   </div>
                 </div>
-                <div className="bg-gray-50 px-4 py-3 text-right sm:px-6">
-                  <button
-                    type="submit"
-                    className="ml-10 inline-flex justify-center hover:underline gradient text-white font-bold rounded-full my-3 py-2 px-5 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out"
-                  >
-                    Valider
-                  </button>
-                </div>
               </div>
-            </form>
-          </div>
+              <div className="px-4 py-3 text-right sm:px-6">
+                <button
+                  type="submit"
+                  className="ml-10 inline-flex justify-center hover:underline gradient text-white font-bold rounded-full my-3 py-2 px-5 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out"
+                >
+                  Valider
+                </button>
+              </div>
+            </div>
+          </form>
         </Modal>
       </div>
       <div>
@@ -366,74 +366,68 @@ const CalendarManager = (eventList) => {
           style={customStyles}
           contentLabel="Editer un evenement"
         >
-          <div className="mt-5 md:col-span-2 md:mt-0">
+          <div className="mt-5">
             <form onSubmit={handleSubmitOnEdit}>
-              <div className="overflow-hidden shadow sm:rounded-md">
-                <div className="bg-white px-4 py-5 sm:p-6">
-                  <div className="grid grid-cols-6 gap-6">
-                    <label
-                      htmlFor="event-name"
-                      className="block text-sm font-medium text-gray-700"
-                    >
-                      Nom de l'évent
-                    </label>
-                    <input
-                      type="text"
-                      id="text"
-                      placeholder={text}
-                      className="focusForm mt-2 block w-full rounded-md border-2 border-gray-600 shadow-sm sm:text-sm"
-                      onChange={(e) => setText(e.target.value)}
-                    />
-                  </div>
-                  <div className="grid grid-cols-6 gap-6">
-                    <label
-                      htmlFor="color"
-                      className="block text-sm font-medium text-gray-700"
-                    >
-                      BarColor
-                    </label>
-                    <div className="blockpicker">
-                      <h6>Couleur de l'évènement</h6>
-                      <BlockPicker
-                        color={barColor}
-                        onChange={(color) => {
-                          setBarColor(color.hex);
-                        }}
-                      />
-                    </div>
-                  </div>
-                  <div className="grid grid-cols-6 gap-6">
-                    <label
-                      htmlFor="room"
-                      className="block text-sm font-medium text-gray-700"
-                    >
-                      Bureau
-                    </label>
-                    <select
-                      className="select select-accent w-full max-w-xs"
-                      onChange={(e) => setSelectedRoom(e.target.value)}
-                    >
-                      <option disabled selected>
-                        {" "}
-                        choisir un bureau
-                      </option>
-                      {practiceRoomsList &&
-                        practiceRoomsList.map((room, index) => (
-                          <option key={index} value={room.id}>
-                            {room.name}
-                          </option>
-                        ))}
-                    </select>
-                  </div>
+              <div className="w-1/2 mx-auto">
+                <label
+                  htmlFor="event-name"
+                  className="block text-sm font-medium text-gray-700"
+                >
+                  Nom de l'évent
+                </label>
+                <input
+                  type="text"
+                  id="text"
+                  placeholder={text}
+                  className="focusForm mt-2 block w-full rounded-md border-2 shadow-sm sm:text-sm"
+                  onChange={(e) => setText(e.target.value)}
+                />
+              </div>
+              <div className="flex flex-col">
+                <div className="blockpicker mx-auto">
+                  <h6 className="mt-5 mb-2 text-sm font-medium text-gray-700">
+                    Couleur de l'évènement
+                  </h6>
+                  <BlockPicker
+                    color={barColor}
+                    onChange={(color) => {
+                      setBarColor(color.hex);
+                    }}
+                  />
                 </div>
-                <div className="bg-gray-50 px-4 py-3 text-right sm:px-6">
-                  <button
-                    type="submit"
-                    className="ml-10 inline-flex justify-center hover:underline gradient text-white font-bold rounded-full my-3 py-2 px-5 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out"
+              </div>
+              <div className="mt-10 flex flex-col items-center">
+                <div className="mx-auto ">
+                  <label
+                    htmlFor="room"
+                    className="text-sm font-medium text-gray-700 w-full"
                   >
-                    Valider
-                  </button>
+                    Bureau
+                  </label>
+                  <select
+                    className="select select-accent w-full max-w-xs mt-2"
+                    onChange={(e) => setSelectedRoom(e.target.value)}
+                  >
+                    <option disabled selected>
+                      {" "}
+                      choisir un bureau
+                    </option>
+                    {practiceRoomsList &&
+                      practiceRoomsList.map((room, index) => (
+                        <option key={index} value={room.id}>
+                          {room.name}
+                        </option>
+                      ))}
+                  </select>
                 </div>
+              </div>
+              <div className="px-4 py-3 text-right sm:px-6">
+                <button
+                  type="submit"
+                  className="ml-10 inline-flex justify-center hover:underline gradient text-white font-bold rounded-full my-3 py-2 px-5 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out"
+                >
+                  Valider
+                </button>
               </div>
             </form>
           </div>
