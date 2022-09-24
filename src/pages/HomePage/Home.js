@@ -4,7 +4,7 @@ import { Link, Navigate } from "react-router-dom";
 import { loggedAtom } from "../../services/Atoms/user";
 import Footer from "./Footer/Footer";
 import createAccountLogo from "../../assets/images/createAccountLogo.png";
-import Dashboard from "../../assets/images/practicedata.gif";
+import Dashboard from "../../assets/images/Dashboard.png";
 import Planning from "../../assets/images/planning.png";
 import SVG1 from "./svg/SVG1";
 import SVG0 from "./svg/SVG0";
