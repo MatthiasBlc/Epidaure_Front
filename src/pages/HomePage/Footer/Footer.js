@@ -22,20 +22,20 @@ const Footer = () => {
               />
             </div>
             <div className="flex-1">
-              <p className="uppercase text-gray-500 md:mb-6">Legal</p>
+              <p className="uppercase text-gray-500 md:mb-6">Mentions légales</p>
               <ul className="list-reset mb-6">
                 <li className="mt-2 inline-block mr-2 md:block md:mr-0">
                   <Link
                     to="/privacy"
                     className="no-underline hover:underline text-gray-800 hover:text-orange-500"
                   >
-                    Privacy
+                    Politique de confidentialité
                   </Link>
                 </li>
               </ul>
             </div>
             <div className="flex-1">
-              <p className="uppercase text-gray-500 md:mb-6">Company</p>
+              <p className="uppercase text-gray-500 md:mb-6">Equipe</p>
               <ul className="list-reset mb-6">
                 {teams &&
                   teams.map((team, k) => (
