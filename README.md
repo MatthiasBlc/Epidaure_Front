@@ -69,13 +69,6 @@ Un front épuré et fonctionnel en React, Tailwind ( + potentiellement Material-
 Un backend en API sous Rails v7.
 
 ## 4. La version minimaliste mais fonctionnelle qu'il faut avoir livré la première semaine
-Le praticien titulaire pourra : 
-
-- créer des comptes praticiens dans son cabinet ; 
-
-- gérer les données relatives à son compte/cabinet médical ;
-
-- faire tout ce qu'un praticien de son cabinet peut faire.
 
 Un praticien pourra:
 
@@ -87,16 +80,17 @@ Un praticien pourra:
 
 ## **5. La version que l'on présentera aux jurys**
 
+Le praticien titulaire pourra : 
+
+- créer des comptes praticiens dans son cabinet ; 
+
+- gérer les données relatives à son compte/cabinet médical ;
+
+- faire tout ce qu'un praticien de son cabinet peut faire.
+
 Un praticien pourra:
 
-- accéder à la liste d'attente des nouveaux patients, demandes de bilans ;
-
-- signaler qu'il prend en charge le patient.
-
-
-- accéder au carnet d'adresses commun des contacts professionnels ;
-
-- ajouter un contact professionnel au carnet commun.
+- accèder à son profil et modifier son adresse mail et son mot de passe.
 
 ## **6. Et après?**
 
@@ -108,11 +102,17 @@ Un praticien pourra:
 
 - valider la liste si cette dernière est achetée ;
 
+- accéder à la liste d'attente des nouveaux patients, demandes de bilans ;
+
+- signaler qu'il prend en charge le patient.
+
+- accéder au carnet d'adresses commun des contacts professionnels ;
+
+- ajouter un contact professionnel au carnet commun.
 
 - ajouter ou supprimer des jours d'absence ou de congé sur le planning général ;
 
 - voir le planning général des absences ;
-
 
 - avoir accès à l'espace de stockage de données interne au cabinet ;
 
