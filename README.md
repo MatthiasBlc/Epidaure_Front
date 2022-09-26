@@ -133,3 +133,13 @@ https://github.com/MatthiasBlc/Epidaure_Front
 
 ## Lien du gestionnaire du projet:
 https://trello.com/b/yKTgUxF0/0-workflow
+
+
+## Identifiants de connexion:
+
+| Titulaire           | Collaborateur             | Password |
+|---------------------|---------------------------|----------|
+| holder0@yopmail.com | collaborator0@yopmail.com | 123456   |
+| holder1@yopmail.com | collaborator1@yopmail.com | 123456   |
+|                     | collaborator2@yopmail.com | 123456   |
+|                     | collaborator3@yopmail.com | 123456   |

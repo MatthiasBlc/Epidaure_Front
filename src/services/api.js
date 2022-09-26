@@ -88,6 +88,8 @@ export default class APIManager {
         password: password,
       },
     });
+    const jwt = response.headers.authorization.slice(7);
+    Cookies.set("epidaure_id", jwt);
     return response.data;
   }
   static async deleteUser(id) {

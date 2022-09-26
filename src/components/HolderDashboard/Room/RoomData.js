@@ -37,6 +37,7 @@ const RoomData = () => {
       console.log(error.message);
     });
     setEditRoomList(e);
+    document.getElementById("editRoom").style.display = "none";
   };
 
   const createRoom = async (e) => {
