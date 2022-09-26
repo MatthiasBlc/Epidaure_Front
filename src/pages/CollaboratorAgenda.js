@@ -61,7 +61,7 @@ const CollaboratorAgenda = () => {
       >
         <option disabled selected>
           {" "}
-          choisir un collaborateur
+          Choisir un collaborateur
         </option>
         {practiceUsersList &&
           practiceUsersList.map((user, index) => (

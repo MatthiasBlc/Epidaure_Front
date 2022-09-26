@@ -60,7 +60,7 @@ const RoomAgenda = () => {
       >
         <option disabled selected>
           {" "}
-          choisir un bureau
+          Choisir un bureau
         </option>
         {practiceRoomsList &&
           practiceRoomsList.map((room, index) => (

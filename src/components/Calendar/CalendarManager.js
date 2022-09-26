@@ -127,7 +127,7 @@ const CalendarManager = (eventList) => {
           text: "Delete",
           onClick: async (args) => {
             const modal = await DayPilot.Modal.confirm(
-              "Do you really want to delete this event?"
+              "Voulez-vous supprimer cet évènement?"
             );
             const newIdEvent = args.source.id();
             if (modal.canceled) {
@@ -246,7 +246,7 @@ const CalendarManager = (eventList) => {
       resource,
       selectedRoom
     ).catch((error) => {
-      alert("erreur");
+      alert("Vous n'avez pas rempli tout les champs");
       console.log(error.message);
     });
     closeModal();
@@ -296,7 +296,7 @@ const CalendarManager = (eventList) => {
                     htmlFor="event-name"
                     className="block text-sm font-medium text-gray-700"
                   >
-                    Nom de l'évent
+                    Nom de l'évènement
                   </label>
                   <input
                     type="text"
@@ -335,7 +335,7 @@ const CalendarManager = (eventList) => {
                     >
                       <option disabled selected>
                         {" "}
-                        choisir un bureau
+                        Choisir un bureau
                       </option>
                       {practiceRoomsList &&
                         practiceRoomsList.map((room, index) => (
@@ -373,12 +373,13 @@ const CalendarManager = (eventList) => {
                   htmlFor="event-name"
                   className="block text-sm font-medium text-gray-700"
                 >
-                  Nom de l'évent
+                  Nom de l'évènement
                 </label>
                 <input
                   type="text"
                   id="text"
                   placeholder={text}
+                  defaultValue={text}
                   className="focusForm mt-2 block w-full rounded-md border-2 shadow-sm sm:text-sm"
                   onChange={(e) => setText(e.target.value)}
                 />
@@ -409,8 +410,7 @@ const CalendarManager = (eventList) => {
                     onChange={(e) => setSelectedRoom(e.target.value)}
                   >
                     <option disabled selected>
-                      {" "}
-                      choisir un bureau
+                      Choisir un bureau
                     </option>
                     {practiceRoomsList &&
                       practiceRoomsList.map((room, index) => (
